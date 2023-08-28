@@ -1,0 +1,2525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>390</width>
+    <height>870</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>390</width>
+    <height>870</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background:rgb(195, 209, 220);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>18</number>
+    </property>
+    <property name="topMargin">
+     <number>18</number>
+    </property>
+    <property name="rightMargin">
+     <number>18</number>
+    </property>
+    <property name="bottomMargin">
+     <number>18</number>
+    </property>
+    <item>
+     <layout class="QGridLayout" name="openGLScreenLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+     </layout>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item row="2" column="0">
+       <layout class="QGridLayout" name="secondExtraButtonsLayout">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item row="2" column="0">
+         <layout class="QGridLayout" name="gridLayout_18">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>20</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="1" column="4">
+           <widget class="QPushButton" name="divisionButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>÷</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="squareButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>x²</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="leftParenthesisButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>(</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="rightParenthesisButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="commaButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>,</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QGridLayout" name="gridLayout_19">
+            <item row="0" column="0">
+             <widget class="QLabel" name="EELabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>EE</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="JLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>J</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="2">
+           <layout class="QGridLayout" name="gridLayout_20">
+            <item row="0" column="1">
+             <widget class="QLabel" name="KLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>K</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="leftCurlyBracketLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>{</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="3">
+           <layout class="QGridLayout" name="gridLayout_28">
+            <item row="0" column="0">
+             <widget class="QLabel" name="rightCurlyBracketLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>}</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="LLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>L</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="4">
+           <layout class="QGridLayout" name="gridLayout_29">
+            <item row="0" column="1">
+             <widget class="QLabel" name="MLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>M</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="eLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>e</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_30">
+            <item row="0" column="0">
+             <widget class="QLabel" name="sqrtLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>√x</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="ILabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>I</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QGridLayout" name="gridLayout_39">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>20</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="inverseButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>x⁻¹</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <layout class="QGridLayout" name="gridLayout_46">
+            <item row="0" column="0">
+             <widget class="QLabel" name="inverseTANLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>tan⁻¹</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="GLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>G</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="cosButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>cos</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QGridLayout" name="gridLayout_41">
+            <item row="0" column="1">
+             <widget class="QLabel" name="ELabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>E</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="inverseSINLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>sin⁻¹</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="4">
+           <widget class="QPushButton" name="tanButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>tan</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_42">
+            <item row="0" column="0">
+             <widget class="QLabel" name="matrixLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>matrix</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="DLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>D</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="sinButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>sin</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <layout class="QGridLayout" name="gridLayout_44">
+            <item row="0" column="0">
+             <widget class="QLabel" name="inverseCOSLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>cos⁻¹</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="FLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>F</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="5">
+           <widget class="QPushButton" name="powerButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>⌃</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <layout class="QGridLayout" name="gridLayout_51">
+            <item row="0" column="0">
+             <widget class="QLabel" name="piLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>𝝅</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="HLabel">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>H</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_12">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>20</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="appsButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>apps</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="variablesButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>vars</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QPushButton" name="clearButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>clear</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="programButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>prgm</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="mathButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>math</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QGridLayout" name="gridLayout_11">
+            <item row="0" column="0">
+             <widget class="QLabel" name="angleLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>angle</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="BLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>B</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="2">
+           <layout class="QGridLayout" name="gridLayout_13">
+            <item row="0" column="0">
+             <widget class="QLabel" name="drawLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>draw</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="CLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>C</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="3">
+           <layout class="QGridLayout" name="gridLayout_17">
+            <item row="0" column="0">
+             <widget class="QLabel" name="distrLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>distr</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_38">
+            <item row="0" column="0">
+             <widget class="QLabel" name="testLabel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>test</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="ALabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>A</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="firstExtraButtonsLayout" stretch="0,0">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_15">
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>6</number>
+          </property>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_31">
+            <property name="leftMargin">
+             <number>8</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <property name="horizontalSpacing">
+             <number>20</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>0</number>
+            </property>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="secondButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>33</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(87, 188, 255);
+color: rgb(241, 241, 241);</string>
+              </property>
+              <property name="text">
+               <string>2nd</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="quitLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>quit</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="modeButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>33</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+              </property>
+              <property name="text">
+               <string>mode</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="deleteButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>33</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+              </property>
+              <property name="text">
+               <string>del</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="insLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>ins</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <layout class="QGridLayout" name="gridLayout_32">
+            <property name="leftMargin">
+             <number>8</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <property name="horizontalSpacing">
+             <number>20</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>0</number>
+            </property>
+            <item row="0" column="1">
+             <widget class="QLabel" name="linkLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>link</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="alphaButton">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>33</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(242, 116, 5);
+color: rgb(241, 241, 241);</string>
+              </property>
+              <property name="text">
+               <string>alpha</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="variableButton">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>33</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 12pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+              </property>
+              <property name="text">
+               <string>X,T,θ,n</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="listLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>list</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="statButton">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>33</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+              </property>
+              <property name="text">
+               <string>stat</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="aLockLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>A-lock</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_33">
+          <property name="horizontalSpacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>140</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Place Holder</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="functionButtonsLayout">
+        <item row="2" column="0">
+         <layout class="QGridLayout" name="gridLayout_22">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="rightMargin">
+           <number>8</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>15</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="equationButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>y=</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="traceButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>trace</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="windowButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>window</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QPushButton" name="graphButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>graph</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="zoomButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>zoom</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_23">
+            <property name="horizontalSpacing">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="statPlotLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>stat plot</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="f1Label">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>f1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="1">
+           <layout class="QGridLayout" name="gridLayout_24">
+            <property name="horizontalSpacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="tblsetLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>tblset</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="f2Label">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>f2</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="2">
+           <layout class="QGridLayout" name="gridLayout_25">
+            <property name="horizontalSpacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="formatLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>format</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="f3Label">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>f3</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="3">
+           <layout class="QGridLayout" name="gridLayout_26">
+            <property name="horizontalSpacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="calcLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>calc</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="f4Label">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>f4</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="4">
+           <layout class="QGridLayout" name="gridLayout_27">
+            <property name="horizontalSpacing">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="tableLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>table</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="f5Label">
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>f5</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>8</number>
+        </property>
+        <property name="rightMargin">
+         <number>8</number>
+        </property>
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_40">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="rightMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_69">
+            <property name="verticalSpacing">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="powerOfTenLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>10ˣ</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="NLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>N</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="logButton">
+            <property name="minimumSize">
+             <size>
+              <width>54</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>log</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <layout class="QGridLayout" name="gridLayout_70">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <property name="horizontalSpacing">
+             <number>6</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="eRaisedToThePowerLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>eˣ</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="SLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>S</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="lnButton">
+            <property name="minimumSize">
+             <size>
+              <width>54</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>ln</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="stoButton">
+            <property name="minimumSize">
+             <size>
+              <width>54</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(25, 25, 25);
+color: rgb(241, 241, 241);</string>
+            </property>
+            <property name="text">
+             <string>sto</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <layout class="QGridLayout" name="gridLayout_45">
+            <item row="0" column="0">
+             <widget class="QLabel" name="rclLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>rcl</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="XLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>X</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>68</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="7" column="0">
+           <widget class="QPushButton" name="Number0">
+            <property name="minimumSize">
+             <size>
+              <width>51</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0">
+             <widget class="QLabel" name="L4Label">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>L4</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="TLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>T</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="Number7">
+            <property name="minimumSize">
+             <size>
+              <width>51</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="1">
+             <widget class="QLabel" name="spaceLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>_</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="catalogLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>catalog</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="Number4">
+            <property name="minimumSize">
+             <size>
+              <width>51</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>4</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="1" column="0">
+             <widget class="QLabel" name="ULabel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>U</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="OLabel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>O</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="0" column="0">
+             <widget class="QLabel" name="L1Label">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>L1</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="YLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>Y</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="Number1">
+            <property name="minimumSize">
+             <size>
+              <width>51</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="2">
+         <layout class="QGridLayout" name="gridLayout_8">
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="2" column="0">
+           <layout class="QGridLayout" name="gridLayout_10">
+            <item row="0" column="0">
+             <widget class="QLabel" name="L5Label">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>L5</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="ULabel_2">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>U</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <layout class="QGridLayout" name="gridLayout_16">
+            <item row="0" column="0">
+             <widget class="QLabel" name="iLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: italic;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>i</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="colonLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="Number8">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>8</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="Number2">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QPushButton" name="decimalButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_9">
+            <item row="0" column="0">
+             <widget class="QLabel" name="VLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>V</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="PLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>P</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <layout class="QGridLayout" name="gridLayout_14">
+            <item row="0" column="0">
+             <widget class="QLabel" name="L2Label">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>L2</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="ZLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>Z</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="Number5">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="3">
+         <layout class="QGridLayout" name="gridLayout_21">
+          <property name="leftMargin">
+           <number>9</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="4" column="0">
+           <layout class="QGridLayout" name="gridLayout_36">
+            <item row="0" column="0">
+             <widget class="QLabel" name="L3Label">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>L3</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="thetaLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>θ</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <layout class="QGridLayout" name="gridLayout_37">
+            <item row="0" column="0">
+             <widget class="QLabel" name="ansLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>ans</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="questionMarkLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>?</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_34">
+            <item row="1" column="0">
+             <widget class="QLabel" name="WLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>W</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="QLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>Q</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <layout class="QGridLayout" name="gridLayout_35">
+            <item row="0" column="0">
+             <widget class="QLabel" name="L6Label">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>L6</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="VLabel_2">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>V</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="7" column="0">
+           <widget class="QPushButton" name="negativeButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>(-)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="Number6">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="Number9">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>9</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="Number3">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="4">
+         <layout class="QGridLayout" name="gridLayout_43">
+          <property name="leftMargin">
+           <number>17</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>28</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="5" column="0">
+           <widget class="QPushButton" name="additionButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <layout class="QGridLayout" name="gridLayout_49">
+            <item row="0" column="0">
+             <widget class="QLabel" name="memLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>mem</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="quotationMarksLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>&quot;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <layout class="QGridLayout" name="gridLayout_50">
+            <item row="0" column="2">
+             <widget class="QLabel" name="solveLabel">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>solve</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="entryLabel">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>entry</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="subtractionButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QPushButton" name="enterButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>enter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="multiplicationButton">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>33</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 14pt &quot;Roboto&quot;;
+font-style: bold;
+background-color: rgb(241, 241, 241);
+color: rgb(25, 25, 25);</string>
+            </property>
+            <property name="text">
+             <string>X</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_47">
+            <item row="0" column="0">
+             <widget class="QLabel" name="leftSquareBracketLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>[</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="RLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>R</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <layout class="QGridLayout" name="gridLayout_48">
+            <item row="0" column="0">
+             <widget class="QLabel" name="rightSquareBracketLabel">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(87, 188, 255);</string>
+              </property>
+              <property name="text">
+               <string>]</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="WLabel_2">
+              <property name="styleSheet">
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
+font-style: bold;
+color: rgb(242, 116, 5);</string>
+              </property>
+              <property name="text">
+               <string>W</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
