@@ -1,4 +1,5 @@
-from sysVars import *
+from vars import *
+import re
 
 
 def secondResets():
@@ -45,6 +46,18 @@ def entryFunction():
 
     expressionList.clear()
     workingLine.clear()
+
+    # Searches for key words
+    occ = re.finditer(regex, problem)
+
+    remainingTriggers = []
+
+    for trig in occ:
+        remainingTriggers.append(trig.group())
+
+    if remainingTriggers:
+        isFourFunction[0] = "False"
+
 
     expressionList.append(problem)
     workingLine.append(problem)

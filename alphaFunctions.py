@@ -1,4 +1,4 @@
-from sysVars import *
+from vars import *
 
 
 def functionA():

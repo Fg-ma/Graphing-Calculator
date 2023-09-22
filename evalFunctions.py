@@ -1,4 +1,4 @@
-from sysVars import *
+from vars import *
 import re
 import math
 
@@ -15,9 +15,6 @@ def simplifyExpression(expression):
     while not len(leftParenthesis) == len(rightParenthesis):
         expression = expression + ")"
         fetchParenthesisLists(expression)
-
-    # What triggers to search for
-    regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\()"
 
     # Searches for key words
     occ = re.finditer(regex, expression)
@@ -74,7 +71,6 @@ def simplifyExpression(expression):
 
             # Splicing into the string
             expression = expression[:firstTriggerPos[0]+firstTriggerPosShifter] + str(simplified) + expression[firstTriggerPos[0]+firstTriggerPosShifter+abs(firstTriggerEndingPos[0]-firstTriggerPos[0])+1:]
-            
             # Gets the object to be check for anymore triggers
             subocc = re.finditer(regex, expression)
 

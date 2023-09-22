@@ -11,6 +11,9 @@ firstTriggerEndingPos = []
 firstTriggerPosShifter = 0
 domainError = ["False"]
 
+# Key word search
+regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\()"
+
 # History variables
 answerHistory = {}
 problemHistory = {}

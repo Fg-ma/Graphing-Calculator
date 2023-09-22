@@ -1,4 +1,4 @@
-from sysVars import *
+from vars import *
 
 
 def secondFunction():
@@ -116,23 +116,75 @@ def function9():
 
 
 def additionFunction():
-    expressionList.append(" + ")
-    workingLine.append("+")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" + ")
+            workingLine.append(" + ")
+        except:
+            expressionList.append(" + ")
+            workingLine.append(" + ")
+    else:
+        expressionList.append(" + ")
+        workingLine.append(" + ")
 
 
 def subtractionFunction():
-    expressionList.append(" - ")
-    workingLine.append("-")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" - ")
+            workingLine.append(" - ")
+        except:
+            expressionList.append(" - ")
+            workingLine.append(" - ")
+    else:
+        expressionList.append(" - ")
+        workingLine.append(" - ")
 
 
 def multiplicationFunction():
-    expressionList.append(" * ")
-    workingLine.append("*")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" * ")
+            workingLine.append(" * ")
+        except:
+            expressionList.append(" * ")
+            workingLine.append(" * ")
+    else:
+        expressionList.append(" * ")
+        workingLine.append(" * ")
 
 
 def divisionFunction():
-    expressionList.append(" / ")
-    workingLine.append("/")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" / ")
+            workingLine.append(" / ")
+        except:
+            expressionList.append(" / ")
+            workingLine.append(" / ")
+    else:
+        expressionList.append(" / ")
+        workingLine.append(" / ")
 
 
 def clearFunction():
@@ -146,11 +198,25 @@ def clearFunction():
 
 def commaFunction():
     expressionList.append(", ")
-    workingLine.append(",")
+    workingLine.append(", ")
 
 
 def squareFunction():
-    expressionList.append(" ** 2")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" ** 2 ")
+            workingLine.append(" ** 2 ")
+        except:
+            expressionList.append(" ** 2 ")
+            workingLine.append(" ** 2 ")
+    else:
+        expressionList.append(" ** 2 ")
+        workingLine.append(" ** 2 ")
 
 
 def rightParenthesisFunction():
@@ -166,13 +232,39 @@ def leftParenthesisFunction():
 
 
 def inverseFunction():
-    expressionList.append(" ** -1")
-    workingLine.append(" ** -1")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" ** -1 ")
+            workingLine.append(" ** -1 ")
+        except:
+            expressionList.append(" ** -1 ")
+            workingLine.append(" ** -1 ")
+    else:
+        expressionList.append(" ** -1 ")
+        workingLine.append(" ** -1 ")
 
 
 def powerFunction():
-    expressionList.append(" ** ")
-    workingLine.append(" ** ")
+    if not expressionList:
+        try:
+            lastAnswerHistoryKey = list(answerHistory) [-1]
+            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+            answer = answerHistory[answerNumber]
+            expressionList.append(str(answer))
+            workingLine.append(str(answer))
+            expressionList.append(" ** ")
+            workingLine.append(" ** ")
+        except:
+            expressionList.append(" ** ")
+            workingLine.append(" ** ")
+    else:
+        expressionList.append(" ** ")
+        workingLine.append(" ** ")
 
 
 def decimalFunction():
@@ -208,3 +300,8 @@ def tanFunction():
     trig[0] = "True"
     expressionList.append("tan(")
     workingLine.append("tan(")
+
+
+def negativeFunction():
+    expressionList.append("-")
+    workingLine.append("-")

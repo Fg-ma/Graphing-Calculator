@@ -12,7 +12,7 @@ from eval import *
 from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
-from sysVars import *
+from vars import *
 import math
 
 
@@ -84,6 +84,7 @@ def functions():
         reconnectReset(ui.secondButton.clicked, secondFunction)
         reconnectReset(ui.alphaButton.clicked, alphaFunction)
         reconnectReset(ui.decimalButton.clicked, decimalFunction)
+        reconnectReset(ui.negativeButton.clicked, negativeFunction)
     elif subcommands == ["2nd"]:
         reconnectReset(ui.negativeButton.clicked, ansFunction)
         reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -269,7 +270,7 @@ class glWidget(QGLWidget):
         global rightStatusBarText
 
         # Handles status bar
-        glTranslatef(-5.0, statusBarTranslation, -6.0)
+        glTranslatef(-5.0, statusBarTranslation, -5.5)
         glColor3f(0.2, 0.2, 0.2)
         glPolygonMode(GL_FRONT, GL_FILL)
         glRectf(1.0, 0.4, self.width(), 1.0)

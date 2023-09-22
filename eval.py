@@ -1,4 +1,4 @@
-from sysVars import *
+from vars import *
 from evalFunctions import *
 
 def evaluate():
