@@ -1,4 +1,5 @@
 from variables import *
+from evalVars import *
 from enterFunctions import *
 
 
@@ -91,28 +92,25 @@ def squareFunction():
 
 
 def rightParenthesisFunction():
-    global areThereParenthesis
+    parentheses[0] = "True"
     expressionList.append(")")
     workingLine.append(")")
-    if tempParShutOff == []:
-        areThereParenthesis.append("True")
-    else:
-        tempParShutOff.clear()
 
 
 def leftParenthesisFunction():
-    global areThereParenthesis
+    parentheses[0] = "True"
     expressionList.append("(")
     workingLine.append("(")
-    areThereParenthesis.append("True")
 
 
 def inverseFunction():
     expressionList.append(" ** -1")
+    workingLine.append(" ** -1")
 
 
 def powerFunction():
     expressionList.append(" ** ")
+    workingLine.append(" ** ")
 
 
 def secondFunction():
@@ -185,13 +183,12 @@ def decimalFunction():
 
 
 def logFunction():
-    tempParShutOff.append("Off")
-    areThereLogs.append("True")
     expressionList.append("log(")
     workingLine.append("log(")
+    logs[0] = "True"
+    log[0] = "True"
 
 
 def lnFunction():
-    tempParShutOff.append("Off")
     expressionList.append("ln(")
     workingLine.append("ln(")

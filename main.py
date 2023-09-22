@@ -8,7 +8,8 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
 from PyQt5 import QtCore, QtWidgets, QtOpenGL
 from baseFunctions import *
-from enterFunctions import *
+from eval import *
+from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
 from variables import *
