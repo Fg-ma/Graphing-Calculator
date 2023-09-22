@@ -12,7 +12,7 @@ from eval import *
 from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
-from variables import *
+from sysVars import *
 import math
 
 
@@ -76,9 +76,9 @@ def functions():
         reconnectReset(ui.logButton.clicked, logFunction)
         reconnectReset(ui.lnButton.clicked, lnFunction)
         reconnectReset(ui.powerButton.clicked, powerFunction)
-        #reconnectReset(ui.tanButton.clicked, tanFunction)
-        #reconnectReset(ui.cosButton.clicked, cosFunction)
-        #reconnectReset(ui.sinButton.clicked, sinFunction)
+        reconnectReset(ui.tanButton.clicked, tanFunction)
+        reconnectReset(ui.cosButton.clicked, cosFunction)
+        reconnectReset(ui.sinButton.clicked, sinFunction)
         reconnectReset(ui.inverseButton.clicked, inverseFunction)
         reconnectReset(ui.clearButton.clicked, clearFunction)
         reconnectReset(ui.secondButton.clicked, secondFunction)
@@ -87,6 +87,10 @@ def functions():
     elif subcommands == ["2nd"]:
         reconnectReset(ui.negativeButton.clicked, ansFunction)
         reconnectReset(ui.enterButton.clicked, entryFunction)
+        reconnectReset(ui.sinButton.clicked, arcsinFunction)
+        reconnectReset(ui.cosButton.clicked, arccosFunction)
+        reconnectReset(ui.tanButton.clicked, arctanFunction)
+        reconnectReset(ui.powerButton.clicked, piFunction)
     elif subcommands == ["alpha"]:
         reconnectReset(ui.mathButton.clicked, functionA)
         reconnectReset(ui.appsButton.clicked, functionB)

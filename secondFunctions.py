@@ -1,4 +1,12 @@
-from variables import *
+from sysVars import *
+
+
+def secondResets():
+    subcommands.clear()
+    rightStatusBarText.clear()
+    cursorObj.clear()
+    cursorObj.append("|")
+    cursor()
 
 
 def ansFunction():
@@ -42,9 +50,35 @@ def entryFunction():
     workingLine.append(problem)
 
 
-def secondResets():
-    subcommands.clear()
-    rightStatusBarText.clear()
-    cursorObj.clear()
-    cursorObj.append("|")
-    cursor()
+def arcsinFunction():
+    secondResets()
+
+    trig[0] = "True"
+    expressionList.append("arcsin(")
+    workingLine.append("arcsin(")
+
+
+def arccosFunction():
+    secondResets()
+
+    trig[0] = "True"
+    expressionList.append("arccos(")
+    workingLine.append("arccos(")
+
+
+def arctanFunction():
+    secondResets()
+
+    trig[0] = "True"
+    expressionList.append("arctan(")
+    workingLine.append("arctan(")
+
+
+def piFunction():
+    secondResets()
+
+    expressionList.append("π")
+    workingLine.append("π")
+
+
+    

@@ -1,6 +1,68 @@
-from variables import *
-from evalVars import *
-from enterFunctions import *
+from sysVars import *
+
+
+def secondFunction():
+    global rightStatusBarText
+    global cursorObj
+    try:
+        if subcommands[0] == "2nd":
+            subcommands.clear()
+            rightStatusBarText.clear()
+            cursorObj.clear()
+            cursorObj.append("|")
+        else:
+            subcommands.clear()
+            rightStatusBarText.clear()
+            subcommands.append("2nd")
+            rightStatusBarText.append("2")
+            rightStatusBarText.append("n")
+            rightStatusBarText.append("d")
+            cursorObj.clear()
+            cursorObj.append("^")
+    except:
+        subcommands.clear()
+        rightStatusBarText.clear()
+        subcommands.append("2nd")
+        rightStatusBarText.append("2")
+        rightStatusBarText.append("n")
+        rightStatusBarText.append("d")
+        cursorObj.clear()
+        cursorObj.append("^")
+    cursor()
+
+
+def alphaFunction():
+    global rightStatusBarText
+    global cursorObj
+    try:
+        if subcommands[0] == "alpha":
+            subcommands.clear()
+            rightStatusBarText.clear()
+            cursorObj.clear()
+            cursorObj.append("|")
+        else:
+            subcommands.clear()
+            rightStatusBarText.clear()
+            subcommands.append("alpha")
+            rightStatusBarText.append("A")
+            rightStatusBarText.append("l")
+            rightStatusBarText.append("p")
+            rightStatusBarText.append("h")
+            rightStatusBarText.append("a")
+            cursorObj.clear()
+            cursorObj.append("α")
+    except:
+        subcommands.clear()
+        rightStatusBarText.clear()
+        subcommands.append("alpha")
+        rightStatusBarText.append("A")
+        rightStatusBarText.append("l")
+        rightStatusBarText.append("p")
+        rightStatusBarText.append("h")
+        rightStatusBarText.append("a")
+        cursorObj.clear()
+        cursorObj.append("α")
+    cursor()
 
 
 def function0():
@@ -113,82 +175,36 @@ def powerFunction():
     workingLine.append(" ** ")
 
 
-def secondFunction():
-    global rightStatusBarText
-    global cursorObj
-    try:
-        if subcommands[0] == "2nd":
-            subcommands.clear()
-            rightStatusBarText.clear()
-            cursorObj.clear()
-            cursorObj.append("|")
-        else:
-            subcommands.clear()
-            rightStatusBarText.clear()
-            subcommands.append("2nd")
-            rightStatusBarText.append("2")
-            rightStatusBarText.append("n")
-            rightStatusBarText.append("d")
-            cursorObj.clear()
-            cursorObj.append("^")
-    except:
-        subcommands.clear()
-        rightStatusBarText.clear()
-        subcommands.append("2nd")
-        rightStatusBarText.append("2")
-        rightStatusBarText.append("n")
-        rightStatusBarText.append("d")
-        cursorObj.clear()
-        cursorObj.append("^")
-    cursor()
-
-
-def alphaFunction():
-    global rightStatusBarText
-    global cursorObj
-    try:
-        if subcommands[0] == "alpha":
-            subcommands.clear()
-            rightStatusBarText.clear()
-            cursorObj.clear()
-            cursorObj.append("|")
-        else:
-            subcommands.clear()
-            rightStatusBarText.clear()
-            subcommands.append("alpha")
-            rightStatusBarText.append("A")
-            rightStatusBarText.append("l")
-            rightStatusBarText.append("p")
-            rightStatusBarText.append("h")
-            rightStatusBarText.append("a")
-            cursorObj.clear()
-            cursorObj.append("α")
-    except:
-        subcommands.clear()
-        rightStatusBarText.clear()
-        subcommands.append("alpha")
-        rightStatusBarText.append("A")
-        rightStatusBarText.append("l")
-        rightStatusBarText.append("p")
-        rightStatusBarText.append("h")
-        rightStatusBarText.append("a")
-        cursorObj.clear()
-        cursorObj.append("α")
-    cursor()
-
-
 def decimalFunction():
     expressionList.append(".")
     workingLine.append(".")
 
 
 def logFunction():
+    logs[0] = "True"
     expressionList.append("log(")
     workingLine.append("log(")
-    logs[0] = "True"
-    log[0] = "True"
 
 
 def lnFunction():
+    logs[0] = "True"
     expressionList.append("ln(")
     workingLine.append("ln(")
+
+
+def sinFunction():
+    trig[0] = "True"
+    expressionList.append("sin(")
+    workingLine.append("sin(")
+
+
+def cosFunction():
+    trig[0] = "True"
+    expressionList.append("cos(")
+    workingLine.append("cos(")
+
+
+def tanFunction():
+    trig[0] = "True"
+    expressionList.append("tan(")
+    workingLine.append("tan(")

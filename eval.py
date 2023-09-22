@@ -1,12 +1,13 @@
-from evalVars import *
-from variables import *
+from sysVars import *
 from evalFunctions import *
 
 def evaluate():
     # Gets expression
-    global expressionString
-    expressionString = ''.join(expressionList)
-    expression = expressionString
+    expression = ''.join(expressionList)
+
+    # Handles empty evaluate events
+    if not expression:
+        return
 
     # Set up variables
     global answerHistoryCount
@@ -31,21 +32,25 @@ def evaluate():
     # If parentheses are involved it send to evalParentheses()
     # If no parentheses then goes to simplifyExpresion()
     if isFourFunction[0] == "True" and parentheses[0] == "False":
-        print("simp no para")
         ans = solver(expression)
     elif isFourFunction[0] == "True" and parentheses[0] == "True":
-        print("simp with para")
         # Closes parentheses first
         expression = closeParentheses(expression)
         ans = solver(expression)
     else:
-        print("not simp with para")
         # Closes parentheses
         if parentheses[0] == "True":
             expression = closeParentheses(expression)
 
+        # Gets simplified expression
         expression = simplifyExpression(expression)
-        ans = solver(expression)
+
+        # Checks for domain errors
+        if domainError[0] == "False":
+            ans = solver(expression)
+        else:
+            ans = "Domain Error"
+            domainError[0] = "False"
           
     # Records answer history
     answerHistory[str(answerHistoryCount)] = str(ans)
@@ -53,7 +58,6 @@ def evaluate():
     # Regular cleanup
     expressionList.clear()
     workingLine.clear()
-    expressionString = ""
     expression = ""
 
     # Conditional cleanup
@@ -61,15 +65,6 @@ def evaluate():
     parentheses[0] = "False"
     trig[0] = "False"
     logs[0] = "False"
-    sin[0] = "False"
-    cos[0] = "False"
-    tan[0] = "False"
-    inverseSin[0] = "False"
-    inverseCos[0] = "False"
-    inverseTan[0] = "False"
-    log[0] = "False"
-    ln[0] = "False"
-    e[0] = "False"
 
 
 def solver(expression):

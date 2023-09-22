@@ -5,7 +5,6 @@ answerHistoryCount = 0
 
 # Storage variables
 expressionList = []
-expressionString = ""
 leftParenthesis = []
 rightParenthesis = []
 
