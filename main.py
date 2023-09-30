@@ -8,11 +8,11 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
 from PyQt5 import QtCore, QtWidgets, QtOpenGL
 from baseFunctions import *
-from eval import *
+from evaluate import *
 from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
-from vars import *
+from variables import *
 import math
 
 
