@@ -25,7 +25,8 @@ class MainWindowUI(QMainWindow):
 
         # opengl widget
         self.openglwidget = glWidget()
-        self.openGLScreenLayout.addWidget(self.openglwidget)
+        self.stackedWidget.addWidget(self.openglwidget)
+        self.stackedWidget.setCurrentWidget(self.openglwidget)
 
         # Main window timer
         timer = QtCore.QTimer(self)
@@ -49,6 +50,9 @@ class MainWindowUI(QMainWindow):
         statusBarTranslation = -1.0 - (windowHeightChange * .0069)
         # Get rightStatusBarText length
         self.openglwidget.rightStatusBarLength()
+
+    def equationFunction(self):
+        self.stackedWidget.setCurrentIndex(0)
 
     
 def functions():
@@ -85,6 +89,7 @@ def functions():
         reconnectReset(ui.alphaButton.clicked, alphaFunction)
         reconnectReset(ui.decimalButton.clicked, decimalFunction)
         reconnectReset(ui.negativeButton.clicked, negativeFunction)
+        reconnectReset(ui.equationButton.clicked, ui.equationFunction)
     elif subcommands == ["2nd"]:
         reconnectReset(ui.negativeButton.clicked, ansFunction)
         reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -92,6 +97,7 @@ def functions():
         reconnectReset(ui.cosButton.clicked, arccosFunction)
         reconnectReset(ui.tanButton.clicked, arctanFunction)
         reconnectReset(ui.powerButton.clicked, piFunction)
+        reconnectReset(ui.modeButton.clicked, quitFunction)
     elif subcommands == ["alpha"]:
         reconnectReset(ui.mathButton.clicked, functionA)
         reconnectReset(ui.appsButton.clicked, functionB)
