@@ -1,4 +1,5 @@
 from variables import *
+from main import *
 import re
 
 
@@ -66,7 +67,6 @@ def entryFunction():
 def arcsinFunction():
     secondResets()
 
-    trig[0] = "True"
     expressionList.append("arcsin(")
     workingLine.append("arcsin(")
 
@@ -74,7 +74,6 @@ def arcsinFunction():
 def arccosFunction():
     secondResets()
 
-    trig[0] = "True"
     expressionList.append("arccos(")
     workingLine.append("arccos(")
 
@@ -82,7 +81,6 @@ def arccosFunction():
 def arctanFunction():
     secondResets()
 
-    trig[0] = "True"
     expressionList.append("arctan(")
     workingLine.append("arctan(")
 
@@ -92,6 +90,3 @@ def piFunction():
 
     expressionList.append("π")
     workingLine.append("π")
-
-
-    

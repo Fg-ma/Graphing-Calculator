@@ -7,8 +7,9 @@ from PyQt5 import QtGui
 from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
 from PyQt5 import QtCore, QtWidgets, QtOpenGL
+from PyQt5.QtCore import Qt
 from baseFunctions import *
-from evaluate import *
+from eval import *
 from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
@@ -25,8 +26,8 @@ class MainWindowUI(QMainWindow):
 
         # opengl widget
         self.openglwidget = glWidget()
-        self.stackedWidget.addWidget(self.openglwidget)
-        self.stackedWidget.setCurrentWidget(self.openglwidget)
+        self.stackedWidget.insertWidget(0, self.openglwidget)
+        self.stackedWidget.setCurrentIndex(0)
 
         # Main window timer
         timer = QtCore.QTimer(self)
@@ -42,7 +43,8 @@ class MainWindowUI(QMainWindow):
         Ctimer.start()
         
         self.resizeEvent = self.onResize
-
+    
+    # Handles resize events
     def onResize(self, event):
         resizedHeight = self.height()
         windowHeightChange = 870 - resizedHeight
@@ -51,8 +53,36 @@ class MainWindowUI(QMainWindow):
         # Get rightStatusBarText length
         self.openglwidget.rightStatusBarLength()
 
+    # Handles switching to equations page
     def equationFunction(self):
+        self.stackedWidget.setCurrentIndex(1)
+
+    # Handles quiting but and returning to main page
+    def quitFunction(self):
+        secondResets()
         self.stackedWidget.setCurrentIndex(0)
+
+    def evalFunction(self):
+        # Variable reset
+        html = ""
+
+        # Gets expression
+        expression = self.textEdit.toPlainText()
+        lastLine = expression.split("\n")
+
+        # Sends the line to be evaluted to the main evaluation function
+        evaluate(lastLine[-1])
+
+        for ans in answerHistory:
+            html += "<p style=\"text-align: left\">" + problemHistory[ans]
+            html += "<p style=\"text-align: right\">" + answerHistory[ans]
+
+        html += "<p style=\"text-align: left\">"
+            
+        self.textEdit.setHtml(html)
+        #self.textEdit.clear()
+        #self.textEdit.append(":P")
+        
 
     
 def functions():
@@ -72,7 +102,7 @@ def functions():
         reconnectReset(ui.subtractionButton.clicked, subtractionFunction)
         reconnectReset(ui.multiplicationButton.clicked, multiplicationFunction)
         reconnectReset(ui.divisionButton.clicked, divisionFunction)
-        reconnectReset(ui.enterButton.clicked, evaluate)
+        reconnectReset(ui.enterButton.clicked, ui.evalFunction)
         reconnectReset(ui.rightParenthesisButton.clicked, rightParenthesisFunction)
         reconnectReset(ui.leftParenthesisButton.clicked, leftParenthesisFunction)
         reconnectReset(ui.commaButton.clicked, commaFunction)
@@ -97,7 +127,7 @@ def functions():
         reconnectReset(ui.cosButton.clicked, arccosFunction)
         reconnectReset(ui.tanButton.clicked, arctanFunction)
         reconnectReset(ui.powerButton.clicked, piFunction)
-        reconnectReset(ui.modeButton.clicked, quitFunction)
+        reconnectReset(ui.modeButton.clicked, ui.quitFunction)
     elif subcommands == ["alpha"]:
         reconnectReset(ui.mathButton.clicked, functionA)
         reconnectReset(ui.appsButton.clicked, functionB)

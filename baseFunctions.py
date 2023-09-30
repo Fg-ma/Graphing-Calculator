@@ -273,31 +273,26 @@ def decimalFunction():
 
 
 def logFunction():
-    logs[0] = "True"
     expressionList.append("log(")
     workingLine.append("log(")
 
 
 def lnFunction():
-    logs[0] = "True"
     expressionList.append("ln(")
     workingLine.append("ln(")
 
 
 def sinFunction():
-    trig[0] = "True"
     expressionList.append("sin(")
     workingLine.append("sin(")
 
 
 def cosFunction():
-    trig[0] = "True"
     expressionList.append("cos(")
     workingLine.append("cos(")
 
 
 def tanFunction():
-    trig[0] = "True"
     expressionList.append("tan(")
     workingLine.append("tan(")
 

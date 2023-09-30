@@ -48,7 +48,13 @@
         </property>
         <widget class="QWidget" name="equationPage">
          <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
           <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
            <number>0</number>
           </property>
           <property name="bottomMargin">
@@ -60,7 +66,30 @@
              <number>6</number>
             </property>
             <item row="0" column="0">
-             <widget class="QTextEdit" name="textEdit"/>
+             <widget class="QTextEdit" name="textEdit">
+              <property name="font">
+               <font>
+                <family>Book Antiqua</family>
+                <pointsize>14</pointsize>
+                <italic>false</italic>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(241, 241, 241)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <property name="lineWidth">
+               <number>1</number>
+              </property>
+              <property name="cursorWidth">
+               <number>10</number>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>

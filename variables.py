@@ -1,7 +1,5 @@
-trig = ["False"]
-logs = ["False"]
 isFourFunction = ["True"]
-parentheses = ["False"]
+onlyParentheses = ["True"]
 
 firstTrigger = ["True", ""]
 openpars = 0
@@ -55,6 +53,8 @@ rightStatusBarPosition = 0
 # Cursor variables
 cursorObj = ["|"]
 cursorHolder = []
+
+html = ""
 
 
 # Increment numLines

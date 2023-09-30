@@ -23,9 +23,11 @@ def simplifyExpression(expression):
 
     for trig in occ:
         remainingTriggers.append(trig.group())
+        if trig.group() != "(" and trig.group() != ")":
+            onlyParentheses[0] = "False"
 
     # While there are still trigger words it keeps checking through them for thr inner most and solving its way out
-    while remainingTriggers and domainError[0] == "False":
+    while remainingTriggers and domainError[0] == "False" and onlyParentheses[0] == "False":
         # Handles the first iteration where there is no subexpression yet, then sends the subexpression through every other time
         if firstSimpIter[0] == "True":
             firstSimpIter[0] = "False"
@@ -88,6 +90,7 @@ def simplifyExpression(expression):
 
     # Clean up            
     firstTriggerPosShifter = 0
+    onlyParentheses[0] = "True"
     return expression
     
 
