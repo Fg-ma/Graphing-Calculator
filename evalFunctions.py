@@ -10,11 +10,11 @@ def simplifyExpression(expression):
     global regex
     global remainingTriggers
     global firstTriggerPosShifter
-    # Closes open parenthesis
-    fetchParenthesisLists(expression)
-    while not len(leftParenthesis) == len(rightParenthesis):
+    # Closes open Parentheses
+    fetchParenthesesLists(expression)
+    while not len(leftParentheses) == len(rightParentheses):
         expression = expression + ")"
-        fetchParenthesisLists(expression)
+        fetchParenthesesLists(expression)
 
     # Searches for key words
     occ = re.finditer(regex, expression)
@@ -107,7 +107,7 @@ def expressionSearch(expression):
 
     # Searches the triggers to find the outer most one
     for trigger in search:
-        # If the tigger is ")" then subtracts one from an open parenthesis counter(openpars)
+        # If the tigger is ")" then subtracts one from an open Parentheses counter(openpars)
         # if the trigger is anything else it adds one to openpars
         # when openpars = 0 then the outermost function has been found
         if trigger.group() == ")":
@@ -128,33 +128,33 @@ def expressionSearch(expression):
     return
 
 
-# Closes any open parenthesis so it doesn't break program
+# Closes any open Parentheses so it doesn't break program
 def closeParentheses(expression):
-    fetchParenthesisLists(expression)
-    while not len(leftParenthesis) == len(rightParenthesis):
-        if len(leftParenthesis) < len(rightParenthesis):
+    fetchParenthesesLists(expression)
+    while not len(leftParentheses) == len(rightParentheses):
+        if len(leftParentheses) < len(rightParentheses):
             expression = "(" + expression
-        elif len(leftParenthesis) > len(rightParenthesis):
+        elif len(leftParentheses) > len(rightParentheses):
             expression = expression + ")"
-        fetchParenthesisLists(expression)
+        fetchParenthesesLists(expression)
     return expression
 
 
-# Gets a list of parenthesis to be used in checking that they are closed
-def fetchParenthesisLists(expression):
+# Gets a list of Parentheses to be used in checking that they are closed
+def fetchParenthesesLists(expression):
     global position
-    global leftParenthesis
-    global rightParenthesis
+    global leftParentheses
+    global rightParentheses
 
-    leftParenthesis.clear()
-    rightParenthesis.clear()
+    leftParentheses.clear()
+    rightParentheses.clear()
     position = 0
 
     for character in expression:
         if character == "(":
-            leftParenthesis.append(position)
+            leftParentheses.append(position)
         elif character == ")":
-            rightParenthesis.append(position)
+            rightParentheses.append(position)
 
         position += 1
 

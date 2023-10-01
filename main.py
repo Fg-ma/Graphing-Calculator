@@ -14,6 +14,7 @@ from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
 from variables import *
+from keyBoardFunctions import *
 import math
 
 # Program mainwindow
@@ -66,73 +67,154 @@ class MainWindowUI(QMainWindow):
         if event.modifiers() & Qt.ControlModifier:
             if event.key() == Qt.Key_R:
                 print("Ctrl + R")
-        if event.modifiers() & Qt.ShiftModifier:
+        elif event.modifiers() & Qt.ShiftModifier:
+            print(event.key())
+            if event.key() == Qt.Key_ParenRight:
+                rightParenthesesFunction()
+            if event.key() == Qt.Key_Exclam:
+                function1()
+            if event.key() == Qt.Key_At:
+                function2()
+            if event.key() == Qt.Key_NumberSign:
+                function3()
+            if event.key() == Qt.Key_Dollar:
+                function4()
+            if event.key() == Qt.Key_Percent:
+                function5()
+            if event.key() == Qt.Key_6:
+                function6()
+            if event.key() == Qt.Key_Ampersand:
+                function7()
+            if event.key() == Qt.Key_Asterisk:
+                functionTypeMultiply()
+            if event.key() == Qt.Key_ParenLeft:
+                leftParenthesesFunction()
+            if event.key() == Qt.Key_A:
+                functionTypeA()
+            if event.key() == Qt.Key_B:
+                functionTypeB()
+            if event.key() == Qt.Key_C:
+                functionTypeC()
+            if event.key() == Qt.Key_D:
+                functionTypeD()
+            if event.key() == Qt.Key_E:
+                functionTypeE()
+            if event.key() == Qt.Key_F:
+                functionTypeF()
+            if event.key() == Qt.Key_G:
+                functionTypeG()
+            if event.key() == Qt.Key_H:
+                functionTypeH()
+            if event.key() == Qt.Key_I:
+                functionTypeI()
+            if event.key() == Qt.Key_J:
+                functionTypeJ()
+            if event.key() == Qt.Key_K:
+                functionTypeK()
+            if event.key() == Qt.Key_L:
+                functionTypeL()
+            if event.key() == Qt.Key_M:
+                functionTypeM()
+            if event.key() == Qt.Key_N:
+                functionTypeN()
+            if event.key() == Qt.Key_O:
+                functionTypeO()
+            if event.key() == Qt.Key_P:
+                functionTypeP()
+            if event.key() == Qt.Key_Q:
+                functionTypeQ()
             if event.key() == Qt.Key_R:
-                print("Shift + R")
-        if event.key() == Qt.Key_0:
-            print("0")
-        if event.key() == Qt.Key_1:
-            print("1")
-        if event.key() == Qt.Key_2:
-            print("2")
-        if event.key() == Qt.Key_3:
-            print("3")
-        if event.key() == Qt.Key_4:
-            print("4")
-        if event.key() == Qt.Key_5:
-            print("5")
-        if event.key() == Qt.Key_6:
-            print("6")
-        if event.key() == Qt.Key_7:
-            print("7")
-        if event.key() == Qt.Key_8:
-            print("8")
-        if event.key() == Qt.Key_9:
-            print("9")
-        if event.key() == Qt.Key_A:
-            print("a")
-        if event.key() == Qt.Key_B:
-            print("b")
-        if event.key() == Qt.Key_C:
-            print("c")
-        if event.key() == Qt.Key_D:
-            print("d")
-        if event.key() == Qt.Key_E:
-            print("e")
-        if event.key() == Qt.Key_F:
-            print("F")
-        if event.key() == Qt.Key_0:
-            print("U")
-        if event.key() == Qt.Key_0:
-            print("I")
-        if event.key() == Qt.Key_0:
-            print("O")
-        if event.key() == Qt.Key_0:
-            print("P")
-        if event.key() == Qt.Key_0:
-            print("A")
-        if event.key() == Qt.Key_0:
-            print("S")
-        if event.key() == Qt.Key_0:
-            print("D")
-        if event.key() == Qt.Key_0:
-            print("F")
-        if event.key() == Qt.Key_0:
-            print("G")
-        if event.key() == Qt.Key_0:
-            print("H")
-        if event.key() == Qt.Key_0:
-            print("J")
-        if event.key() == Qt.Key_0:
-            print("K")
-        if event.key() == Qt.Key_0:
-            print("L")
-        if event.key() == Qt.Key_0:
-            print("0")
-        if event.key() == Qt.Key_0:
-            print("0")
-        if event.key() == Qt.Key_0:
-            print("0")
+                functionTypeR()
+            if event.key() == Qt.Key_S:
+                functionTypeS()
+            if event.key() == Qt.Key_T:
+                functionTypeT()
+            if event.key() == Qt.Key_U:
+                functionTypeU()
+            if event.key() == Qt.Key_V:
+                functionTypeV()
+            if event.key() == Qt.Key_W:
+                functionTypeW()
+            if event.key() == Qt.Key_X:
+                functionTypeX() 
+            if event.key() == Qt.Key_Y:
+                functionTypeY()
+            if event.key() == Qt.Key_Z:
+                functionTypeZ()
+        else:
+            if event.key() == Qt.Key_0:
+                function0()
+            if event.key() == Qt.Key_1:
+                function1()
+            if event.key() == Qt.Key_2:
+                function2()
+            if event.key() == Qt.Key_3:
+                function3()
+            if event.key() == Qt.Key_4:
+                function4()
+            if event.key() == Qt.Key_5:
+                function5()
+            if event.key() == Qt.Key_6:
+                function6()
+            if event.key() == Qt.Key_7:
+                function7()
+            if event.key() == Qt.Key_8:
+                function8()
+            if event.key() == Qt.Key_9:
+                function9()
+            if event.key() == Qt.Key_A:
+                functionTypea()
+            if event.key() == Qt.Key_B:
+                functionTypeb()
+            if event.key() == Qt.Key_C:
+                functionTypec()
+            if event.key() == Qt.Key_D:
+                functionTyped()
+            if event.key() == Qt.Key_E:
+                functionTypee()
+            if event.key() == Qt.Key_F:
+                functionTypef()
+            if event.key() == Qt.Key_G:
+                functionTypeg()
+            if event.key() == Qt.Key_H:
+                functionTypeh()
+            if event.key() == Qt.Key_I:
+                functionTypei()
+            if event.key() == Qt.Key_J:
+                functionTypej()
+            if event.key() == Qt.Key_K:
+                functionTypek()
+            if event.key() == Qt.Key_L:
+                functionTypel()
+            if event.key() == Qt.Key_M:
+                functionTypem()
+            if event.key() == Qt.Key_N:
+                functionTypen()
+            if event.key() == Qt.Key_O:
+                functionTypeo()
+            if event.key() == Qt.Key_P:
+                functionTypep()
+            if event.key() == Qt.Key_Q:
+                functionTypeq()
+            if event.key() == Qt.Key_R:
+                functionTyper()
+            if event.key() == Qt.Key_S:
+                functionTypes()
+            if event.key() == Qt.Key_T:
+                functionTypet()
+            if event.key() == Qt.Key_U:
+                functionTypeu()
+            if event.key() == Qt.Key_V:
+                functionTypev()
+            if event.key() == Qt.Key_W:
+                functionTypew()
+            if event.key() == Qt.Key_X:
+                functionTypex() 
+            if event.key() == Qt.Key_Y:
+                functionTypey()
+            if event.key() == Qt.Key_Z:
+                functionTypez()
+        
     
 def functions():
     # baseFunctions, secondFunctions, and alphaFunctions
@@ -152,8 +234,8 @@ def functions():
         reconnectReset(ui.multiplicationButton.clicked, multiplicationFunction)
         reconnectReset(ui.divisionButton.clicked, divisionFunction)
         reconnectReset(ui.enterButton.clicked, evaluate)
-        reconnectReset(ui.rightParenthesisButton.clicked, rightParenthesisFunction)
-        reconnectReset(ui.leftParenthesisButton.clicked, leftParenthesisFunction)
+        reconnectReset(ui.rightParenthesesButton.clicked, rightParenthesesFunction)
+        reconnectReset(ui.leftParenthesesButton.clicked, leftParenthesesFunction)
         reconnectReset(ui.commaButton.clicked, commaFunction)
         reconnectReset(ui.squareButton.clicked, squareFunction)
         reconnectReset(ui.logButton.clicked, logFunction)
@@ -188,8 +270,8 @@ def functions():
         reconnectReset(ui.powerButton.clicked, functionH)
         reconnectReset(ui.squareButton.clicked, functionI)
         reconnectReset(ui.commaButton.clicked, functionJ)
-        reconnectReset(ui.leftParenthesisButton.clicked, functionK)
-        reconnectReset(ui.rightParenthesisButton.clicked, functionL)
+        reconnectReset(ui.leftParenthesesButton.clicked, functionK)
+        reconnectReset(ui.rightParenthesesButton.clicked, functionL)
         reconnectReset(ui.divisionButton.clicked, functionM)
         reconnectReset(ui.logButton.clicked, functionN)
         reconnectReset(ui.Number7.clicked, functionO)

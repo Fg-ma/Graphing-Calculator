@@ -19,8 +19,8 @@ answerHistoryCount = 0
 
 # Storage variables
 expressionList = []
-leftParenthesis = []
-rightParenthesis = []
+leftParentheses = []
+rightParentheses = []
 
 # Count variables
 position = 0

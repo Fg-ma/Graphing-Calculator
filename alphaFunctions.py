@@ -1,6 +1,14 @@
 from variables import *
 
 
+def alphaResets():
+    subcommands.clear()
+    rightStatusBarText.clear()
+    cursorObj.clear()
+    cursorObj.append("|")
+    cursor()
+
+
 def functionA():
     alphaResets()
     expressionList.append("A")
@@ -154,11 +162,3 @@ def functionZ():
     alphaResets()
     expressionList.append("Z")
     workingLine.append("Z")
-
-
-def alphaResets():
-    subcommands.clear()
-    rightStatusBarText.clear()
-    cursorObj.clear()
-    cursorObj.append("|")
-    cursor()

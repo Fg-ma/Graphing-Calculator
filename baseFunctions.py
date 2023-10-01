@@ -219,12 +219,12 @@ def squareFunction():
         workingLine.append(" ** 2 ")
 
 
-def rightParenthesisFunction():
+def rightParenthesesFunction():
     expressionList.append(")")
     workingLine.append(")")
 
 
-def leftParenthesisFunction():
+def leftParenthesesFunction():
     expressionList.append("(")
     workingLine.append("(")
 
