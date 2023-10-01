@@ -1,7 +1,8 @@
 from variables import *
 from evalFunctions import *
 
-def evaluate(expression):
+def evaluate():
+    expression = "".join(expressionList)
     # Handles empty evaluate events
     if not expression:
         return

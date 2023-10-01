@@ -54,8 +54,6 @@ rightStatusBarPosition = 0
 cursorObj = ["|"]
 cursorHolder = []
 
-html = ""
-
 
 # Increment numLines
 def numLinesPlusOne():

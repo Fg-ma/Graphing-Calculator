@@ -1,5 +1,5 @@
 from variables import *
-
+from PyQt5.QtWidgets import QMainWindow
 
 def secondFunction():
     global rightStatusBarText
@@ -220,13 +220,11 @@ def squareFunction():
 
 
 def rightParenthesisFunction():
-    parentheses[0] = "True"
     expressionList.append(")")
     workingLine.append(")")
 
 
 def leftParenthesisFunction():
-    parentheses[0] = "True"
     expressionList.append("(")
     workingLine.append("(")
 

@@ -16,9 +16,8 @@ from secondFunctions import *
 from variables import *
 import math
 
-
 # Program mainwindow
-class MainWindowUI(QMainWindow):
+class MainWindowUI(QMainWindow): 
     def __init__(self):
         super(MainWindowUI, self).__init__()
 
@@ -57,33 +56,83 @@ class MainWindowUI(QMainWindow):
     def equationFunction(self):
         self.stackedWidget.setCurrentIndex(1)
 
-    # Handles quiting but and returning to main page
+    # Handles quiting but and returning to main pageA
     def quitFunction(self):
         secondResets()
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(0)   
 
-    def evalFunction(self):
-        # Variable reset
-        html = ""
 
-        # Gets expression
-        expression = self.textEdit.toPlainText()
-        lastLine = expression.split("\n")
-
-        # Sends the line to be evaluted to the main evaluation function
-        evaluate(lastLine[-1])
-
-        for ans in answerHistory:
-            html += "<p style=\"text-align: left\">" + problemHistory[ans]
-            html += "<p style=\"text-align: right\">" + answerHistory[ans]
-
-        html += "<p style=\"text-align: left\">"
-            
-        self.textEdit.setHtml(html)
-        #self.textEdit.clear()
-        #self.textEdit.append(":P")
-        
-
+    def keyPressEvent(self, event):
+        if event.modifiers() & Qt.ControlModifier:
+            if event.key() == Qt.Key_R:
+                print("Ctrl + R")
+        if event.modifiers() & Qt.ShiftModifier:
+            if event.key() == Qt.Key_R:
+                print("Shift + R")
+        if event.key() == Qt.Key_0:
+            print("0")
+        if event.key() == Qt.Key_1:
+            print("1")
+        if event.key() == Qt.Key_2:
+            print("2")
+        if event.key() == Qt.Key_3:
+            print("3")
+        if event.key() == Qt.Key_4:
+            print("4")
+        if event.key() == Qt.Key_5:
+            print("5")
+        if event.key() == Qt.Key_6:
+            print("6")
+        if event.key() == Qt.Key_7:
+            print("7")
+        if event.key() == Qt.Key_8:
+            print("8")
+        if event.key() == Qt.Key_9:
+            print("9")
+        if event.key() == Qt.Key_A:
+            print("a")
+        if event.key() == Qt.Key_B:
+            print("b")
+        if event.key() == Qt.Key_C:
+            print("c")
+        if event.key() == Qt.Key_D:
+            print("d")
+        if event.key() == Qt.Key_E:
+            print("e")
+        if event.key() == Qt.Key_F:
+            print("F")
+        if event.key() == Qt.Key_0:
+            print("U")
+        if event.key() == Qt.Key_0:
+            print("I")
+        if event.key() == Qt.Key_0:
+            print("O")
+        if event.key() == Qt.Key_0:
+            print("P")
+        if event.key() == Qt.Key_0:
+            print("A")
+        if event.key() == Qt.Key_0:
+            print("S")
+        if event.key() == Qt.Key_0:
+            print("D")
+        if event.key() == Qt.Key_0:
+            print("F")
+        if event.key() == Qt.Key_0:
+            print("G")
+        if event.key() == Qt.Key_0:
+            print("H")
+        if event.key() == Qt.Key_0:
+            print("J")
+        if event.key() == Qt.Key_0:
+            print("K")
+        if event.key() == Qt.Key_0:
+            print("L")
+        if event.key() == Qt.Key_0:
+            print("0")
+        if event.key() == Qt.Key_0:
+            print("0")
+        if event.key() == Qt.Key_0:
+            print("0")
     
 def functions():
     # baseFunctions, secondFunctions, and alphaFunctions
@@ -102,7 +151,7 @@ def functions():
         reconnectReset(ui.subtractionButton.clicked, subtractionFunction)
         reconnectReset(ui.multiplicationButton.clicked, multiplicationFunction)
         reconnectReset(ui.divisionButton.clicked, divisionFunction)
-        reconnectReset(ui.enterButton.clicked, ui.evalFunction)
+        reconnectReset(ui.enterButton.clicked, evaluate)
         reconnectReset(ui.rightParenthesisButton.clicked, rightParenthesisFunction)
         reconnectReset(ui.leftParenthesisButton.clicked, leftParenthesisFunction)
         reconnectReset(ui.commaButton.clicked, commaFunction)
