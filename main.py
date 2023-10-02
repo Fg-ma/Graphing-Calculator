@@ -68,25 +68,24 @@ class MainWindowUI(QMainWindow):
             if event.key() == Qt.Key_R:
                 print("Ctrl + R")
         elif event.modifiers() & Qt.ShiftModifier:
-            print(event.key())
             if event.key() == Qt.Key_ParenRight:
                 rightParenthesesFunction()
             if event.key() == Qt.Key_Exclam:
-                function1()
+                functionTypeExclamation()
             if event.key() == Qt.Key_At:
-                function2()
+                functionTypeAt()
             if event.key() == Qt.Key_NumberSign:
-                function3()
+                functionTypeNumberSign()
             if event.key() == Qt.Key_Dollar:
-                function4()
+                functionTypeDollarSign()
             if event.key() == Qt.Key_Percent:
-                function5()
+                functionTypePercent()
             if event.key() == Qt.Key_6:
                 function6()
             if event.key() == Qt.Key_Ampersand:
-                function7()
+                functionTypeAmpersand()
             if event.key() == Qt.Key_Asterisk:
-                functionTypeMultiply()
+                functionTypeAsterisk()
             if event.key() == Qt.Key_ParenLeft:
                 leftParenthesesFunction()
             if event.key() == Qt.Key_A:
@@ -142,6 +141,10 @@ class MainWindowUI(QMainWindow):
             if event.key() == Qt.Key_Z:
                 functionTypeZ()
         else:
+            if event.key() == Qt.Key_Return:
+                evaluate()
+            if event.key() == Qt.Key_Backspace:
+                functionTypeBackspace()
             if event.key() == Qt.Key_0:
                 function0()
             if event.key() == Qt.Key_1:

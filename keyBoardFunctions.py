@@ -261,6 +261,44 @@ def functionTypeZ():
     workingLine.append("Z")
 
 
-def functionTypeMultiply():
+def functionTypeExclamation():
+    expressionList.append("!")
+    workingLine.append("!")
+
+
+def functionTypeAt():
+    expressionList.append("@")
+    workingLine.append("@")
+
+
+def functionTypeNumberSign():
+    expressionList.append("#")
+    workingLine.append("#")
+
+
+def functionTypeDollarSign():
+    expressionList.append("$")
+    workingLine.append("$")
+
+
+def functionTypePercent():
+    expressionList.append("%")
+    workingLine.append("%")
+
+
+def functionTypeAmpersand():
+    expressionList.append("&")
+    workingLine.append("&")
+
+
+def functionTypeAsterisk():
     expressionList.append("*")
     workingLine.append("*")
+
+
+def functionTypeBackspace():
+    try:
+        expressionList.pop()
+        workingLine.pop()
+    except:
+        pass

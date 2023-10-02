@@ -23,11 +23,9 @@ def simplifyExpression(expression):
 
     for trig in occ:
         remainingTriggers.append(trig.group())
-        if trig.group() != "(" and trig.group() != ")":
-            onlyParentheses[0] = "False"
 
     # While there are still trigger words it keeps checking through them for thr inner most and solving its way out
-    while remainingTriggers and domainError[0] == "False" and onlyParentheses[0] == "False":
+    while remainingTriggers and domainError[0] == "False":
         # Handles the first iteration where there is no subexpression yet, then sends the subexpression through every other time
         if firstSimpIter[0] == "True":
             firstSimpIter[0] = "False"
@@ -36,7 +34,7 @@ def simplifyExpression(expression):
             expressionSearch(subexpression)
 
 
-        # Gets the subexpression useing the position of the triggers in 
+        # Gets the subexpression using the position of the triggers in subexpression 
         subexpression = expression[firstTriggerPos[1]+firstTriggerPosShifter:firstTriggerPos[1]+firstTriggerPosShifter+abs(firstTriggerEndingPos[0]-firstTriggerPos[1])]
         
         # An object(suboccurance) that contains all the information about the triggers
@@ -46,15 +44,16 @@ def simplifyExpression(expression):
         remainingTriggers.clear()
         for trigger in subocc:
             remainingTriggers.append(trigger.group())
-        
+
         # If there aren't anymore trigger then it simplifies whatever is the resulting simple subexpression then
         # solves for whatever kind of trigger it is. Finally it splices the answer back into the expression
         if not remainingTriggers:
             # Evaluates the simple subexpression
             simpleAns = eval(subexpression)
-
             #Specific trigger functions
-            if firstTrigger[1] == "log(":
+            if firstTrigger[1] == "(":
+                simplified = eval(str(simpleAns))
+            elif firstTrigger[1] == "log(":
                 simplified = evalLog(simpleAns)
             elif firstTrigger[1] == "ln(":
                 simplified = evalLn(simpleAns)
@@ -112,7 +111,7 @@ def expressionSearch(expression):
         # when openpars = 0 then the outermost function has been found
         if trigger.group() == ")":
             openpars = openpars - 1
-        elif trigger.group() == "(":
+        elif trigger.group() == "(" and firstTrigger[0] == "False":
             openpars = openpars + 1
         else:
             if firstTrigger[0] == "True":
