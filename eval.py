@@ -9,8 +9,8 @@ def evaluate():
 
     # Set up variables
     global answerHistoryCount
-    answerHistoryCount += 1
-    problemHistory[str(answerHistoryCount)] = str(expression)
+    answerHistoryCount[0] = answerHistoryCount[0] + 1
+    problemHistory[str(answerHistoryCount[0])] = str(expression)
     resetEntry.append("reset")
 
     # openGL screen variables
@@ -18,8 +18,8 @@ def evaluate():
     global lines
     global numLines
     screenUpdate.append("updated")
-    numLines = numLinesPlusOne()
-    lines.append(numLines)
+    numLines[0] = numLines[0] + 1
+    lines.append(numLines[0])
     shouldLinesMove.append("move")
 
     # Closes any open parentheses
@@ -36,7 +36,7 @@ def evaluate():
         domainError[0] = "False"
 
     # Records answer history
-    answerHistory[str(answerHistoryCount)] = str(ans)
+    answerHistory[str(answerHistoryCount[0])] = str(ans)
     
     # Regular cleanup
     expressionList.clear()

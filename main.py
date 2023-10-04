@@ -65,8 +65,12 @@ class MainWindowUI(QMainWindow):
 
     def keyPressEvent(self, event):
         if event.modifiers() & Qt.ControlModifier:
-            if event.key() == Qt.Key_R:
-                print("Ctrl + R")
+            if event.key() == Qt.Key_C:
+                functionTypeControlC()
+            if event.key() == Qt.Key_V:
+                functionTypeControlV()
+            if event.key() == Qt.Key_Z:
+                functionTypeControlZ()
         elif event.modifiers() & Qt.ShiftModifier:
             if event.key() == Qt.Key_ParenRight:
                 rightParenthesesFunction()

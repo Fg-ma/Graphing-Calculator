@@ -1,4 +1,5 @@
 from variables import * 
+import pyperclip
 
 
 def functionTypea():
@@ -302,3 +303,40 @@ def functionTypeBackspace():
         workingLine.pop()
     except:
         pass
+
+
+def functionTypeControlC():
+    if workingLine == []:
+        try:
+            copy = list(answerHistory.items())[-1][1]
+            pyperclip.copy(copy)
+        except:
+            pass
+    else:
+        copy = "".join(workingLine)
+        pyperclip.copy(copy)
+
+
+def functionTypeControlV():
+    paste = pyperclip.paste()
+    workingLine.append(paste)
+    expressionList.append(paste)
+    
+
+def functionTypeControlZ():
+    if workingLine == []:
+        try:
+            if answerHistory:
+                answerHistory.popitem()
+                lines.pop()
+                newOldLine = problemHistory.popitem()
+                expressionList.append(newOldLine[1])
+                workingLine.append(newOldLine[1])
+                workingLinePos[0] = workingLinePos[0] - sizeOfShift
+                answerHistoryCount[0] = answerHistoryCount[0] - 1
+                numLines[0] = numLines[0] - 1
+        except:
+            pass
+    else:
+        workingLine.pop()
+        expressionList.pop()

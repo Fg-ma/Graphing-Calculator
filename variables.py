@@ -15,7 +15,7 @@ regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\()"
 # History variables
 answerHistory = {}
 problemHistory = {}
-answerHistoryCount = 0
+answerHistoryCount = [0]
 
 # Storage variables
 expressionList = []
@@ -37,7 +37,7 @@ resetEntry = []
 global lines
 global workingLine
 workingLine = []
-numLines = 0
+numLines = [0]
 lines = []
 dots = "..................................................................................."
 workingLinePos = [44]
@@ -53,13 +53,6 @@ rightStatusBarPosition = 0
 # Cursor variables
 cursorObj = ["|"]
 cursorHolder = []
-
-
-# Increment numLines
-def numLinesPlusOne():
-    global numLines
-    numLines = numLines + 1
-    return numLines
 
 
 # Clear numLines
