@@ -292,11 +292,6 @@ def functionTypeAmpersand():
     workingLine.append("&")
 
 
-def functionTypeAsterisk():
-    expressionList.append("*")
-    workingLine.append("*")
-
-
 def functionTypeBackspace():
     try:
         expressionList.pop()
@@ -340,3 +335,5 @@ def functionTypeControlZ():
     else:
         workingLine.pop()
         expressionList.pop()
+
+

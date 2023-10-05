@@ -44,6 +44,7 @@ class MainWindowUI(QMainWindow):
         
         self.resizeEvent = self.onResize
     
+
     # Handles resize events
     def onResize(self, event):
         resizedHeight = self.height()
@@ -53,9 +54,11 @@ class MainWindowUI(QMainWindow):
         # Get rightStatusBarText length
         self.openglwidget.rightStatusBarLength()
 
+
     # Handles switching to equations page
     def equationFunction(self):
         self.stackedWidget.setCurrentIndex(1)
+
 
     # Handles quiting but and returning to main pageA
     def quitFunction(self):
@@ -63,6 +66,7 @@ class MainWindowUI(QMainWindow):
         self.stackedWidget.setCurrentIndex(0)   
 
 
+    # Handles keyboard events
     def keyPressEvent(self, event):
         if event.modifiers() & Qt.ControlModifier:
             if event.key() == Qt.Key_C:
@@ -72,6 +76,8 @@ class MainWindowUI(QMainWindow):
             if event.key() == Qt.Key_Z:
                 functionTypeControlZ()
         elif event.modifiers() & Qt.ShiftModifier:
+            if event.key() == Qt.Key_Plus:
+                additionFunction()
             if event.key() == Qt.Key_ParenRight:
                 rightParenthesesFunction()
             if event.key() == Qt.Key_Exclam:
@@ -84,12 +90,12 @@ class MainWindowUI(QMainWindow):
                 functionTypeDollarSign()
             if event.key() == Qt.Key_Percent:
                 functionTypePercent()
-            if event.key() == Qt.Key_6:
-                function6()
+            if event.key() == Qt.Key_AsciiCircum:
+                powerFunction()
             if event.key() == Qt.Key_Ampersand:
                 functionTypeAmpersand()
             if event.key() == Qt.Key_Asterisk:
-                functionTypeAsterisk()
+                multiplicationFunction()
             if event.key() == Qt.Key_ParenLeft:
                 leftParenthesesFunction()
             if event.key() == Qt.Key_A:
@@ -149,6 +155,10 @@ class MainWindowUI(QMainWindow):
                 evaluate()
             if event.key() == Qt.Key_Backspace:
                 functionTypeBackspace()
+            if event.key() == Qt.Key_Minus:
+                negativeFunction()
+            if event.key() == Qt.Key_Slash:
+                divisionFunction()
             if event.key() == Qt.Key_0:
                 function0()
             if event.key() == Qt.Key_1:
