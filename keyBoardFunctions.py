@@ -321,7 +321,7 @@ def functionTypeControlV():
 def functionTypeControlZ():
     if workingLine == []:
         try:
-            if answerHistory:
+            if answerHistory and not numLines[0] == 0:
                 answerHistory.popitem()
                 lines.pop()
                 newOldLine = problemHistory.popitem()
@@ -335,5 +335,3 @@ def functionTypeControlZ():
     else:
         workingLine.pop()
         expressionList.pop()
-
-

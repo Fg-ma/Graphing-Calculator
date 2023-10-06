@@ -50,7 +50,7 @@ class MainWindowUI(QMainWindow):
         resizedHeight = self.height()
         windowHeightChange = 870 - resizedHeight
         global statusBarTranslation
-        statusBarTranslation = -1.0 - (windowHeightChange * .0069)
+        statusBarTranslation = -1.0 - (windowHeightChange * .0064)
         # Get rightStatusBarText length
         self.openglwidget.rightStatusBarLength()
 

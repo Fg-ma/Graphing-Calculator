@@ -191,7 +191,7 @@ def clearFunction():
     if workingLine == []:
         lines.clear()
         workingLinePos[0] = 44
-        clearNumLines()
+        numLines[0] = 0
     expressionList.clear()
     workingLine.clear()
 

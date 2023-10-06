@@ -55,13 +55,6 @@ cursorObj = ["|"]
 cursorHolder = []
 
 
-# Clear numLines
-def clearNumLines():
-    global numLines
-    numLines = 0
-    return None
-
-
 # Joins the list into a displayable value
 def getRightStatusBarText():
     return "".join(rightStatusBarText)
