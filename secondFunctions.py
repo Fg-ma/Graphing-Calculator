@@ -98,3 +98,9 @@ def scientificNotationFunction():
     secondResets()
     expressionList.append("e")
     workingLine.append("e")
+
+
+def tentotheFunction():
+    secondResets()
+    expressionList.append("10 ** ")
+    workingLine.append("10 ** ")

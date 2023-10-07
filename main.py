@@ -280,6 +280,7 @@ def functions():
         reconnectReset(ui.modeButton.clicked, ui.quitFunction)
         reconnectReset(ui.squareButton.clicked, squareRootFunction)
         reconnectReset(ui.commaButton.clicked, scientificNotationFunction)
+        reconnectReset(ui.logButton.clicked, tentotheFunction)
     elif subcommands == ["alpha"]:
         reconnectReset(ui.mathButton.clicked, functionA)
         reconnectReset(ui.appsButton.clicked, functionB)
