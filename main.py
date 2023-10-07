@@ -270,6 +270,7 @@ def functions():
         reconnectReset(ui.decimalButton.clicked, decimalFunction)
         reconnectReset(ui.negativeButton.clicked, negativeFunction)
         reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+        reconnectReset(ui.variableButton.clicked, variableFunction)
     elif subcommands == ["2nd"]:
         reconnectReset(ui.negativeButton.clicked, ansFunction)
         reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -459,7 +460,7 @@ class glWidget(QGLWidget):
         global rightStatusBarText
 
         # Handles status bar
-        glTranslatef(-5.0, statusBarTranslation, -5.5)
+        glTranslatef(-5.0, statusBarTranslation, -5.1)
         glColor3f(0.2, 0.2, 0.2)
         glPolygonMode(GL_FRONT, GL_FILL)
         glRectf(1.0, 0.4, self.width(), 1.0)

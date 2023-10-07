@@ -304,3 +304,8 @@ def tanFunction():
 def negativeFunction():
     expressionList.append("-")
     workingLine.append("-")
+
+
+def variableFunction():
+    expressionList.append("x")
+    workingLine.append("x")
