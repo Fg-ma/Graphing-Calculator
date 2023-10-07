@@ -69,6 +69,8 @@ def simplifyExpression(expression):
                 simplified = evalArcCos(simpleAns)
             elif firstTrigger[1] == "arctan(":
                 simplified = evalArcTan(simpleAns)
+            elif firstTrigger[1] == "√(":
+                simplified = evalSquareRoot(simpleAns)
 
             # Splicing into the string
             expression = expression[:firstTriggerPos[0]+firstTriggerPosShifter] + str(simplified) + expression[firstTriggerPos[0]+firstTriggerPosShifter+abs(firstTriggerEndingPos[0]-firstTriggerPos[0])+1:]
@@ -209,6 +211,14 @@ def evalLog(simpleExpression):
 def evalLn(simpleExpression):
     try:
         ans = math.log(simpleExpression)
+    except:
+        domainError[0] = "True"
+        ans = "Domain Error"
+    return ans
+
+def evalSquareRoot(simpleExpression):
+    try:
+        ans = math.sqrt(simpleExpression)
     except:
         domainError[0] = "True"
         ans = "Domain Error"

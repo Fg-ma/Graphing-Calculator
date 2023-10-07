@@ -35,6 +35,13 @@ def evaluate():
         ans = "Domain Error"
         domainError[0] = "False"
 
+    sciDist = 9
+
+    if ans > 999999999:
+        ans = f"{ans:.9e}"
+    elif ans < 0.00000001:
+        ans = f"{ans:.9e}"
+
     # Records answer history
     answerHistory[str(answerHistoryCount[0])] = str(ans)
     

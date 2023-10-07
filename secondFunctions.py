@@ -66,27 +66,35 @@ def entryFunction():
 
 def arcsinFunction():
     secondResets()
-
     expressionList.append("arcsin(")
     workingLine.append("arcsin(")
 
 
 def arccosFunction():
     secondResets()
-
     expressionList.append("arccos(")
     workingLine.append("arccos(")
 
 
 def arctanFunction():
     secondResets()
-
     expressionList.append("arctan(")
     workingLine.append("arctan(")
 
 
 def piFunction():
     secondResets()
-
     expressionList.append("π")
     workingLine.append("π")
+
+
+def squareRootFunction():
+    secondResets()
+    expressionList.append("√(")
+    workingLine.append("√(")
+
+
+def scientificNotationFunction():
+    secondResets()
+    expressionList.append("e")
+    workingLine.append("e")

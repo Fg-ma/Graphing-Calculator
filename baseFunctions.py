@@ -1,6 +1,7 @@
 from variables import *
 from PyQt5.QtWidgets import QMainWindow
 
+
 def secondFunction():
     global rightStatusBarText
     global cursorObj
@@ -194,6 +195,11 @@ def clearFunction():
         numLines[0] = 0
     expressionList.clear()
     workingLine.clear()
+    subcommands.clear()
+    rightStatusBarText.clear()
+    cursorObj.clear()
+    cursorObj.append("|")
+    cursor()
 
 
 def commaFunction():

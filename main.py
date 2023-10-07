@@ -159,6 +159,8 @@ class MainWindowUI(QMainWindow):
                 negativeFunction()
             if event.key() == Qt.Key_Slash:
                 divisionFunction()
+            if event.key() == Qt.Key_Period:
+                decimalFunction()
             if event.key() == Qt.Key_0:
                 function0()
             if event.key() == Qt.Key_1:
@@ -276,6 +278,8 @@ def functions():
         reconnectReset(ui.tanButton.clicked, arctanFunction)
         reconnectReset(ui.powerButton.clicked, piFunction)
         reconnectReset(ui.modeButton.clicked, ui.quitFunction)
+        reconnectReset(ui.squareButton.clicked, squareRootFunction)
+        reconnectReset(ui.commaButton.clicked, scientificNotationFunction)
     elif subcommands == ["alpha"]:
         reconnectReset(ui.mathButton.clicked, functionA)
         reconnectReset(ui.appsButton.clicked, functionB)
