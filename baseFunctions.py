@@ -67,53 +67,113 @@ def alphaFunction():
 
 
 def function0():
-    expressionList.append("0")
-    workingLine.append("0")
+    try:
+        expressionList[cursorInlinePosition[0]] = "0"
+        workingLine[cursorInlinePosition[0]] = "0"
+    except:
+        expressionList.append("0")
+        workingLine.append("0")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function1():
-    expressionList.append("1")
-    workingLine.append("1")
+    try:
+        expressionList[cursorInlinePosition[0]] = "1"
+        workingLine[cursorInlinePosition[0]] = "1"
+    except:
+        expressionList.append("1")
+        workingLine.append("1")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function2():
-    expressionList.append("2")
-    workingLine.append("2")
+    try:
+        expressionList[cursorInlinePosition[0]] = "2"
+        workingLine[cursorInlinePosition[0]] = "2"
+    except:
+        expressionList.append("2")
+        workingLine.append("2")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function3():
-    expressionList.append("3")
-    workingLine.append("3")
+    try:
+        expressionList[cursorInlinePosition[0]] = "3"
+        workingLine[cursorInlinePosition[0]] = "3"
+    except:
+        expressionList.append("3")
+        workingLine.append("3")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function4():
-    expressionList.append("4")
-    workingLine.append("4")
+    try:
+        expressionList[cursorInlinePosition[0]] = "4"
+        workingLine[cursorInlinePosition[0]] = "4"
+    except:
+        expressionList.append("4")
+        workingLine.append("4")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function5():
-    expressionList.append("5")
-    workingLine.append("5")
+    try:
+        expressionList[cursorInlinePosition[0]] = "5"
+        workingLine[cursorInlinePosition[0]] = "5"
+    except:
+        expressionList.append("5")
+        workingLine.append("5")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function6():
-    expressionList.append("6")
-    workingLine.append("6")
+    try:
+        expressionList[cursorInlinePosition[0]] = "6"
+        workingLine[cursorInlinePosition[0]] = "6"
+    except:
+        expressionList.append("6")
+        workingLine.append("6")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function7():
-    expressionList.append("7")
-    workingLine.append("7")
+    try:
+        expressionList[cursorInlinePosition[0]] = "7"
+        workingLine[cursorInlinePosition[0]] = "7"
+    except:
+        expressionList.append("7")
+        workingLine.append("7")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function8():
-    expressionList.append("8")
-    workingLine.append("8")
+    try:
+        expressionList[cursorInlinePosition[0]] = "8"
+        workingLine[cursorInlinePosition[0]] = "8"
+    except:
+        expressionList.append("8")
+        workingLine.append("8")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def function9():
-    expressionList.append("9")
-    workingLine.append("9")
+    try:
+        expressionList[cursorInlinePosition[0]] = "9"
+        workingLine[cursorInlinePosition[0]] = "9"
+    except:
+        expressionList.append("9")
+        workingLine.append("9")
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def additionFunction():
@@ -126,12 +186,22 @@ def additionFunction():
             workingLine.append(str(answer))
             expressionList.append(" + ")
             workingLine.append(" + ")
+            cursorPos[0] = cursorPos[0] + (cursorShift[0] * len(str(answer))) + cursorAdditionShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
         except:
             expressionList.append(" + ")
             workingLine.append(" + ")
+            cursorPos[0] = cursorPos[0] + cursorAdditionShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     else:
-        expressionList.append(" + ")
-        workingLine.append(" + ")
+        try:
+            expressionList[cursorInlinePosition[0]] = " + "
+            workingLine[cursorInlinePosition[0]] = " + "
+        except:
+            expressionList.append(" + ")
+            workingLine.append(" + ")
+        cursorPos[0] = cursorPos[0] + cursorAdditionShift[0]
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def subtractionFunction():
@@ -144,12 +214,22 @@ def subtractionFunction():
             workingLine.append(str(answer))
             expressionList.append(" - ")
             workingLine.append(" - ")
+            cursorPos[0] = cursorPos[0] + (cursorShift[0] * len(str(answer))) + cursorSubtractionShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+        except:
+            expressionList.append("-")
+            workingLine.append("-")
+            cursorPos[0] = cursorPos[0] + cursorSubtractionShift[0] - 8
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    else:
+        try:
+            expressionList[cursorInlinePosition[0]] = " - "
+            workingLine[cursorInlinePosition[0]] = " - "
         except:
             expressionList.append(" - ")
             workingLine.append(" - ")
-    else:
-        expressionList.append(" - ")
-        workingLine.append(" - ")
+        cursorPos[0] = cursorPos[0] + cursorSubtractionShift[0]
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def multiplicationFunction():
@@ -162,12 +242,22 @@ def multiplicationFunction():
             workingLine.append(str(answer))
             expressionList.append(" * ")
             workingLine.append(" * ")
+            cursorPos[0] = cursorPos[0] + (cursorShift[0] * len(str(answer))) + cursorMultiplicationShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
         except:
             expressionList.append(" * ")
             workingLine.append(" * ")
+            cursorPos[0] = cursorPos[0] + cursorMultiplicationShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     else:
-        expressionList.append(" * ")
-        workingLine.append(" * ")
+        try:
+            expressionList[cursorInlinePosition[0]] = " * "
+            workingLine[cursorInlinePosition[0]] = " * "
+        except:
+            expressionList.append(" * ")
+            workingLine.append(" * ")
+        cursorPos[0] = cursorPos[0] + cursorMultiplicationShift[0]
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def divisionFunction():
@@ -180,12 +270,22 @@ def divisionFunction():
             workingLine.append(str(answer))
             expressionList.append(" / ")
             workingLine.append(" / ")
+            cursorPos[0] = cursorPos[0] + (cursorShift[0] * len(str(answer))) + cursorDivisonShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
         except:
             expressionList.append(" / ")
             workingLine.append(" / ")
+            cursorPos[0] = cursorPos[0] + cursorDivisonShift[0]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     else:
-        expressionList.append(" / ")
-        workingLine.append(" / ")
+        try:
+            expressionList[cursorInlinePosition[0]] = " / "
+            workingLine[cursorInlinePosition[0]] = " / "
+        except:
+            expressionList.append(" / ")
+            workingLine.append(" / ")
+        cursorPos[0] = cursorPos[0] + cursorDivisonShift[0]
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def clearFunction():
@@ -198,7 +298,8 @@ def clearFunction():
     subcommands.clear()
     rightStatusBarText.clear()
     cursorObj.clear()
-    cursorObj.append("|")
+    cursorObj.append("—")
+    cursorPos[0] = 0
     cursor()
 
 
@@ -309,3 +410,12 @@ def negativeFunction():
 def variableFunction():
     expressionList.append("x")
     workingLine.append("x")
+
+
+def leftArrowFunction():
+    cursorPos[0] = cursorPos[0] - cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] - 1
+
+def rightArrowFunction():
+    cursorPos[0] = cursorPos[0] + cursorShift[0]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1

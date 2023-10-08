@@ -271,6 +271,8 @@ def functions():
         reconnectReset(ui.negativeButton.clicked, negativeFunction)
         reconnectReset(ui.equationButton.clicked, ui.equationFunction)
         reconnectReset(ui.variableButton.clicked, variableFunction)
+        reconnectReset(ui.leftArrowButton.clicked, leftArrowFunction)
+        reconnectReset(ui.rightArrowButton.clicked, rightArrowFunction)
     elif subcommands == ["2nd"]:
         reconnectReset(ui.negativeButton.clicked, ansFunction)
         reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -392,15 +394,15 @@ class glWidget(QGLWidget):
         # Font color
         glColor3f(0.2, 0.2, 0.2)
 
+        # Draws cursor
+        self.setFont(QFont("Cambria Math", 10))
+        self.renderText(7 + cursorPos[0], workingLinePos[0] + 6, cursorHolder[0])
+
         # Font style
         self.setFont(QFont("Cambria Math", 14))
 
         # Compile lines into strings
         inputLine = "".join(workingLine)
-        try:
-            inputLine += cursorHolder[0]
-        except:
-            pass
 
         # Draws working line
         self.renderText(8, workingLinePos[0], inputLine)

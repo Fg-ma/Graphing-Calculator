@@ -51,8 +51,15 @@ rightStatusBarText = []
 rightStatusBarPosition = 0
 
 # Cursor variables
-cursorObj = ["|"]
-cursorHolder = []
+cursorObj = ["—"]
+cursorHolder = ["—"]
+cursorPos = [0]
+cursorShift = [11]
+cursorInlinePosition = [0]
+cursorAdditionShift = [22]
+cursorSubtractionShift = [14]
+cursorMultiplicationShift = [16]
+cursorDivisonShift = [17]
 
 
 # Joins the list into a displayable value
@@ -63,7 +70,9 @@ def getRightStatusBarText():
 # Handles blinking cursor object
 def cursor():
     global cursorObj
-    if cursorHolder == []:
+    if cursorHolder[0] == "":
+        cursorHolder.clear()
         cursorHolder.append(cursorObj[0])
     else: 
         cursorHolder.clear()
+        cursorHolder.append("")

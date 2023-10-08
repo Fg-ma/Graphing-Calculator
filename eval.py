@@ -21,6 +21,8 @@ def evaluate():
     numLines[0] = numLines[0] + 1
     lines.append(numLines[0])
     shouldLinesMove.append("move")
+    cursorPos[0] = 0
+    cursorInlinePosition[0] = 0
 
     # Closes any open parentheses
     expression = closeParentheses(expression)
@@ -37,10 +39,17 @@ def evaluate():
 
     sciDist = 9
 
-    if ans > 999999999:
-        ans = f"{ans:.9e}"
-    elif ans < 0.00000001:
-        ans = f"{ans:.9e}"
+    if ans > 0:
+        print("worked")
+        if ans > 999999999:
+            ans = f"{ans:.9e}"
+        elif ans < 0.00000001:
+            ans = f"{ans:.9e}"
+    elif ans < 0:
+        if ans < -999999999:
+            ans = f"{ans:.9e}"
+        elif ans > -0.00000001:
+            ans = f"{ans:.9e}"
 
     # Records answer history
     answerHistory[str(answerHistoryCount[0])] = str(ans)
