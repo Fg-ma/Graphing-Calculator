@@ -99,57 +99,57 @@ class MainWindowUI(QMainWindow):
             if event.key() == Qt.Key_ParenLeft:
                 leftParenthesesFunction()
             if event.key() == Qt.Key_A:
-                functionTypeA()
+                functionA()
             if event.key() == Qt.Key_B:
-                functionTypeB()
+                functionB()
             if event.key() == Qt.Key_C:
-                functionTypeC()
+                functionC()
             if event.key() == Qt.Key_D:
-                functionTypeD()
+                functionD()
             if event.key() == Qt.Key_E:
-                functionTypeE()
+                functionE()
             if event.key() == Qt.Key_F:
-                functionTypeF()
+                functionF()
             if event.key() == Qt.Key_G:
-                functionTypeG()
+                functionG()
             if event.key() == Qt.Key_H:
-                functionTypeH()
+                functionH()
             if event.key() == Qt.Key_I:
-                functionTypeI()
+                functionI()
             if event.key() == Qt.Key_J:
-                functionTypeJ()
+                functionJ()
             if event.key() == Qt.Key_K:
-                functionTypeK()
+                functionK()
             if event.key() == Qt.Key_L:
-                functionTypeL()
+                functionL()
             if event.key() == Qt.Key_M:
-                functionTypeM()
+                functionM()
             if event.key() == Qt.Key_N:
-                functionTypeN()
+                functionN()
             if event.key() == Qt.Key_O:
-                functionTypeO()
+                functionO()
             if event.key() == Qt.Key_P:
-                functionTypeP()
+                functionP()
             if event.key() == Qt.Key_Q:
-                functionTypeQ()
+                functionQ()
             if event.key() == Qt.Key_R:
-                functionTypeR()
+                functionR()
             if event.key() == Qt.Key_S:
-                functionTypeS()
+                functionS()
             if event.key() == Qt.Key_T:
-                functionTypeT()
+                functionT()
             if event.key() == Qt.Key_U:
-                functionTypeU()
+                functionU()
             if event.key() == Qt.Key_V:
-                functionTypeV()
+                functionV()
             if event.key() == Qt.Key_W:
-                functionTypeW()
+                functionW()
             if event.key() == Qt.Key_X:
-                functionTypeX() 
+                functionX() 
             if event.key() == Qt.Key_Y:
-                functionTypeY()
+                functionY()
             if event.key() == Qt.Key_Z:
-                functionTypeZ()
+                functionZ()
         else:
             if event.key() == Qt.Key_Return:
                 evaluate()

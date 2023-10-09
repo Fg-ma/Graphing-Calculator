@@ -499,7 +499,7 @@ def negativeFunction():
 
 
 def variableFunction():
-    cursorPos[0] = cursorPos[0] + cursorPosDict["general"]
+    cursorPos[0] = cursorPos[0] + cursorPosDict["x"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
         expressionList[cursorInlinePosition[0]] = "x"
@@ -510,7 +510,7 @@ def variableFunction():
 
 
 def leftArrowFunction():
-    if cursorInlinePosition[0] <= 0:
+    if cursorInlinePosition[0] < 0:
         cursorPos[0] = 0
     else:
         cursorPos[0] = cursorPos[0] - cursorPosDict[workingLine[cursorInlinePosition[0]]]
@@ -518,8 +518,6 @@ def leftArrowFunction():
 
 
 def rightArrowFunction():
-    if cursorInlinePosition[0] < len(expressionList):
+    if cursorInlinePosition[0] < len(expressionList) - 1:
         cursorPos[0] = cursorPos[0] + cursorPosDict[workingLine[cursorInlinePosition[0]]]
         cursorInlinePosition[0] = cursorInlinePosition[0] + 1
-    #if cursorInlinePosition[0] == len(expressionList):
-    #    cursorPos[0] = cursorPos[0] + cursorPosDict[workingLine[cursorInlinePosition[0]]]
