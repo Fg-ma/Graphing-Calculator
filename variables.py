@@ -53,13 +53,28 @@ rightStatusBarPosition = 0
 # Cursor variables
 cursorObj = ["—"]
 cursorHolder = ["—"]
+cursorPosDict = {"general": 11, "1": 11, "2": 11,
+                 "3": 11, "4": 11, "5": 11,
+                 "6": 11, "7": 11, "8": 11,
+                 "9": 11, "0": 11, " + ": 22, 
+                 " - ": 14, " * ": 16, " / ": 17,
+                 ", ": 8, " ** 2": 35, "(": 8, 
+                 ")": 8, " ** -1": 41, " ** ": 24, 
+                 ".": 4, "log(": 32, "ln(": 24, 
+                 "sin(": 32, "cos(": 34, "tan(": 34, 
+                 "-": 8,
+                 "A": 0, "B": 0, "C": 11,
+                 "D": 0, "E":11, "F": 0,
+                 "G": 0, "H": 0, "I": 0,
+                 "I": 0, "J": 0, "K": 0,
+                 "L": 0, "M": 0, "N": 0,
+                 "O": 0, "P": 11, "Q": 0,
+                 "R": 0, "S": 0, "T": 11,
+                 "U": 0, "V": 11, "W": 0,
+                 "X": 11, "Y": 0, "Z": 0,}
 cursorPos = [0]
-cursorShift = [11]
-cursorInlinePosition = [0]
-cursorAdditionShift = [22]
-cursorSubtractionShift = [14]
-cursorMultiplicationShift = [16]
-cursorDivisonShift = [17]
+cursorInlinePosition = [-1]
+cursorUpperShift1 = [11]
 
 
 # Joins the list into a displayable value

@@ -22,7 +22,7 @@ def evaluate():
     lines.append(numLines[0])
     shouldLinesMove.append("move")
     cursorPos[0] = 0
-    cursorInlinePosition[0] = 0
+    cursorInlinePosition[0] = -1
 
     # Closes any open parentheses
     expression = closeParentheses(expression)
@@ -37,10 +37,7 @@ def evaluate():
         ans = "Domain Error"
         domainError[0] = "False"
 
-    sciDist = 9
-
     if ans > 0:
-        print("worked")
         if ans > 999999999:
             ans = f"{ans:.9e}"
         elif ans < 0.00000001:
