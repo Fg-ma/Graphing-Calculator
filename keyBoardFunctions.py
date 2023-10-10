@@ -289,41 +289,80 @@ def functionTypez():
 
 
 def functionTypeExclamation():
-    expressionList.append("!")
-    workingLine.append("!")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["!"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "!"
+        workingLine[cursorInlinePosition[0]] = "!"
+    except:
+        expressionList.append("!")
+        workingLine.append("!")
 
 
 def functionTypeAt():
-    expressionList.append("@")
-    workingLine.append("@")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["@"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "@"
+        workingLine[cursorInlinePosition[0]] = "@"
+    except:
+        expressionList.append("@")
+        workingLine.append("@")
 
 
 def functionTypeNumberSign():
-    expressionList.append("#")
-    workingLine.append("#")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["#"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "#"
+        workingLine[cursorInlinePosition[0]] = "#"
+    except:
+        expressionList.append("#")
+        workingLine.append("#")
 
 
 def functionTypeDollarSign():
-    expressionList.append("$")
-    workingLine.append("$")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["$"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "$"
+        workingLine[cursorInlinePosition[0]] = "$"
+    except:
+        expressionList.append("$")
+        workingLine.append("$")
 
 
 def functionTypePercent():
-    expressionList.append("%")
-    workingLine.append("%")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["%"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "%"
+        workingLine[cursorInlinePosition[0]] = "%"
+    except:
+        expressionList.append("%")
+        workingLine.append("%")
 
 
 def functionTypeAmpersand():
-    expressionList.append("&")
-    workingLine.append("&")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["&"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "&"
+        workingLine[cursorInlinePosition[0]] = "&"
+    except:
+        expressionList.append("&")
+        workingLine.append("&")
 
 
 def functionTypeBackspace():
-    try:
-        expressionList.pop()
-        workingLine.pop()
-    except:
-        pass
+    if cursorInlinePosition[0] == len(expressionList) - 1 and not cursorInlinePosition[0] == -1:
+        expressionList.pop(cursorInlinePosition[0])
+        removed = workingLine.pop(cursorInlinePosition[0])
+        cursorPos[0] = cursorPos[0] - cursorPosDict[removed]
+        cursorInlinePosition[0] = cursorInlinePosition[0] - 1
+    if cursorInlinePosition[0] < len(expressionList) - 1 and not cursorInlinePosition[0] == -1:
+        expressionList.pop(cursorInlinePosition[0] + 1)
+        removed = workingLine.pop(cursorInlinePosition[0] + 1)
 
 
 def functionTypeControlC():
@@ -356,8 +395,17 @@ def functionTypeControlZ():
                 workingLinePos[0] = workingLinePos[0] - sizeOfShift
                 answerHistoryCount[0] = answerHistoryCount[0] - 1
                 numLines[0] = numLines[0] - 1
+                for i in [*workingLine[0]]:
+                    cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
         except:
             pass
     else:
         workingLine.pop()
         expressionList.pop()
+
+
+def cursorGetLength(str):
+    brokenList = [*str]
+    for i in brokenList:
+        cursorPos[0] = cursorPos[0] + cursorPosDict[i]

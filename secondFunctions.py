@@ -7,13 +7,12 @@ def secondResets():
     subcommands.clear()
     rightStatusBarText.clear()
     cursorObj.clear()
-    cursorObj.append("|")
+    cursorObj.append("—")
     cursor()
 
 
 def ansFunction():
     secondResets()
-
     try:
         lastAnswerHistoryKey = list(answerHistory) [-1]
         answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
@@ -66,41 +65,83 @@ def entryFunction():
 
 def arcsinFunction():
     secondResets()
-    expressionList.append("arcsin(")
-    workingLine.append("arcsin(")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["arcsin("]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "arcsin("
+        workingLine[cursorInlinePosition[0]] = "arcsin("
+    except:
+        expressionList.append("arcsin(")
+        workingLine.append("arcsin(")
 
 
 def arccosFunction():
     secondResets()
-    expressionList.append("arccos(")
-    workingLine.append("arccos(")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["arccos("]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "arccos("
+        workingLine[cursorInlinePosition[0]] = "arccos("
+    except:
+        expressionList.append("arccos(")
+        workingLine.append("arccos(")
 
 
 def arctanFunction():
     secondResets()
-    expressionList.append("arctan(")
-    workingLine.append("arctan(")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["arctan("]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "arctan("
+        workingLine[cursorInlinePosition[0]] = "arctan("
+    except:
+        expressionList.append("arctan(")
+        workingLine.append("arctan(")
 
 
 def piFunction():
     secondResets()
-    expressionList.append("π")
-    workingLine.append("π")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["π"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "π"
+        workingLine[cursorInlinePosition[0]] = "π"
+    except:
+        expressionList.append("π")
+        workingLine.append("π")
 
 
 def squareRootFunction():
     secondResets()
-    expressionList.append("√(")
-    workingLine.append("√(")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["√("]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "√("
+        workingLine[cursorInlinePosition[0]] = "√("
+    except:
+        expressionList.append("√(")
+        workingLine.append("√(")
 
 
 def scientificNotationFunction():
     secondResets()
-    expressionList.append("e")
-    workingLine.append("e")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["e"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "e"
+        workingLine[cursorInlinePosition[0]] = "e"
+    except:
+        expressionList.append("e")
+        workingLine.append("e")
 
 
 def tentotheFunction():
     secondResets()
-    expressionList.append("10 ** ")
-    workingLine.append("10 ** ")
+    cursorPos[0] = cursorPos[0] + cursorPosDict["10**"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "10**"
+        workingLine[cursorInlinePosition[0]] = "10**"
+    except:
+        expressionList.append("10**")
+        workingLine.append("10**")

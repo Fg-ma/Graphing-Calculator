@@ -71,167 +71,169 @@ class MainWindowUI(QMainWindow):
         if event.modifiers() & Qt.ControlModifier:
             if event.key() == Qt.Key_C:
                 functionTypeControlC()
-            if event.key() == Qt.Key_V:
+            elif event.key() == Qt.Key_V:
                 functionTypeControlV()
-            if event.key() == Qt.Key_Z:
+            elif event.key() == Qt.Key_Z:
                 functionTypeControlZ()
+            elif event.key() == Qt.Key_Backspace:
+                clearFunction()
         elif event.modifiers() & Qt.ShiftModifier:
             if event.key() == Qt.Key_Plus:
                 additionFunction()
-            if event.key() == Qt.Key_ParenRight:
+            elif event.key() == Qt.Key_ParenRight:
                 rightParenthesesFunction()
-            if event.key() == Qt.Key_Exclam:
+            elif event.key() == Qt.Key_Exclam:
                 functionTypeExclamation()
-            if event.key() == Qt.Key_At:
+            elif event.key() == Qt.Key_At:
                 functionTypeAt()
-            if event.key() == Qt.Key_NumberSign:
+            elif event.key() == Qt.Key_NumberSign:
                 functionTypeNumberSign()
-            if event.key() == Qt.Key_Dollar:
+            elif event.key() == Qt.Key_Dollar:
                 functionTypeDollarSign()
-            if event.key() == Qt.Key_Percent:
+            elif event.key() == Qt.Key_Percent:
                 functionTypePercent()
-            if event.key() == Qt.Key_AsciiCircum:
+            elif event.key() == Qt.Key_AsciiCircum:
                 powerFunction()
-            if event.key() == Qt.Key_Ampersand:
+            elif event.key() == Qt.Key_Ampersand:
                 functionTypeAmpersand()
-            if event.key() == Qt.Key_Asterisk:
+            elif event.key() == Qt.Key_Asterisk:
                 multiplicationFunction()
-            if event.key() == Qt.Key_ParenLeft:
+            elif event.key() == Qt.Key_ParenLeft:
                 leftParenthesesFunction()
-            if event.key() == Qt.Key_A:
+            elif event.key() == Qt.Key_A:
                 functionA()
-            if event.key() == Qt.Key_B:
+            elif event.key() == Qt.Key_B:
                 functionB()
-            if event.key() == Qt.Key_C:
+            elif event.key() == Qt.Key_C:
                 functionC()
-            if event.key() == Qt.Key_D:
+            elif event.key() == Qt.Key_D:
                 functionD()
-            if event.key() == Qt.Key_E:
+            elif event.key() == Qt.Key_E:
                 functionE()
-            if event.key() == Qt.Key_F:
+            elif event.key() == Qt.Key_F:
                 functionF()
-            if event.key() == Qt.Key_G:
+            elif event.key() == Qt.Key_G:
                 functionG()
-            if event.key() == Qt.Key_H:
+            elif event.key() == Qt.Key_H:
                 functionH()
-            if event.key() == Qt.Key_I:
+            elif event.key() == Qt.Key_I:
                 functionI()
-            if event.key() == Qt.Key_J:
+            elif event.key() == Qt.Key_J:
                 functionJ()
-            if event.key() == Qt.Key_K:
+            elif event.key() == Qt.Key_K:
                 functionK()
-            if event.key() == Qt.Key_L:
+            elif event.key() == Qt.Key_L:
                 functionL()
-            if event.key() == Qt.Key_M:
+            elif event.key() == Qt.Key_M:
                 functionM()
-            if event.key() == Qt.Key_N:
+            elif event.key() == Qt.Key_N:
                 functionN()
-            if event.key() == Qt.Key_O:
+            elif event.key() == Qt.Key_O:
                 functionO()
-            if event.key() == Qt.Key_P:
+            elif event.key() == Qt.Key_P:
                 functionP()
-            if event.key() == Qt.Key_Q:
+            elif event.key() == Qt.Key_Q:
                 functionQ()
-            if event.key() == Qt.Key_R:
+            elif event.key() == Qt.Key_R:
                 functionR()
-            if event.key() == Qt.Key_S:
+            elif event.key() == Qt.Key_S:
                 functionS()
-            if event.key() == Qt.Key_T:
+            elif event.key() == Qt.Key_T:
                 functionT()
-            if event.key() == Qt.Key_U:
+            elif event.key() == Qt.Key_U:
                 functionU()
-            if event.key() == Qt.Key_V:
+            elif event.key() == Qt.Key_V:
                 functionV()
-            if event.key() == Qt.Key_W:
+            elif event.key() == Qt.Key_W:
                 functionW()
-            if event.key() == Qt.Key_X:
+            elif event.key() == Qt.Key_X:
                 functionX() 
-            if event.key() == Qt.Key_Y:
+            elif event.key() == Qt.Key_Y:
                 functionY()
-            if event.key() == Qt.Key_Z:
+            elif event.key() == Qt.Key_Z:
                 functionZ()
         else:
             if event.key() == Qt.Key_Return:
                 evaluate()
-            if event.key() == Qt.Key_Backspace:
+            elif event.key() == Qt.Key_Backspace:
                 functionTypeBackspace()
-            if event.key() == Qt.Key_Minus:
+            elif event.key() == Qt.Key_Minus:
                 negativeFunction()
-            if event.key() == Qt.Key_Slash:
+            elif event.key() == Qt.Key_Slash:
                 divisionFunction()
-            if event.key() == Qt.Key_Period:
+            elif event.key() == Qt.Key_Period:
                 decimalFunction()
-            if event.key() == Qt.Key_0:
+            elif event.key() == Qt.Key_0:
                 function0()
-            if event.key() == Qt.Key_1:
+            elif event.key() == Qt.Key_1:
                 function1()
-            if event.key() == Qt.Key_2:
+            elif event.key() == Qt.Key_2:
                 function2()
-            if event.key() == Qt.Key_3:
+            elif event.key() == Qt.Key_3:
                 function3()
-            if event.key() == Qt.Key_4:
+            elif event.key() == Qt.Key_4:
                 function4()
-            if event.key() == Qt.Key_5:
+            elif event.key() == Qt.Key_5:
                 function5()
-            if event.key() == Qt.Key_6:
+            elif event.key() == Qt.Key_6:
                 function6()
-            if event.key() == Qt.Key_7:
+            elif event.key() == Qt.Key_7:
                 function7()
-            if event.key() == Qt.Key_8:
+            elif event.key() == Qt.Key_8:
                 function8()
-            if event.key() == Qt.Key_9:
+            elif event.key() == Qt.Key_9:
                 function9()
-            if event.key() == Qt.Key_A:
+            elif event.key() == Qt.Key_A:
                 functionTypea()
-            if event.key() == Qt.Key_B:
+            elif event.key() == Qt.Key_B:
                 functionTypeb()
-            if event.key() == Qt.Key_C:
+            elif event.key() == Qt.Key_C:
                 functionTypec()
-            if event.key() == Qt.Key_D:
+            elif event.key() == Qt.Key_D:
                 functionTyped()
-            if event.key() == Qt.Key_E:
+            elif event.key() == Qt.Key_E:
                 functionTypee()
-            if event.key() == Qt.Key_F:
+            elif event.key() == Qt.Key_F:
                 functionTypef()
-            if event.key() == Qt.Key_G:
+            elif event.key() == Qt.Key_G:
                 functionTypeg()
-            if event.key() == Qt.Key_H:
+            elif event.key() == Qt.Key_H:
                 functionTypeh()
-            if event.key() == Qt.Key_I:
+            elif event.key() == Qt.Key_I:
                 functionTypei()
-            if event.key() == Qt.Key_J:
+            elif event.key() == Qt.Key_J:
                 functionTypej()
-            if event.key() == Qt.Key_K:
+            elif event.key() == Qt.Key_K:
                 functionTypek()
-            if event.key() == Qt.Key_L:
+            elif event.key() == Qt.Key_L:
                 functionTypel()
-            if event.key() == Qt.Key_M:
+            elif event.key() == Qt.Key_M:
                 functionTypem()
-            if event.key() == Qt.Key_N:
+            elif event.key() == Qt.Key_N:
                 functionTypen()
-            if event.key() == Qt.Key_O:
+            elif event.key() == Qt.Key_O:
                 functionTypeo()
-            if event.key() == Qt.Key_P:
+            elif event.key() == Qt.Key_P:
                 functionTypep()
-            if event.key() == Qt.Key_Q:
+            elif event.key() == Qt.Key_Q:
                 functionTypeq()
-            if event.key() == Qt.Key_R:
+            elif event.key() == Qt.Key_R:
                 functionTyper()
-            if event.key() == Qt.Key_S:
+            elif event.key() == Qt.Key_S:
                 functionTypes()
-            if event.key() == Qt.Key_T:
+            elif event.key() == Qt.Key_T:
                 functionTypet()
-            if event.key() == Qt.Key_U:
+            elif event.key() == Qt.Key_U:
                 functionTypeu()
-            if event.key() == Qt.Key_V:
+            elif event.key() == Qt.Key_V:
                 functionTypev()
-            if event.key() == Qt.Key_W:
+            elif event.key() == Qt.Key_W:
                 functionTypew()
-            if event.key() == Qt.Key_X:
+            elif event.key() == Qt.Key_X:
                 functionTypex() 
-            if event.key() == Qt.Key_Y:
+            elif event.key() == Qt.Key_Y:
                 functionTypey()
-            if event.key() == Qt.Key_Z:
+            elif event.key() == Qt.Key_Z:
                 functionTypez()
         
     
