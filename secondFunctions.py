@@ -19,6 +19,9 @@ def ansFunction():
         answer = answerHistory[answerNumber]
         expressionList.append(str(answer))
         workingLine.append(str(answer))
+        for i in [*str(answer)]:
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     except:
         pass
 
@@ -61,6 +64,9 @@ def entryFunction():
 
     expressionList.append(problem)
     workingLine.append(problem)
+    for i in [*str(problem)]:
+        cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def arcsinFunction():

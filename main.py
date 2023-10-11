@@ -68,6 +68,15 @@ class MainWindowUI(QMainWindow):
 
     # Handles keyboard events
     def keyPressEvent(self, event):
+        # Handles when the working line goes off screen
+        workingDistanceToEdge = self.openglwidget.width() - cursorPos[0]
+        if workingDistanceToEdge < 35:
+            workingLineShifter[0] = workingLineShifter[0] - (35 - workingDistanceToEdge)
+            cursorPos[0] = cursorPos[0] - (35 - workingDistanceToEdge)
+        if workingDistanceToEdge > self.openglwidget.width():
+            workingLineShifter[0] = workingLineShifter[0] - (self.openglwidget.width() - workingDistanceToEdge)
+            cursorPos[0] = cursorPos[0] - (self.openglwidget.width() - workingDistanceToEdge)
+            
         if event.modifiers() & Qt.ControlModifier:
             if event.key() == Qt.Key_C:
                 functionTypeControlC()
@@ -76,6 +85,8 @@ class MainWindowUI(QMainWindow):
             elif event.key() == Qt.Key_Z:
                 functionTypeControlZ()
             elif event.key() == Qt.Key_Backspace:
+                clearFunction()
+            elif event.key() == Qt.Key_Delete:
                 clearFunction()
         elif event.modifiers() & Qt.ShiftModifier:
             if event.key() == Qt.Key_Plus:
@@ -157,6 +168,8 @@ class MainWindowUI(QMainWindow):
                 evaluate()
             elif event.key() == Qt.Key_Backspace:
                 functionTypeBackspace()
+            elif event.key() == Qt.Key_Delete:
+                functionTypeDelete()
             elif event.key() == Qt.Key_Minus:
                 negativeFunction()
             elif event.key() == Qt.Key_Slash:
@@ -238,6 +251,16 @@ class MainWindowUI(QMainWindow):
         
     
 def functions():
+
+    # Handles when the working line goes off screen
+    workingDistanceToEdge = ui.openglwidget.width() - cursorPos[0]
+    if workingDistanceToEdge < 24:
+        workingLineShifter[0] = workingLineShifter[0] - (24 - workingDistanceToEdge)
+        cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
+    if workingDistanceToEdge > ui.openglwidget.width():
+        workingLineShifter[0] = workingLineShifter[0] - (ui.openglwidget.width() - workingDistanceToEdge)
+        cursorPos[0] = cursorPos[0] - (ui.openglwidget.width() - workingDistanceToEdge)
+
     # baseFunctions, secondFunctions, and alphaFunctions
     if subcommands == []:
         reconnectReset(ui.Number0.clicked, function0)
@@ -407,7 +430,7 @@ class glWidget(QGLWidget):
         inputLine = "".join(workingLine)
 
         # Draws working line
-        self.renderText(8, workingLinePos[0], inputLine)
+        self.renderText(8 + workingLineShifter[0], workingLinePos[0], inputLine)
 
         # Handles lines display answer history by referencing where the workingLine is
         for line in lines:

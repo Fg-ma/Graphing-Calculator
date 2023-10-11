@@ -184,7 +184,9 @@ def additionFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["+"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["+"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("+")
             workingLine.append("+")
@@ -212,7 +214,9 @@ def subtractionFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["-"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["-"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("-")
             workingLine.append("-")
@@ -240,7 +244,9 @@ def multiplicationFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["*"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["*"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("*")
             workingLine.append("*")
@@ -268,7 +274,9 @@ def divisionFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["/"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["/"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("/")
             workingLine.append("/")
@@ -300,6 +308,7 @@ def clearFunction():
     cursorObj.clear()
     cursorObj.append("—")
     cursorPos[0] = 0
+    workingLineShifter[0] = 0
     cursorInlinePosition[0] = -1
     cursor()
 
@@ -323,7 +332,9 @@ def squareFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["**2"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["**2"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("**2")
             workingLine.append("**2")
@@ -373,7 +384,9 @@ def inverseFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["**-1"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["**-1"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("**-1")
             workingLine.append("**-1")
@@ -401,7 +414,9 @@ def powerFunction():
             answer = answerHistory[answerNumber]
             expressionList.append(str(answer))
             workingLine.append(str(answer))
-            cursorPos[0] = cursorPos[0] + (cursorPosDict["general"] * len(str(answer))) + cursorPosDict["**"]
+            for i in [*workingLine[0]]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorPos[0] = cursorPos[0] + cursorPosDict["**"]
             cursorInlinePosition[0] = cursorInlinePosition[0] + 2
             expressionList.append("**")
             workingLine.append("**")

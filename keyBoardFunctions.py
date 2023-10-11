@@ -358,11 +358,26 @@ def functionTypeBackspace():
     if cursorInlinePosition[0] == len(expressionList) - 1 and not cursorInlinePosition[0] == -1:
         expressionList.pop(cursorInlinePosition[0])
         removed = workingLine.pop(cursorInlinePosition[0])
-        cursorPos[0] = cursorPos[0] - cursorPosDict[removed]
+        if workingLineShifter[0] == 0:
+            cursorPos[0] = cursorPos[0] - cursorPosDict[removed]
         cursorInlinePosition[0] = cursorInlinePosition[0] - 1
+        if not workingLineShifter[0] == 0:
+            workingLineShifter[0] = workingLineShifter[0] + cursorPosDict[removed]
     if cursorInlinePosition[0] < len(expressionList) - 1 and not cursorInlinePosition[0] == -1:
         expressionList.pop(cursorInlinePosition[0] + 1)
         removed = workingLine.pop(cursorInlinePosition[0] + 1)
+        if not workingLineShifter[0] == 0:
+            cursorPos[0] = cursorPos[0] + cursorPosDict[removed]
+            workingLineShifter[0] = workingLineShifter[0] + cursorPosDict[removed]
+
+
+def functionTypeDelete():
+    if cursorInlinePosition[0] < len(expressionList) - 1 and not cursorInlinePosition[0] == -1:
+        expressionList.pop(cursorInlinePosition[0] + 1)
+        removed = workingLine.pop(cursorInlinePosition[0] + 1)
+        if not workingLineShifter[0] == 0:
+            cursorPos[0] = cursorPos[0] - cursorPosDict[removed]
+            workingLineShifter[0] = workingLineShifter[0] + cursorPosDict[removed]
 
 
 def functionTypeControlC():

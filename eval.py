@@ -22,6 +22,7 @@ def evaluate():
     lines.append(numLines[0])
     shouldLinesMove.append("move")
     cursorPos[0] = 0
+    workingLineShifter[0] = 0
     cursorInlinePosition[0] = -1
 
     # Closes any open parentheses
@@ -38,15 +39,17 @@ def evaluate():
         domainError[0] = "False"
 
     if ans > 0:
-        if ans > 999999999:
-            ans = f"{ans:.9e}"
-        elif ans < 0.00000001:
-            ans = f"{ans:.9e}"
+        if ans > 999999:
+            ans = f"{ans:.6e}"
+        elif ans < 0.000001:
+            ans = f"{ans:.6e}"
     elif ans < 0:
-        if ans < -999999999:
-            ans = f"{ans:.9e}"
-        elif ans > -0.00000001:
-            ans = f"{ans:.9e}"
+        if ans < -999999:
+            ans = f"{ans:.6e}"
+        elif ans > -0.000001:
+            ans = f"{ans:.6e}"
+    if len(str(ans)) > 12:
+        ans = float(str(ans)[:12])
 
     # Records answer history
     answerHistory[str(answerHistoryCount[0])] = str(ans)
