@@ -536,3 +536,11 @@ def rightArrowFunction():
     if cursorInlinePosition[0] < len(expressionList) - 1:
         cursorPos[0] = cursorPos[0] + cursorPosDict[workingLine[cursorInlinePosition[0]]]
         cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+
+
+def upArrowFunction():
+    print("up")
+
+
+def downArrowFunction():
+    print("down")

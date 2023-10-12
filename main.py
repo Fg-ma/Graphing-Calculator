@@ -259,6 +259,10 @@ class MainWindowUI(QMainWindow):
                 leftArrowFunction()
             elif event.key() == Qt.Key_Right:
                 rightArrowFunction()
+            elif event.key() == Qt.Key_Up:
+                upArrowFunction()
+            elif event.key() == Qt.Key_Down:
+                downArrowFunction()
         
         # Handles when the working line goes off screen
         offScreen()
@@ -302,6 +306,8 @@ def functions():
         reconnectReset(ui.variableButton.clicked, variableFunction)
         reconnectReset(ui.leftArrowButton.clicked, leftArrowFunction)
         reconnectReset(ui.rightArrowButton.clicked, rightArrowFunction)
+        reconnectReset(ui.upArrowButton.clicked, upArrowFunction)
+        reconnectReset(ui.downArrowButton.clicked, downArrowFunction)
     elif subcommands == ["2nd"]:
         reconnectReset(ui.negativeButton.clicked, ansFunction)
         reconnectReset(ui.enterButton.clicked, entryFunction)

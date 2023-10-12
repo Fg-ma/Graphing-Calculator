@@ -45,11 +45,9 @@ def evaluate():
             ans = f"{ans:.6e}"
     elif ans < 0:
         if ans < -999999:
-            print(ans)
-            ans = f"{ans:.6e}"
-            print(ans)
+            ans = f"{ans:.5e}"
         elif ans > -0.000001:
-            ans = f"{ans:.6e}"
+            ans = f"{ans:.5e}"
     if len(str(ans)) > 12:
         ans = float(str(ans)[:12])
 
