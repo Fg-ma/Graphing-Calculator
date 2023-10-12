@@ -63,11 +63,11 @@ def simplifyExpression(expression):
                 simplified = evalCos(simpleAns)
             elif firstTrigger[1] == "tan(":
                 simplified = evalTan(simpleAns)
-            elif firstTrigger[1] == "arcsin(":
+            elif firstTrigger[1] == "arcsin(" or firstTrigger[1] == "sin⁻¹(":
                 simplified = evalArcSin(simpleAns)
-            elif firstTrigger[1] == "arccos(":
+            elif firstTrigger[1] == "arccos(" or firstTrigger[1] == "cos⁻¹(":
                 simplified = evalArcCos(simpleAns)
-            elif firstTrigger[1] == "arctan(":
+            elif firstTrigger[1] == "arctan(" or firstTrigger[1] == "tan⁻¹(":
                 simplified = evalArcTan(simpleAns)
             elif firstTrigger[1] == "√(":
                 simplified = evalSquareRoot(simpleAns)

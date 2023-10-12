@@ -319,3 +319,63 @@ def functionZ():
     except:
         expressionList.append("Z")
         workingLine.append("Z")
+
+
+def functionTheta():
+    alphaResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["θ"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "θ"
+        workingLine[cursorInlinePosition[0]] = "θ"
+    except:
+        expressionList.append("θ")
+        workingLine.append("θ")
+
+
+def functionUnderscore():
+    alphaResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["_"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "_"
+        workingLine[cursorInlinePosition[0]] = "_"
+    except:
+        expressionList.append("_")
+        workingLine.append("_")
+
+
+def functionColon():
+    alphaResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict[":"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = ":"
+        workingLine[cursorInlinePosition[0]] = ":"
+    except:
+        expressionList.append(":")
+        workingLine.append(":")
+
+
+def functionQuestionMark():
+    alphaResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["?"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "?"
+        workingLine[cursorInlinePosition[0]] = "?"
+    except:
+        expressionList.append("?")
+        workingLine.append("?")
+
+
+def functionDoubleQuotationMark():
+    alphaResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["\""]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "\""
+        workingLine[cursorInlinePosition[0]] = "\""
+    except:
+        expressionList.append("\"")
+        workingLine.append("\"")

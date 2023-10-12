@@ -10,7 +10,7 @@ firstTriggerPosShifter = 0
 domainError = ["False"]
 
 # Key word search
-regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\()"
+regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\()"
 
 # History variables
 answerHistory = {}
@@ -42,6 +42,7 @@ lines = []
 dots = "..................................................................................."
 workingLinePos = [44]
 sizeOfShift = 42
+movebyFactor = [0]
 
 # Status bar variables
 global rightStatusBarText
@@ -82,8 +83,13 @@ cursorPosDict = {"general": 11, "1": 11, "2": 11,
                  "z": 9, "!": 5, "@": 17, 
                  "#": 12, "$": 10, "%": 17, 
                  "&": 13, " ": 4, "arcsin(": 57, 
-                 "arccos(": 59, "arctan(": 59, "π": 11, 
-                 "√(": 20, "10**": 38}
+                 "arccos(": 59, "arctan(": 59, "sin⁻¹(": 48,
+                 "cos⁻¹(": 50, "tan⁻¹(": 50, "π": 11, 
+                 "√(": 20, "10**": 38, "⁻": 8,
+                 "¹": 8, "{": 7, "}": 7,
+                 "[":7 , "]": 7, "θ": 10,
+                 "_": 7, ":": 5, "?": 8,
+                 "\"": 7}
 cursorPos = [0]
 cursorInlinePosition = [-1]
 workingLineShifter = [0]

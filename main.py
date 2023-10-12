@@ -67,16 +67,7 @@ class MainWindowUI(QMainWindow):
 
 
     # Handles keyboard events
-    def keyPressEvent(self, event):
-        # Handles when the working line goes off screen
-        workingDistanceToEdge = self.openglwidget.width() - cursorPos[0]
-        if workingDistanceToEdge < 35:
-            workingLineShifter[0] = workingLineShifter[0] - (35 - workingDistanceToEdge)
-            cursorPos[0] = cursorPos[0] - (35 - workingDistanceToEdge)
-        if workingDistanceToEdge > self.openglwidget.width():
-            workingLineShifter[0] = workingLineShifter[0] - (self.openglwidget.width() - workingDistanceToEdge)
-            cursorPos[0] = cursorPos[0] - (self.openglwidget.width() - workingDistanceToEdge)
-            
+    def keyPressEvent(self, event):            
         if event.modifiers() & Qt.ControlModifier:
             if event.key() == Qt.Key_C:
                 functionTypeControlC()
@@ -93,8 +84,20 @@ class MainWindowUI(QMainWindow):
                 additionFunction()
             elif event.key() == Qt.Key_ParenRight:
                 rightParenthesesFunction()
+            elif event.key() == Qt.Key_BraceLeft:
+                leftCurlyBracketFunction()
+            elif event.key() == Qt.Key_BraceRight:
+                rightCurlyBracketFunction()
             elif event.key() == Qt.Key_Exclam:
                 functionTypeExclamation()
+            elif event.key() == Qt.Key_Underscore:
+                functionUnderscore()
+            elif event.key() == Qt.Key_Colon:
+                functionColon()
+            elif event.key() == Qt.Key_Question:
+                functionQuestionMark()
+            elif event.key() == Qt.Key_QuoteDbl:
+                functionDoubleQuotationMark()
             elif event.key() == Qt.Key_At:
                 functionTypeAt()
             elif event.key() == Qt.Key_NumberSign:
@@ -176,6 +179,10 @@ class MainWindowUI(QMainWindow):
                 divisionFunction()
             elif event.key() == Qt.Key_Period:
                 decimalFunction()
+            elif event.key() == Qt.Key_BracketLeft:
+                functionTypeLeftBracket()
+            elif event.key() == Qt.Key_BracketRight:
+                functionTypeRightBracket()
             elif event.key() == Qt.Key_0:
                 function0()
             elif event.key() == Qt.Key_1:
@@ -248,19 +255,16 @@ class MainWindowUI(QMainWindow):
                 functionTypey()
             elif event.key() == Qt.Key_Z:
                 functionTypez()
+            elif event.key() == Qt.Key_Left:
+                leftArrowFunction()
+            elif event.key() == Qt.Key_Right:
+                rightArrowFunction()
         
-    
+        # Handles when the working line goes off screen
+        offScreen()
+
+
 def functions():
-
-    # Handles when the working line goes off screen
-    workingDistanceToEdge = ui.openglwidget.width() - cursorPos[0]
-    if workingDistanceToEdge < 24:
-        workingLineShifter[0] = workingLineShifter[0] - (24 - workingDistanceToEdge)
-        cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
-    if workingDistanceToEdge > ui.openglwidget.width():
-        workingLineShifter[0] = workingLineShifter[0] - (ui.openglwidget.width() - workingDistanceToEdge)
-        cursorPos[0] = cursorPos[0] - (ui.openglwidget.width() - workingDistanceToEdge)
-
     # baseFunctions, secondFunctions, and alphaFunctions
     if subcommands == []:
         reconnectReset(ui.Number0.clicked, function0)
@@ -309,6 +313,8 @@ def functions():
         reconnectReset(ui.squareButton.clicked, squareRootFunction)
         reconnectReset(ui.commaButton.clicked, scientificNotationFunction)
         reconnectReset(ui.logButton.clicked, tentotheFunction)
+        reconnectReset(ui.leftParenthesesButton.clicked, leftCurlyBracketFunction)
+        reconnectReset(ui.rightParenthesesButton.clicked, rightCurlyBracketFunction)
     elif subcommands == ["alpha"]:
         reconnectReset(ui.mathButton.clicked, functionA)
         reconnectReset(ui.appsButton.clicked, functionB)
@@ -336,6 +342,14 @@ def functions():
         reconnectReset(ui.Number1.clicked, functionY)
         reconnectReset(ui.stoButton.clicked, functionX)
         reconnectReset(ui.Number2.clicked, functionZ)
+        reconnectReset(ui.Number3.clicked, functionTheta)
+        reconnectReset(ui.Number0.clicked, functionUnderscore)
+        reconnectReset(ui.decimalButton.clicked, functionColon)
+        reconnectReset(ui.negativeButton.clicked, functionQuestionMark)
+        reconnectReset(ui.additionButton.clicked, functionDoubleQuotationMark)
+    
+    # Handles when the working line goes off screen
+    offScreen()
 
 
 # Swaps function reference for buttons and connects a reference to resetFunction
@@ -371,7 +385,16 @@ def reconnect(signal, newhandler=None, oldhandler=None):
 def restFunction():
     functions()
 
-        
+
+def offScreen():
+    workingDistanceToEdge = ui.openglwidget.width() - cursorPos[0]
+    if workingDistanceToEdge < 24:
+        workingLineShifter[0] = workingLineShifter[0] - (24 - workingDistanceToEdge)
+        cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
+    if workingDistanceToEdge > ui.openglwidget.width():
+        workingLineShifter[0] = workingLineShifter[0] - (ui.openglwidget.width() - workingDistanceToEdge)
+        cursorPos[0] = cursorPos[0] - (ui.openglwidget.width() - workingDistanceToEdge)
+
 class glWidget(QGLWidget):
     # Intial parameters
     def __init__(self, parent=None):
@@ -477,8 +500,10 @@ class glWidget(QGLWidget):
     # Get rightStatusBarText length
     def rightStatusBarLength(self):
         global rightStatusBarPosition
-        movebyFactor = len(rightStatusBarText) * 7
-        rightStatusBarPosition = self.width() - 20 - movebyFactor
+        movebyFactor[0] = 0
+        for i in [*str(rightStatusBarText)]:
+            movebyFactor[0] = movebyFactor[0] + cursorPosDict[i]
+        rightStatusBarPosition = self.width() - 10 - movebyFactor[0]
     
 
     # Draws status bar
@@ -504,11 +529,10 @@ class glWidget(QGLWidget):
 
     # Gets rightAnsLength length
     def rightAnsLength(self, answer):
-        movebyFactor = len(answer) * 11
-        for symbol in answer:
-            if symbol == "-":
-                movebyFactor = movebyFactor - 5
-        rightAnsPosition = self.width() - 10 - movebyFactor
+        movebyFactor[0] = 0
+        for i in [*str(answer)]:
+            movebyFactor[0] = movebyFactor[0] + cursorPosDict[i]
+        rightAnsPosition = self.width() - 10 - movebyFactor[0]
         return rightAnsPosition
 
 

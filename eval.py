@@ -45,7 +45,9 @@ def evaluate():
             ans = f"{ans:.6e}"
     elif ans < 0:
         if ans < -999999:
+            print(ans)
             ans = f"{ans:.6e}"
+            print(ans)
         elif ans > -0.000001:
             ans = f"{ans:.6e}"
     if len(str(ans)) > 12:

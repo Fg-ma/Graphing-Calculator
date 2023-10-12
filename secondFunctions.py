@@ -71,38 +71,38 @@ def entryFunction():
 
 def arcsinFunction():
     secondResets()
-    cursorPos[0] = cursorPos[0] + cursorPosDict["arcsin("]
+    cursorPos[0] = cursorPos[0] + cursorPosDict["sin⁻¹("]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        expressionList[cursorInlinePosition[0]] = "arcsin("
-        workingLine[cursorInlinePosition[0]] = "arcsin("
+        expressionList[cursorInlinePosition[0]] = "sin⁻¹("
+        workingLine[cursorInlinePosition[0]] = "sin⁻¹("
     except:
-        expressionList.append("arcsin(")
-        workingLine.append("arcsin(")
+        expressionList.append("sin⁻¹(")
+        workingLine.append("sin⁻¹(")
 
 
 def arccosFunction():
     secondResets()
-    cursorPos[0] = cursorPos[0] + cursorPosDict["arccos("]
+    cursorPos[0] = cursorPos[0] + cursorPosDict["cos⁻¹("]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        expressionList[cursorInlinePosition[0]] = "arccos("
-        workingLine[cursorInlinePosition[0]] = "arccos("
+        expressionList[cursorInlinePosition[0]] = "cos⁻¹("
+        workingLine[cursorInlinePosition[0]] = "cos⁻¹("
     except:
-        expressionList.append("arccos(")
-        workingLine.append("arccos(")
+        expressionList.append("cos⁻¹(")
+        workingLine.append("cos⁻¹(")
 
 
 def arctanFunction():
     secondResets()
-    cursorPos[0] = cursorPos[0] + cursorPosDict["arctan("]
+    cursorPos[0] = cursorPos[0] + cursorPosDict["tan⁻¹("]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        expressionList[cursorInlinePosition[0]] = "arctan("
-        workingLine[cursorInlinePosition[0]] = "arctan("
+        expressionList[cursorInlinePosition[0]] = "tan⁻¹("
+        workingLine[cursorInlinePosition[0]] = "tan⁻¹("
     except:
-        expressionList.append("arctan(")
-        workingLine.append("arctan(")
+        expressionList.append("tan⁻¹(")
+        workingLine.append("tan⁻¹(")
 
 
 def piFunction():
@@ -151,3 +151,51 @@ def tentotheFunction():
     except:
         expressionList.append("10**")
         workingLine.append("10**")
+
+
+def leftCurlyBracketFunction():
+    secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["{"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "{"
+        workingLine[cursorInlinePosition[0]] = "{"
+    except:
+        expressionList.append("{")
+        workingLine.append("{")
+
+
+def rightCurlyBracketFunction():
+    secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["}"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "}"
+        workingLine[cursorInlinePosition[0]] = "}"
+    except:
+        expressionList.append("}")
+        workingLine.append("}")
+
+    
+def functionTypeLeftBracket():
+    secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["["]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "["
+        workingLine[cursorInlinePosition[0]] = "["
+    except:
+        expressionList.append("[")
+        workingLine.append("[")
+
+
+def functionTypeRightBracket():
+    secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["]"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "]"
+        workingLine[cursorInlinePosition[0]] = "]"
+    except:
+        expressionList.append("]")
+        workingLine.append("]")

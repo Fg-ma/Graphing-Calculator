@@ -138,6 +138,9 @@
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -156,6 +159,9 @@ color: rgb(25, 25, 25);</string>
               <width>50</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -176,6 +182,9 @@ color: rgb(241, 241, 241);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -195,6 +204,9 @@ color: rgb(241, 241, 241);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -213,6 +225,9 @@ color: rgb(241, 241, 241);</string>
               <width>50</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -404,6 +419,9 @@ color: rgb(242, 116, 5);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -453,6 +471,9 @@ color: rgb(242, 116, 5);</string>
               <width>50</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -504,6 +525,9 @@ color: rgb(87, 188, 255);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -554,6 +578,9 @@ color: rgb(242, 116, 5);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -603,6 +630,9 @@ color: rgb(242, 116, 5);</string>
               <width>50</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -673,6 +703,9 @@ color: rgb(242, 116, 5);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -691,6 +724,9 @@ color: rgb(241, 241, 241);</string>
               <width>50</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -711,6 +747,9 @@ color: rgb(241, 241, 241);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -730,6 +769,9 @@ color: rgb(241, 241, 241);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -748,6 +790,9 @@ color: rgb(241, 241, 241);</string>
               <width>50</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -938,6 +983,9 @@ color: rgb(87, 188, 255);</string>
                 <height>33</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -957,8 +1005,11 @@ color: rgb(241, 241, 241);</string>
                 <height>33</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;Roboto&quot;;
+               <string notr="true">font: 10pt &quot;Roboto&quot;;
 font-style: bold;
 background-color: rgb(25, 25, 25);
 color: rgb(241, 241, 241);</string>
@@ -990,6 +1041,9 @@ color: rgb(87, 188, 255);</string>
                 <width>50</width>
                 <height>33</height>
                </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -1047,6 +1101,9 @@ color: rgb(87, 188, 255);</string>
                 <height>33</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1087,6 +1144,9 @@ color: rgb(87, 188, 255);</string>
                 <height>33</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1111,6 +1171,9 @@ color: rgb(241, 241, 241);</string>
                 <width>50</width>
                 <height>33</height>
                </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -1187,6 +1250,9 @@ color: rgb(87, 188, 255);</string>
                 <height>50</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgb(241, 241, 241);
 border-radius: 6px;</string>
@@ -1239,6 +1305,9 @@ border-radius: 6px;</string>
                 <height>23</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgb(241, 241, 241);
 border-radius: 6px;</string>
@@ -1284,6 +1353,9 @@ border-radius: 6px;</string>
                 <height>23</height>
                </size>
               </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgb(241, 241, 241);
 border-radius: 10px;</string>
@@ -1328,6 +1400,9 @@ border-radius: 10px;</string>
                 <width>50</width>
                 <height>23</height>
                </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgb(241, 241, 241);
@@ -1377,6 +1452,9 @@ border-radius: 6px;</string>
                 <width>23</width>
                 <height>50</height>
                </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgb(241, 241, 241);
@@ -1433,6 +1511,9 @@ border-radius: 6px;</string>
               <height>22</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1451,6 +1532,9 @@ color: rgb(25, 25, 25);</string>
               <width>50</width>
               <height>22</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Roboto&quot;;
@@ -1471,6 +1555,9 @@ color: rgb(25, 25, 25);</string>
               <height>22</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1490,6 +1577,9 @@ color: rgb(25, 25, 25);</string>
               <height>22</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1508,6 +1598,9 @@ color: rgb(25, 25, 25);</string>
               <width>50</width>
               <height>22</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 10pt &quot;Roboto&quot;;
@@ -1770,6 +1863,9 @@ color: rgb(242, 116, 5);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1829,6 +1925,9 @@ color: rgb(242, 116, 5);</string>
               <height>33</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1847,6 +1946,9 @@ color: rgb(241, 241, 241);</string>
               <width>54</width>
               <height>33</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -1927,6 +2029,9 @@ color: rgb(242, 116, 5);</string>
               <height>38</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -1977,6 +2082,9 @@ color: rgb(242, 116, 5);</string>
               <height>38</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -2008,7 +2116,7 @@ color: rgb(242, 116, 5);</string>
             <item row="0" column="0">
              <widget class="QLabel" name="catalogLabel">
               <property name="styleSheet">
-               <string notr="true">font: 10pt &quot;Roboto&quot;;
+               <string notr="true">font: 8pt &quot;Roboto&quot;;
 font-style: bold;
 color: rgb(87, 188, 255);</string>
               </property>
@@ -2026,6 +2134,9 @@ color: rgb(87, 188, 255);</string>
               <width>51</width>
               <height>38</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2119,6 +2230,9 @@ color: rgb(242, 116, 5);</string>
               <width>51</width>
               <height>38</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="toolTip">
              <string extracomment="1"/>
@@ -2218,6 +2332,9 @@ color: rgb(242, 116, 5);</string>
               <height>38</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -2237,6 +2354,9 @@ color: rgb(25, 25, 25);</string>
               <height>38</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -2255,6 +2375,9 @@ color: rgb(25, 25, 25);</string>
               <width>50</width>
               <height>38</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2336,6 +2459,9 @@ color: rgb(242, 116, 5);</string>
               <width>50</width>
               <height>38</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2496,6 +2622,9 @@ color: rgb(242, 116, 5);</string>
               <height>38</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -2514,6 +2643,9 @@ color: rgb(25, 25, 25);</string>
               <width>50</width>
               <height>38</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2534,6 +2666,9 @@ color: rgb(25, 25, 25);</string>
               <height>38</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -2552,6 +2687,9 @@ color: rgb(25, 25, 25);</string>
               <width>50</width>
               <height>38</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2593,6 +2731,9 @@ color: rgb(25, 25, 25);</string>
               <width>0</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2637,7 +2778,13 @@ color: rgb(242, 116, 5);</string>
            </layout>
           </item>
           <item row="6" column="0">
-           <layout class="QGridLayout" name="gridLayout_50">
+           <layout class="QGridLayout" name="gridLayout_50" rowstretch="0">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
             <item row="0" column="2">
              <widget class="QLabel" name="solveLabel">
               <property name="minimumSize">
@@ -2647,7 +2794,7 @@ color: rgb(242, 116, 5);</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">font: 10pt &quot;Roboto&quot;;
+               <string notr="true">font: 8pt &quot;Roboto&quot;;
 font-style: bold;
 color: rgb(242, 116, 5);</string>
               </property>
@@ -2656,6 +2803,9 @@ color: rgb(242, 116, 5);</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -2668,12 +2818,15 @@ color: rgb(242, 116, 5);</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">font: 10pt &quot;Roboto&quot;;
+               <string notr="true">font: 8pt &quot;Roboto&quot;;
 font-style: bold;
 color: rgb(87, 188, 255);</string>
               </property>
               <property name="text">
                <string>entry</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -2692,6 +2845,9 @@ color: rgb(87, 188, 255);</string>
               <width>0</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
@@ -2718,6 +2874,9 @@ color: rgb(25, 25, 25);</string>
               <height>0</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
 font-style: bold;
@@ -2742,6 +2901,9 @@ color: rgb(25, 25, 25);</string>
               <width>0</width>
               <height>0</height>
              </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 14pt &quot;Roboto&quot;;
