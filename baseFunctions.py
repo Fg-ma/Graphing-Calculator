@@ -1,6 +1,6 @@
 from variables import *
 from PyQt5.QtWidgets import QMainWindow
-from main import functions
+import math
 
 
 def secondFunction():
@@ -548,6 +548,11 @@ def upArrowFunction():
         selectionBarPos[0] = selectionBarPos[0] + 1
         selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
     elif (numLines[0] * 2) == selectionBarPos[0] and len(answerHistory) > numLines[0]:
+        if needSave[0] == "True":
+            needSave[0] = "False"
+            save[0] = lines[:]
+            save[1] = workingLinePos[0]
+            save[2] = numLines[0]
         inHistory[0] = "True"
         selectionBarTranslation[0] = -0.5
         for i in range(len(lines)):
@@ -581,3 +586,36 @@ def drawSelectionBarRest():
     for i in range(len(lines)):
         selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
     selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
+
+
+def inHistoryEvalFunction():
+    if (selectionBarPos[0] % 2) == 1:
+        answerPos = -math.ceil(selectionBarPos[0]/2)
+        answer = list(answerHistory.values())[answerPos]
+        answer = [*str(answer)]
+        for i in answer:
+            expressionList.append(i)
+            workingLine.append(i)
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    else:
+        problemPos = -math.ceil(selectionBarPos[0]/2)
+        problem = list(problemHistory.values())[problemPos]
+        problem = [*str(problem)]
+        for i in problem:
+            expressionList.append(i)
+            workingLine.append(i)
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    
+    # Variable cleanup
+    if needSave[0] == "False":
+        needSave[0] = "True"
+        lines.clear()
+        for i in save[0]:
+            lines.append(i)
+        workingLinePos[0] = save[1]
+        numLines[0] = save[2]
+    firstHistoryUpdate[0] = "True"
+    inHistory[0] = "False"
+    selectionBarPos[0] = 0

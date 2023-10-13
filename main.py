@@ -277,6 +277,8 @@ class MainWindowUI(QMainWindow):
                     upArrowFunction()
                 elif event.key() == Qt.Key_Down:
                     downArrowFunction()
+                elif event.key() == Qt.Key_Return:
+                    inHistoryEvalFunction()
         # Handles when the working line goes off screen
         offScreen()
 

@@ -61,12 +61,12 @@ def entryFunction():
     if remainingTriggers:
         isFourFunction[0] = "False"
 
-
-    expressionList.append(problem)
-    workingLine.append(problem)
-    for i in [*str(problem)]:
+    problem = [*str(problem)]
+    for i in problem:
+        expressionList.append(i)
+        workingLine.append(i)
         cursorPos[0] = cursorPos[0] + cursorPosDict[i]
-    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def arcsinFunction():

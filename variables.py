@@ -16,6 +16,8 @@ regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|s
 answerHistory = {}
 problemHistory = {}
 answerHistoryCount = [0]
+needSave = ["True"]
+save = ["lines", "workingLinePos", "numLines"]
 
 # Storage variables
 expressionList = []

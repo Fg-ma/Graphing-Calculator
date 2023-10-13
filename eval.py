@@ -1,10 +1,12 @@
 from variables import *
 from evalFunctions import *
+from secondFunctions import entryFunction
 
 def evaluate():
     expression = "".join(expressionList)
     # Handles empty evaluate events
     if not expression:
+        entryFunction()
         return
 
     # Set up variables
