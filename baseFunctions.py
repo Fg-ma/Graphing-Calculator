@@ -1,5 +1,6 @@
 from variables import *
 from PyQt5.QtWidgets import QMainWindow
+from main import functions
 
 
 def secondFunction():
@@ -539,8 +540,44 @@ def rightArrowFunction():
 
 
 def upArrowFunction():
-    print("up")
+    if (numLines[0] * 2) > selectionBarPos[0]:
+        inHistory[0] = "True"
+        selectionBarTranslation[0] = -0.5
+        for i in range(len(lines)):
+            selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
+        selectionBarPos[0] = selectionBarPos[0] + 1
+        selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
+    elif (numLines[0] * 2) == selectionBarPos[0] and len(answerHistory) > numLines[0]:
+        inHistory[0] = "True"
+        selectionBarTranslation[0] = -0.5
+        for i in range(len(lines)):
+            selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
+        selectionBarPos[0] = selectionBarPos[0] + 1
+        selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
+        numLines[0] = numLines[0] + 1
+        lines.append(numLines[0])
+        shouldLinesMove.append("move")
+        workingLinePos[0] = workingLinePos[0] + sizeOfShift
 
 
 def downArrowFunction():
-    print("down")
+    if selectionBarPos[0] != 0:
+        inHistory[0] = "True"
+        selectionBarTranslation[0] = -0.5
+        for i in range(len(lines)):
+            selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
+        selectionBarPos[0] = selectionBarPos[0] - 1
+        selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
+
+        # Handles exiting history mode
+        if selectionBarPos[0] == 0:
+            firstHistoryUpdate[0] = "True"
+            inHistory[0] = "False"
+            cursor()
+
+    
+def drawSelectionBarRest():
+    selectionBarTranslation[0] = -0.5
+    for i in range(len(lines)):
+        selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
+    selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)

@@ -89,10 +89,14 @@ cursorPosDict = {"general": 11, "1": 11, "2": 11,
                  "¹": 8, "{": 7, "}": 7,
                  "[":7 , "]": 7, "θ": 10,
                  "_": 7, ":": 5, "?": 8,
-                 "\"": 7}
+                 "\"": 7, "—": 7}
 cursorPos = [0]
 cursorInlinePosition = [-1]
 workingLineShifter = [0]
+selectionBarTranslation = [-0.5]
+selectionBarPos = [0]
+inHistory = ["False"]
+firstHistoryUpdate = ["True"]
 
 
 # Joins the list into a displayable value
@@ -102,10 +106,13 @@ def getRightStatusBarText():
 
 # Handles blinking cursor object
 def cursor():
-    global cursorObj
-    if cursorHolder[0] == "":
-        cursorHolder.clear()
-        cursorHolder.append(cursorObj[0])
-    else: 
+    if inHistory[0] == "False":
+        if cursorHolder[0] == "":
+            cursorHolder.clear()
+            cursorHolder.append(cursorObj[0])
+        else: 
+            cursorHolder.clear()
+            cursorHolder.append("")
+    else:
         cursorHolder.clear()
         cursorHolder.append("")
