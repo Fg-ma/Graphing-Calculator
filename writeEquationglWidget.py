@@ -31,9 +31,6 @@ class writeEquationglWidget(QGLWidget):
         glLoadIdentity()
         self.draw_ui()
 
-        # Updates dot line length when the screen changes sizes
-        self.dotLenght()
-
         # Draws status bar
         self.drawStatusBar()
 
@@ -78,29 +75,10 @@ class writeEquationglWidget(QGLWidget):
         self.renderText(8 + workingLineShifter[0], workingLinePos[0], inputLine)
 
         # Handles lines display answer history by referencing where the workingLine is
-        for line in lines:
-            lastProblemHistoryKey = list(problemHistory) [-1]
-            problemNumber = list(problemHistory) [int(lastProblemHistoryKey) - line]
-            problem = problemHistory[problemNumber]
-            self.renderText(8, workingLinePos[0]-(line*42), problem)
-
-            lastAnswerHistoryKey = list(answerHistory) [-1]
-            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - line]
-            answer = answerHistory[answerNumber]
-            rightAnsPosition = self.rightAnsLength(answer)
-            self.renderText(rightAnsPosition, 20+(workingLinePos[0]-(line*42)), answer)
-
-            self.renderText(0, 26+(workingLinePos[0]-((len(lines)-line+1)*42)), dots)
-
-
-    # Handles calculating length of the dotted lines seperating answers
-    def dotLenght(self):
-        global dots
-        screenWidth = self.width()
-        numDots = math.ceil(screenWidth / 4)
-        dots = ""
-        for i in range(numDots):
-            dots += "."
+        for equation in list(equations.keys()):
+            self.renderText(8, equationsPos[0], equations[equation][0] + "=" + equations[equation][1])
+            equationsPos[0] = equationsPos[0] + 32
+        equationsPos[0] = 52
 
 
     # Handles changing the position of the workingLine when there is a change
@@ -147,22 +125,3 @@ class writeEquationglWidget(QGLWidget):
         rightStatusBarText = getRightStatusBarText()
         self.renderText(8, 18, leftStatusBarText)
         self.renderText(rightStatusBarPosition, 18, rightStatusBarText)
-
-
-    def drawSelectionBar(self):
-        glEnable(GL_BLEND)
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
-        glTranslatef(-5.0, statusBarTranslation[0] - selectionBarTranslation[0], -5.1)
-        glColor4f(0.0, 0.3215686274, 0.8, 0.7)
-        glPolygonMode(GL_FRONT, GL_FILL)
-        glRectf(0.06, 0.3, self.width(), 0.06)
-        glFlush()
-
-
-    # Gets rightAnsLength length
-    def rightAnsLength(self, answer):
-        movebyFactor[0] = 0
-        for i in [*str(answer)]:
-            movebyFactor[0] = movebyFactor[0] + cursorPosDict[i]
-        rightAnsPosition = self.width() - 10 - movebyFactor[0]
-        return rightAnsPosition

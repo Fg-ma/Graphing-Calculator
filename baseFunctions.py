@@ -1,5 +1,4 @@
 from variables import *
-from PyQt5.QtWidgets import QMainWindow
 import math
 
 

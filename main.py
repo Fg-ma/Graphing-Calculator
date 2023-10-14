@@ -11,6 +11,9 @@ from eval import *
 from evalFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
+from eqBaseFunctions import *
+from eqAlphaFunctions import *
+from eqSecondFunctions import *
 from variables import *
 from keyBoardFunctions import *
 from mainglWidget import mainglWidget
@@ -59,18 +62,56 @@ class MainWindowUI(QMainWindow):
 
     # Handles switching to equations page
     def equationFunction(self):
-        self.stackedWidget.setCurrentIndex(1)
+        if self.stackedWidget.currentIndex() != 1:
+            self.stackedWidget.setCurrentIndex(1)
+
+            restFunction()
+
+            mainPageSave[0] = lines[:]
+            mainPageSave[1] = workingLinePos[0]
+            mainPageSave[2] = numLines[0]
+
+            workingLinePos[0] = 52
+            workingLineShifter[0] = 34
+            cursorInlinePosition[0] = -1
+            cursorPos[0] = 34
+            firstHistoryUpdate[0] = "True"
+            inHistory[0] = "False"
+            selectionBarPos[0] = 0
 
 
     # Handles quiting but and returning to main page
     def quitFunction(self):
-        secondResets()
-        self.stackedWidget.setCurrentIndex(0)   
+        if self.stackedWidget.currentIndex() != 0:
+            self.stackedWidget.setCurrentIndex(0)
+
+            secondResets()
+            restFunction()
+
+            if needSave[0] == "False":
+                needSave[0] = "True"
+                lines.clear()
+                for i in save[0]:
+                    lines.append(i)
+                workingLinePos[0] = save[1]
+                numLines[0] = save[2]
+            else:
+                lines.clear()
+                for i in mainPageSave[0]:
+                    lines.append(i)
+                workingLinePos[0] = mainPageSave[1]
+                numLines[0] = mainPageSave[2]
+            workingLineShifter[0] = 0
+            cursorInlinePosition[0] = -1
+            cursorPos[0] = 0
+            for i in expressionList:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
     # Handles keyboard events
     def keyPressEvent(self, event):
-        if inHistory[0] == "False":          
+        if inHistory[0] == "False" and ui.stackedWidget.currentIndex() == 0:          
             if event.modifiers() & Qt.ControlModifier:
                 if event.key() == Qt.Key_C:
                     functionTypeControlC()
@@ -269,7 +310,7 @@ class MainWindowUI(QMainWindow):
                     upArrowFunction()
                 elif event.key() == Qt.Key_Down:
                     downArrowFunction()
-        elif inHistory[0] == "True":
+        elif inHistory[0] == "True" and ui.stackedWidget.currentIndex() == 0:
             if event.modifiers() & Qt.ControlModifier:
                 pass
             elif event.modifiers() & Qt.ShiftModifier:
@@ -288,7 +329,7 @@ class MainWindowUI(QMainWindow):
 # Connects the buttons to the appropriate functions given the under the present condition
 def functions():
     # baseFunctions, secondFunctions, and alphaFunctions
-    if inHistory[0] == "False":
+    if inHistory[0] == "False" and ui.stackedWidget.currentIndex() == 0:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, function0)
             reconnectReset(ui.Number1.clicked, function1)
@@ -372,7 +413,7 @@ def functions():
             reconnectReset(ui.decimalButton.clicked, functionColon)
             reconnectReset(ui.negativeButton.clicked, functionQuestionMark)
             reconnectReset(ui.additionButton.clicked, functionDoubleQuotationMark)
-    if inHistory[0] == "True":
+    if inHistory[0] == "True" and ui.stackedWidget.currentIndex() == 0:
         reconnectReset(ui.Number0.clicked)
         reconnectReset(ui.Number1.clicked)
         reconnectReset(ui.Number2.clicked)
@@ -404,11 +445,94 @@ def functions():
         reconnectReset(ui.alphaButton.clicked)
         reconnectReset(ui.decimalButton.clicked)
         reconnectReset(ui.negativeButton.clicked)
-        reconnectReset(ui.equationButton.clicked)
+        reconnectReset(ui.equationButton.clicked, ui.equationFunction)
         reconnectReset(ui.variableButton.clicked)
         reconnectReset(ui.leftArrowButton.clicked)
         reconnectReset(ui.rightArrowButton.clicked)
-
+    if ui.stackedWidget.currentIndex() == 1:
+        if subcommands == []:
+            reconnectReset(ui.Number0.clicked, function0)
+            reconnectReset(ui.Number1.clicked, function1)
+            reconnectReset(ui.Number2.clicked, function2)
+            reconnectReset(ui.Number3.clicked, function3)
+            reconnectReset(ui.Number4.clicked, function4)
+            reconnectReset(ui.Number5.clicked, function5)
+            reconnectReset(ui.Number6.clicked, function6)
+            reconnectReset(ui.Number7.clicked, function7)
+            reconnectReset(ui.Number8.clicked, function8)
+            reconnectReset(ui.Number9.clicked, function9)
+            reconnectReset(ui.additionButton.clicked, additionFunction)
+            reconnectReset(ui.subtractionButton.clicked, subtractionFunction)
+            reconnectReset(ui.multiplicationButton.clicked, multiplicationFunction)
+            reconnectReset(ui.divisionButton.clicked, divisionFunction)
+            reconnectReset(ui.enterButton.clicked, evaluate)
+            reconnectReset(ui.rightParenthesesButton.clicked, rightParenthesesFunction)
+            reconnectReset(ui.leftParenthesesButton.clicked, leftParenthesesFunction)
+            reconnectReset(ui.commaButton.clicked, commaFunction)
+            reconnectReset(ui.squareButton.clicked, squareFunction)
+            reconnectReset(ui.logButton.clicked, logFunction)
+            reconnectReset(ui.lnButton.clicked, lnFunction)
+            reconnectReset(ui.powerButton.clicked, powerFunction)
+            reconnectReset(ui.tanButton.clicked, tanFunction)
+            reconnectReset(ui.cosButton.clicked, cosFunction)
+            reconnectReset(ui.sinButton.clicked, sinFunction)
+            reconnectReset(ui.inverseButton.clicked, inverseFunction)
+            reconnectReset(ui.clearButton.clicked, clearFunction)
+            reconnectReset(ui.secondButton.clicked, secondFunction)
+            reconnectReset(ui.alphaButton.clicked, alphaFunction)
+            reconnectReset(ui.decimalButton.clicked, decimalFunction)
+            reconnectReset(ui.negativeButton.clicked, negativeFunction)
+            reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+            reconnectReset(ui.variableButton.clicked, variableFunction)
+            reconnectReset(ui.leftArrowButton.clicked, leftArrowFunction)
+            reconnectReset(ui.rightArrowButton.clicked, rightArrowFunction)
+            reconnectReset(ui.upArrowButton.clicked, upArrowFunction)
+            reconnectReset(ui.downArrowButton.clicked, downArrowFunction)
+        elif subcommands == ["2nd"]:
+            reconnectReset(ui.negativeButton.clicked, ansFunction)
+            reconnectReset(ui.enterButton.clicked, entryFunction)
+            reconnectReset(ui.sinButton.clicked, arcsinFunction)
+            reconnectReset(ui.cosButton.clicked, arccosFunction)
+            reconnectReset(ui.tanButton.clicked, arctanFunction)
+            reconnectReset(ui.powerButton.clicked, piFunction)
+            reconnectReset(ui.modeButton.clicked, ui.quitFunction)
+            reconnectReset(ui.squareButton.clicked, squareRootFunction)
+            reconnectReset(ui.commaButton.clicked, scientificNotationFunction)
+            reconnectReset(ui.logButton.clicked, tentotheFunction)
+            reconnectReset(ui.leftParenthesesButton.clicked, leftCurlyBracketFunction)
+            reconnectReset(ui.rightParenthesesButton.clicked, rightCurlyBracketFunction)
+        elif subcommands == ["alpha"]:
+            reconnectReset(ui.mathButton.clicked, functionA)
+            reconnectReset(ui.appsButton.clicked, functionB)
+            reconnectReset(ui.programButton.clicked, functionC)
+            reconnectReset(ui.inverseButton.clicked, functionD)
+            reconnectReset(ui.sinButton.clicked, functionE)
+            reconnectReset(ui.cosButton.clicked, functionF)
+            reconnectReset(ui.tanButton.clicked, functionG)
+            reconnectReset(ui.powerButton.clicked, functionH)
+            reconnectReset(ui.squareButton.clicked, functionI)
+            reconnectReset(ui.commaButton.clicked, functionJ)
+            reconnectReset(ui.leftParenthesesButton.clicked, functionK)
+            reconnectReset(ui.rightParenthesesButton.clicked, functionL)
+            reconnectReset(ui.divisionButton.clicked, functionM)
+            reconnectReset(ui.logButton.clicked, functionN)
+            reconnectReset(ui.Number7.clicked, functionO)
+            reconnectReset(ui.Number8.clicked, functionP)
+            reconnectReset(ui.Number9.clicked, functionQ)
+            reconnectReset(ui.multiplicationButton.clicked, functionR)
+            reconnectReset(ui.lnButton.clicked, functionS)
+            reconnectReset(ui.Number4.clicked, functionT)
+            reconnectReset(ui.Number5.clicked, functionU)
+            reconnectReset(ui.Number6.clicked, functionV)
+            reconnectReset(ui.subtractionButton.clicked, functionW)
+            reconnectReset(ui.Number1.clicked, functionY)
+            reconnectReset(ui.stoButton.clicked, functionX)
+            reconnectReset(ui.Number2.clicked, functionZ)
+            reconnectReset(ui.Number3.clicked, functionTheta)
+            reconnectReset(ui.Number0.clicked, functionUnderscore)
+            reconnectReset(ui.decimalButton.clicked, functionColon)
+            reconnectReset(ui.negativeButton.clicked, functionQuestionMark)
+            reconnectReset(ui.additionButton.clicked, functionDoubleQuotationMark)
     # Handles when the working line goes off screen
     offScreen()
 

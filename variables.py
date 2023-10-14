@@ -23,6 +23,7 @@ save = ["lines", "workingLinePos", "numLines"]
 expressionList = []
 leftParentheses = []
 rightParentheses = []
+mainPageSave = ["lines", "workingLinePos", "numLines"]
 
 # Count variables
 position = 0
@@ -100,6 +101,16 @@ selectionBarPos = [0]
 maxLines = [5]
 inHistory = ["False"]
 firstHistoryUpdate = ["True"]
+
+# Eqation Page Variables
+equations = {"1": ["Y₁", ""], "2": ["Y₂", ""], "3": ["Y₃", ""],
+             "4": ["Y₄", ""], "5": ["Y₅", ""], "6": ["Y₆", ""],
+             "7": ["Y₇", ""], "8": ["Y₈", ""], "9": ["Y₉", ""],
+             "10": ["Y₁₀", ""], "11": ["Y₁₁", ""], "12": ["Y₁₂", ""],
+             "13": ["Y₁₃", ""], "14": ["Y₁₄", ""], "15": ["Y₁₅", ""],
+             "16": ["Y₁₆", ""], "17": ["Y₁₇", ""], "18": ["Y₁₈", ""],
+             "19": ["Y₁₉", ""], "20": ["Y₂₀", ""],}
+equationsPos = [0]
 
 
 # Joins the list into a displayable value
