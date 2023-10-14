@@ -48,7 +48,7 @@ movebyFactor = [0]
 
 # Status bar variables
 global rightStatusBarText
-statusBarTranslation = -1.0
+statusBarTranslation = [-1.0]
 leftStatusBarText = ["Place Holder"]
 rightStatusBarText = []
 rightStatusBarPosition = 0
@@ -97,6 +97,7 @@ cursorInlinePosition = [-1]
 workingLineShifter = [0]
 selectionBarTranslation = [-0.5]
 selectionBarPos = [0]
+maxLines = [5]
 inHistory = ["False"]
 firstHistoryUpdate = ["True"]
 

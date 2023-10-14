@@ -3,10 +3,8 @@ from PyQt5.uic import loadUi
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5 import QtGui
-from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
-from PyQt5 import QtCore, QtWidgets, QtOpenGL
+from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
 from baseFunctions import *
 from eval import *
@@ -15,7 +13,8 @@ from alphaFunctions import *
 from secondFunctions import *
 from variables import *
 from keyBoardFunctions import *
-import math
+from mainglWidget import mainglWidget
+from writeEquationglWidget import writeEquationglWidget
 
 # Program mainwindow
 class MainWindowUI(QMainWindow): 
@@ -25,14 +24,16 @@ class MainWindowUI(QMainWindow):
         loadUi("calculator.ui", self)
 
         # opengl widget
-        self.openglwidget = glWidget()
-        self.stackedWidget.insertWidget(0, self.openglwidget)
+        self.mainopenglwidget = mainglWidget()
+        self.stackedWidget.insertWidget(0, self.mainopenglwidget)
+        self.mainopenglwidget = writeEquationglWidget()
+        self.stackedWidget.insertWidget(1, self.mainopenglwidget)
         self.stackedWidget.setCurrentIndex(0)
 
         # Main window timer
         timer = QtCore.QTimer(self)
         timer.setInterval(20)
-        timer.timeout.connect(self.openglwidget.updateGL)
+        timer.timeout.connect(self.mainopenglwidget.updateGL)
         timer.timeout.connect(checkScreenUpdate)
         timer.start()
 
@@ -47,12 +48,13 @@ class MainWindowUI(QMainWindow):
 
     # Handles resize events
     def onResize(self, event):
+        global statusBarTranslation
         resizedHeight = self.height()
         windowHeightChange = 870 - resizedHeight
-        global statusBarTranslation
-        statusBarTranslation = -1.0 - (windowHeightChange * .00595)
+        statusBarTranslation[0] = -1.0 - (windowHeightChange * .00595)
         # Get rightStatusBarText length
-        self.openglwidget.rightStatusBarLength()
+        self.mainopenglwidget.rightStatusBarLength()
+        maxLines[0] = (self.mainopenglwidget.height() / 50)
 
 
     # Handles switching to equations page
@@ -60,7 +62,7 @@ class MainWindowUI(QMainWindow):
         self.stackedWidget.setCurrentIndex(1)
 
 
-    # Handles quiting but and returning to main pageA
+    # Handles quiting but and returning to main page
     def quitFunction(self):
         secondResets()
         self.stackedWidget.setCurrentIndex(0)   
@@ -283,6 +285,7 @@ class MainWindowUI(QMainWindow):
         offScreen()
 
 
+# Connects the buttons to the appropriate functions given the under the present condition
 def functions():
     # baseFunctions, secondFunctions, and alphaFunctions
     if inHistory[0] == "False":
@@ -384,7 +387,7 @@ def functions():
         reconnectReset(ui.subtractionButton.clicked)
         reconnectReset(ui.multiplicationButton.clicked)
         reconnectReset(ui.divisionButton.clicked)
-        reconnectReset(ui.enterButton.clicked)
+        reconnectReset(ui.enterButton.clicked, inHistoryEvalFunction)
         reconnectReset(ui.rightParenthesesButton.clicked)
         reconnectReset(ui.leftParenthesesButton.clicked)
         reconnectReset(ui.commaButton.clicked)
@@ -444,176 +447,22 @@ def restFunction():
     functions()
 
 
+# Handles when the working line goes beyond the edge of the opengl screen
 def offScreen():
-    workingDistanceToEdge = ui.openglwidget.width() - cursorPos[0]
+    workingDistanceToEdge = ui.mainopenglwidget.width() - cursorPos[0]
     if workingDistanceToEdge < 24:
         workingLineShifter[0] = workingLineShifter[0] - (24 - workingDistanceToEdge)
         cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
-    if workingDistanceToEdge > ui.openglwidget.width():
-        workingLineShifter[0] = workingLineShifter[0] - (ui.openglwidget.width() - workingDistanceToEdge)
-        cursorPos[0] = cursorPos[0] - (ui.openglwidget.width() - workingDistanceToEdge)
-
-class glWidget(QGLWidget):
-    # Intial parameters
-    def __init__(self, parent=None):
-        QGLWidget.__init__(self, parent)
-        self.setMinimumSize(352, 250)
-
-        # Intialize status bar variables
-        global leftStatusBarText
-        global rightStatusBarText
-        leftStatusBarText = "".join(leftStatusBarText)
-        rightStatusBarText = getRightStatusBarText()
-
-
-    # Continuously redraws screen
-    def paintGL(self):
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        glLoadIdentity()
-        self.draw_ui()
-
-        # Updates dot line length when the screen changes sizes
-        self.dotLenght()
-
-        # Draws status bar
-        self.drawStatusBar()
-
-        # Draws status bar
-        if inHistory[0] == "True":
-            self.drawSelectionBar()
-            drawSelectionBarRest()
-
-
-    # More parameters on intialization
-    def initializeGL(self):
-        glClearColor(0.945, 0.945, 0.945, 0.0)
-        glClearDepth(1.0)              
-        glDepthFunc(GL_LESS)
-        glEnable(GL_DEPTH_TEST)
-        glShadeModel(GL_SMOOTH)
-        glMatrixMode(GL_PROJECTION)
-        glLoadIdentity()                    
-        gluPerspective(45.0,1.33,0.1, 100.0) 
-        glMatrixMode(GL_MODELVIEW)
-
-
-    # Handles what is drawn
-    def draw_ui(self):
-        global workingLine
-        glUseProgram(0)
-
-        # Font color
-        glColor3f(0.2, 0.2, 0.2)
-
-        # Draws cursor
-        self.setFont(QFont("Cambria Math", 10))
-        self.renderText(7 + cursorPos[0], workingLinePos[0] + 6, cursorHolder[0])
-
-        # Font style
-        self.setFont(QFont("Cambria Math", 14))
-
-        # Compile lines into strings
-        inputLine = "".join(workingLine)
-
-        # Draws working line
-        self.renderText(8 + workingLineShifter[0], workingLinePos[0], inputLine)
-
-        # Handles lines display answer history by referencing where the workingLine is
-        for line in lines:
-            lastProblemHistoryKey = list(problemHistory) [-1]
-            problemNumber = list(problemHistory) [int(lastProblemHistoryKey) - line]
-            problem = problemHistory[problemNumber]
-            self.renderText(8, workingLinePos[0]-(line*42), problem)
-
-            lastAnswerHistoryKey = list(answerHistory) [-1]
-            answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - line]
-            answer = answerHistory[answerNumber]
-            rightAnsPosition = self.rightAnsLength(answer)
-            self.renderText(rightAnsPosition, 20+(workingLinePos[0]-(line*42)), answer)
-
-            self.renderText(0, 26+(workingLinePos[0]-((len(lines)-line+1)*42)), dots)
-
-
-    # Handles calculating length of the dotted lines seperating answers
-    def dotLenght(self):
-        global dots
-        screenWidth = self.width()
-        numDots = math.ceil(screenWidth / 4)
-        dots = ""
-        for dot in range(numDots):
-            dots += "."
-
-
-    # Handles changing the position of the workingLine when there is a change
-    def changingWorkingLines(self):
-        global workingLinePos
-        global maxWorkingLinePos
-        maxWorkingLinePos = self.height() - 12
-        if lines == []:
-            workingLinePos[0] = 22
-        else:
-            if shouldLinesMove != []:
-                workingLinePos[0] = workingLinePos[0] + sizeOfShift
-        if workingLinePos[0] > (maxWorkingLinePos):
-             workingLinePos[0] = maxWorkingLinePos
-
-        shouldLinesMove.clear()
-
-
-    # Get rightStatusBarText length
-    def rightStatusBarLength(self):
-        global rightStatusBarPosition
-        movebyFactor[0] = 0
-        for i in [*str(rightStatusBarText)]:
-            movebyFactor[0] = movebyFactor[0] + cursorPosDict[i]
-        rightStatusBarPosition = self.width() - 10 - movebyFactor[0]
-    
-
-    # Draws status bar
-    def drawStatusBar(self):
-        global leftStatusBarText
-        global rightStatusBarText
-
-        # Handles status bar
-        glTranslatef(-5.0, statusBarTranslation, -5.1)
-        glColor3f(0.2, 0.2, 0.2)
-        glPolygonMode(GL_FRONT, GL_FILL)
-        glRectf(1.0, 0.4, self.width(), 1.0)
-        glFlush()
-
-        # Handles status bar text
-        glColor3f(0.945, 0.945, 0.945)
-        self.rightStatusBarLength()
-        leftStatusBarText = "".join(leftStatusBarText)
-        rightStatusBarText = getRightStatusBarText()
-        self.renderText(8, 18, leftStatusBarText)
-        self.renderText(rightStatusBarPosition, 18, rightStatusBarText)
-
-
-    def drawSelectionBar(self):
-        glEnable(GL_BLEND)
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
-        glTranslatef(-5.0, statusBarTranslation - selectionBarTranslation[0], -5.1)
-        glColor4f(0.0, 0.3215686274, 0.8, 0.7)
-        glPolygonMode(GL_FRONT, GL_FILL)
-        glRectf(0.06, 0.3, self.width(), 0.06)
-        glFlush()
-
-
-    # Gets rightAnsLength length
-    def rightAnsLength(self, answer):
-        movebyFactor[0] = 0
-        for i in [*str(answer)]:
-            movebyFactor[0] = movebyFactor[0] + cursorPosDict[i]
-        rightAnsPosition = self.width() - 10 - movebyFactor[0]
-        return rightAnsPosition
+    if workingDistanceToEdge > ui.mainopenglwidget.width():
+        workingLineShifter[0] = workingLineShifter[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
+        cursorPos[0] = cursorPos[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
 
 
 # Updates values on OpenGl screen
 def checkScreenUpdate():
     if screenUpdate != []:
         screenUpdate.clear()
-        ui.openglwidget.changingWorkingLines()
+        ui.mainopenglwidget.changingWorkingLines()
     # Resets button functions
     if inHistory[0] == "True" and firstHistoryUpdate[0] == "True":
         firstHistoryUpdate[0] = "False"

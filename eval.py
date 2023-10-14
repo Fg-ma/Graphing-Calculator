@@ -64,6 +64,7 @@ def evaluate():
     # Conditional cleanup
     isFourFunction[0] = "True"
 
+
 def solver(expression):
     try:
         ans = eval(expression)
