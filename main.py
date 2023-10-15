@@ -29,16 +29,23 @@ class MainWindowUI(QMainWindow):
         # opengl widget
         self.mainopenglwidget = mainglWidget()
         self.stackedWidget.insertWidget(0, self.mainopenglwidget)
-        self.mainopenglwidget = writeEquationglWidget()
-        self.stackedWidget.insertWidget(1, self.mainopenglwidget)
+        self.eqopenglwidget = writeEquationglWidget()
+        self.stackedWidget.insertWidget(1, self.eqopenglwidget)
         self.stackedWidget.setCurrentIndex(0)
 
         # Main window timer
-        timer = QtCore.QTimer(self)
-        timer.setInterval(20)
-        timer.timeout.connect(self.mainopenglwidget.updateGL)
-        timer.timeout.connect(checkScreenUpdate)
-        timer.start()
+        mainTimer = QtCore.QTimer(self)
+        mainTimer.setInterval(20)
+        mainTimer.timeout.connect(self.mainopenglwidget.updateGL)
+        mainTimer.timeout.connect(checkScreenUpdate)
+        mainTimer.start()
+        
+        # Main window timer
+        eqTimer = QtCore.QTimer(self)
+        eqTimer.setInterval(20)
+        eqTimer.timeout.connect(self.eqopenglwidget.updateGL)
+        eqTimer.timeout.connect(checkScreenUpdate)
+        eqTimer.start()
 
         # Cursor blink timer
         Ctimer = QtCore.QTimer(self)
@@ -74,7 +81,9 @@ class MainWindowUI(QMainWindow):
             workingLinePos[0] = 52
             workingLineShifter[0] = 34
             cursorInlinePosition[0] = -1
-            cursorPos[0] = 34
+            cursorPos[0] = 14
+            for i in equations[str(activeFunction[0])][0]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
             firstHistoryUpdate[0] = "True"
             inHistory[0] = "False"
             selectionBarPos[0] = 0
@@ -230,6 +239,8 @@ class MainWindowUI(QMainWindow):
                     functionTypeLeftBracket()
                 elif event.key() == Qt.Key_BracketRight:
                     functionTypeRightBracket()
+                elif event.key() == Qt.Key_Comma:
+                    commaFunction()
                 elif event.key() == Qt.Key_0:
                     function0()
                 elif event.key() == Qt.Key_1:
@@ -451,43 +462,43 @@ def functions():
         reconnectReset(ui.rightArrowButton.clicked)
     if ui.stackedWidget.currentIndex() == 1:
         if subcommands == []:
-            reconnectReset(ui.Number0.clicked, function0)
-            reconnectReset(ui.Number1.clicked, function1)
-            reconnectReset(ui.Number2.clicked, function2)
-            reconnectReset(ui.Number3.clicked, function3)
-            reconnectReset(ui.Number4.clicked, function4)
-            reconnectReset(ui.Number5.clicked, function5)
-            reconnectReset(ui.Number6.clicked, function6)
-            reconnectReset(ui.Number7.clicked, function7)
-            reconnectReset(ui.Number8.clicked, function8)
-            reconnectReset(ui.Number9.clicked, function9)
-            reconnectReset(ui.additionButton.clicked, additionFunction)
-            reconnectReset(ui.subtractionButton.clicked, subtractionFunction)
-            reconnectReset(ui.multiplicationButton.clicked, multiplicationFunction)
-            reconnectReset(ui.divisionButton.clicked, divisionFunction)
+            reconnectReset(ui.Number0.clicked, eqFunction0)
+            reconnectReset(ui.Number1.clicked, eqFunction1)
+            reconnectReset(ui.Number2.clicked, eqFunction2)
+            reconnectReset(ui.Number3.clicked, eqFunction3)
+            reconnectReset(ui.Number4.clicked, eqFunction4)
+            reconnectReset(ui.Number5.clicked, eqFunction5)
+            reconnectReset(ui.Number6.clicked, eqFunction6)
+            reconnectReset(ui.Number7.clicked, eqFunction7)
+            reconnectReset(ui.Number8.clicked, eqFunction8)
+            reconnectReset(ui.Number9.clicked, eqFunction9)
+            reconnectReset(ui.additionButton.clicked, eqAdditionFunction)
+            reconnectReset(ui.subtractionButton.clicked, eqSubtractionFunction)
+            reconnectReset(ui.multiplicationButton.clicked, eqMultiplicationFunction)
+            reconnectReset(ui.divisionButton.clicked, eqDivisionFunction)
             reconnectReset(ui.enterButton.clicked, evaluate)
-            reconnectReset(ui.rightParenthesesButton.clicked, rightParenthesesFunction)
-            reconnectReset(ui.leftParenthesesButton.clicked, leftParenthesesFunction)
-            reconnectReset(ui.commaButton.clicked, commaFunction)
-            reconnectReset(ui.squareButton.clicked, squareFunction)
-            reconnectReset(ui.logButton.clicked, logFunction)
-            reconnectReset(ui.lnButton.clicked, lnFunction)
-            reconnectReset(ui.powerButton.clicked, powerFunction)
-            reconnectReset(ui.tanButton.clicked, tanFunction)
-            reconnectReset(ui.cosButton.clicked, cosFunction)
-            reconnectReset(ui.sinButton.clicked, sinFunction)
-            reconnectReset(ui.inverseButton.clicked, inverseFunction)
-            reconnectReset(ui.clearButton.clicked, clearFunction)
+            reconnectReset(ui.rightParenthesesButton.clicked, eqRightParenthesesFunction)
+            reconnectReset(ui.leftParenthesesButton.clicked, eqLeftParenthesesFunction)
+            reconnectReset(ui.commaButton.clicked, eqCommaFunction)
+            reconnectReset(ui.squareButton.clicked, eqSquareFunction)
+            reconnectReset(ui.logButton.clicked, eqLogFunction)
+            reconnectReset(ui.lnButton.clicked, eqLnFunction)
+            reconnectReset(ui.powerButton.clicked, eqPowerFunction)
+            reconnectReset(ui.tanButton.clicked, eqTanFunction)
+            reconnectReset(ui.cosButton.clicked, eqCosFunction)
+            reconnectReset(ui.sinButton.clicked, eqSinFunction)
+            reconnectReset(ui.inverseButton.clicked, eqInverseFunction)
+            reconnectReset(ui.clearButton.clicked, eqClearFunction)
             reconnectReset(ui.secondButton.clicked, secondFunction)
             reconnectReset(ui.alphaButton.clicked, alphaFunction)
-            reconnectReset(ui.decimalButton.clicked, decimalFunction)
-            reconnectReset(ui.negativeButton.clicked, negativeFunction)
+            reconnectReset(ui.decimalButton.clicked, eqDecimalFunction)
+            reconnectReset(ui.negativeButton.clicked, eqNegativeFunction)
             reconnectReset(ui.equationButton.clicked, ui.equationFunction)
-            reconnectReset(ui.variableButton.clicked, variableFunction)
-            reconnectReset(ui.leftArrowButton.clicked, leftArrowFunction)
-            reconnectReset(ui.rightArrowButton.clicked, rightArrowFunction)
-            reconnectReset(ui.upArrowButton.clicked, upArrowFunction)
-            reconnectReset(ui.downArrowButton.clicked, downArrowFunction)
+            reconnectReset(ui.variableButton.clicked, eqVariableFunction)
+            reconnectReset(ui.leftArrowButton.clicked, eqLeftArrowFunction)
+            reconnectReset(ui.rightArrowButton.clicked, eqRightArrowFunction)
+            reconnectReset(ui.upArrowButton.clicked, eqUpArrowFunction)
+            reconnectReset(ui.downArrowButton.clicked, eqDownArrowFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -571,22 +582,39 @@ def restFunction():
     functions()
 
 
-# Handles when the working line goes beyond the edge of the opengl screen
+# Handles when the working line goes beyond the edge of the opengl screen horizontally
 def offScreen():
-    workingDistanceToEdge = ui.mainopenglwidget.width() - cursorPos[0]
-    if workingDistanceToEdge < 24:
-        workingLineShifter[0] = workingLineShifter[0] - (24 - workingDistanceToEdge)
-        cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
-    if workingDistanceToEdge > ui.mainopenglwidget.width():
-        workingLineShifter[0] = workingLineShifter[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
-        cursorPos[0] = cursorPos[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
+    if ui.stackedWidget.currentIndex() == 0:
+        workingDistanceToEdge = ui.mainopenglwidget.width() - cursorPos[0]
+        if workingDistanceToEdge < 24:
+            workingLineShifter[0] = workingLineShifter[0] - (24 - workingDistanceToEdge)
+            cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
+        if workingDistanceToEdge > ui.mainopenglwidget.width():
+            workingLineShifter[0] = workingLineShifter[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
+            cursorPos[0] = cursorPos[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
+    if ui.stackedWidget.currentIndex() == 1:
+        workingDistanceToEdge = ui.eqopenglwidget.width() - cursorPos[0]
+        if workingDistanceToEdge < 24:
+            equationsPosHorizontalShift[str(activeFunction[0])] = equationsPosHorizontalShift[str(activeFunction[0])] - (24 - workingDistanceToEdge)
+            cursorPos[0] = cursorPos[0] - (24 - workingDistanceToEdge)
+        if workingDistanceToEdge > ui.eqopenglwidget.width():
+            equationsPosHorizontalShift[str(activeFunction[0])] = equationsPosHorizontalShift[str(activeFunction[0])] - (ui.eqopenglwidget.width() - workingDistanceToEdge)
+            cursorPos[0] = cursorPos[0] - (ui.eqopenglwidget.width() - workingDistanceToEdge)
+        if cursorInlinePosition[0] == -1:
+            cursorPos[0] = 14
+            for i in equations[str(activeFunction[0])][0]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            equationsPosHorizontalShift[str(activeFunction[0])] = 0
 
 
 # Updates values on OpenGl screen
 def checkScreenUpdate():
+    # Handles screen updates
     if screenUpdate != []:
         screenUpdate.clear()
         ui.mainopenglwidget.changingWorkingLines()
+        ui.eqopenglwidget.eqChangingWorkingLines()
+    
     # Resets button functions
     if inHistory[0] == "True" and firstHistoryUpdate[0] == "True":
         firstHistoryUpdate[0] = "False"

@@ -63,36 +63,27 @@ class writeEquationglWidget(QGLWidget):
 
         # Draws cursor
         self.setFont(QFont("Cambria Math", 10))
-        self.renderText(7 + cursorPos[0], workingLinePos[0] + 6, cursorHolder[0])
+        self.renderText(7 + cursorPos[0], (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0], cursorHolder[0])
 
         # Font style
         self.setFont(QFont("Cambria Math", 14))
 
-        # Compile lines into strings
-        inputLine = "".join(workingLine)
-
-        # Draws working line
-        self.renderText(8 + workingLineShifter[0], workingLinePos[0], inputLine)
-
         # Handles lines display answer history by referencing where the workingLine is
         for equation in list(equations.keys()):
-            self.renderText(8, equationsPos[0], equations[equation][0] + "=" + equations[equation][1])
-            equationsPos[0] = equationsPos[0] + 32
-        equationsPos[0] = 52
+            equationsPos[0] = int(equation) * 32
+            self.renderText(8 + equationsPosHorizontalShift[equation], equationsPos[0] + 18 - equationsPosVerticalShift[0], equations[equation][0] + "=" + "".join(equations[equation][1]))
 
 
     # Handles changing the position of the workingLine when there is a change
-    def changingWorkingLines(self):
+    def eqChangingWorkingLines(self):
         global workingLinePos
         global maxWorkingLinePos
         maxWorkingLinePos = self.height() - 12
-        if lines == []:
-            workingLinePos[0] = 22
-        else:
-            if shouldLinesMove != []:
-                workingLinePos[0] = workingLinePos[0] + sizeOfShift
-        if workingLinePos[0] > (maxWorkingLinePos):
-             workingLinePos[0] = maxWorkingLinePos
+
+        if (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0] >= maxWorkingLinePos:
+            equationsPosVerticalShift[0] = equationsPosVerticalShift[0] + 32
+        elif (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0] <= 24:
+            equationsPosVerticalShift[0] = equationsPosVerticalShift[0] - 32
 
         shouldLinesMove.clear()
 

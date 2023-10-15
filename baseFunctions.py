@@ -314,14 +314,14 @@ def clearFunction():
 
 
 def commaFunction():
-    cursorPos[0] = cursorPos[0] + cursorPosDict[", "]
+    cursorPos[0] = cursorPos[0] + cursorPosDict[","]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        expressionList[cursorInlinePosition[0]] = ", "
-        workingLine[cursorInlinePosition[0]] = ", "
+        expressionList[cursorInlinePosition[0]] = ","
+        workingLine[cursorInlinePosition[0]] = ","
     except:
-        expressionList.append(", ")
-        workingLine.append(", ")
+        expressionList.append(",")
+        workingLine.append(",")
 
 
 def squareFunction():
