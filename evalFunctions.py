@@ -24,6 +24,13 @@ def simplifyExpression(expression):
     for trig in occ:
         remainingTriggers.append(trig.group())
 
+        # Gets rid of and Ans keywords
+        if trig.group() == "Ans":
+            remainingTriggers.pop()
+            simplified = evalAns()
+            expression = expression[:trig.span()[0]] + str(simplified) + expression[trig.span()[1]:]
+
+
     # While there are still trigger words it keeps checking through them for thr inner most and solving its way out
     while remainingTriggers and domainError[0] == "False":
         # Handles the first iteration where there is no subexpression yet, then sends the subexpression through every other time
@@ -33,10 +40,9 @@ def simplifyExpression(expression):
         else:
             expressionSearch(subexpression)
 
-
-        # Gets the subexpression using the position of the triggers in subexpression 
+        # Gets the subexpression using the position of the triggers in subexpression
         subexpression = expression[firstTriggerPos[1]+firstTriggerPosShifter:firstTriggerPos[1]+firstTriggerPosShifter+abs(firstTriggerEndingPos[0]-firstTriggerPos[1])]
-        
+
         # An object(suboccurance) that contains all the information about the triggers
         subocc = re.finditer(regex, subexpression)
 
@@ -228,3 +234,12 @@ def evalSquareRoot(simpleExpression):
 def evalE(simpleExpression):
     pass
 
+
+def evalAns():
+    try:
+        lastAnswerHistoryKey = list(answerHistory) [-1]
+        answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
+        ans = answerHistory[answerNumber]
+    except:
+        ans = "Error"
+    return ans

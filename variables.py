@@ -10,7 +10,7 @@ firstTriggerPosShifter = 0
 domainError = ["False"]
 
 # Key word search
-regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\()"
+regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\(|Ans)"
 
 # History variables
 answerHistory = {}
@@ -96,7 +96,7 @@ cursorPosDict = {"general": 11, "1": 11, "2": 11,
                  "₁": 8, "₂": 8, "₃": 8,
                  "₄": 8, "₅": 8, "₆": 8,
                  "₇": 8, "₈": 8, "₉": 8,
-                 "₀": 8, "=": 14}
+                 "₀": 8, "=": 14, "Ans": 31}
 cursorPos = [0]
 cursorInlinePosition = [-1]
 workingLineShifter = [0]
@@ -143,3 +143,11 @@ def cursor():
     else:
         cursorHolder.clear()
         cursorHolder.append("")
+
+
+# Resets selection bat
+def drawSelectionBarRest():
+    selectionBarTranslation[0] = -0.5
+    for i in range(len(lines)):
+        selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
+    selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)

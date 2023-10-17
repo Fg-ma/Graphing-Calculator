@@ -2,17 +2,11 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
-from baseFunctions import *
-from eval import *
-from evalFunctions import *
-from alphaFunctions import *
-from secondFunctions import *
 from variables import *
-from keyBoardFunctions import *
 import math
 
 
-class mainglWidget(QGLWidget):
+class mainGlWidget(QGLWidget):
     # Intial parameters
     def __init__(self, parent=None):
         QGLWidget.__init__(self, parent)
@@ -37,7 +31,7 @@ class mainglWidget(QGLWidget):
         # Draws status bar
         self.drawStatusBar()
 
-        # Draws status bar
+        # Draws selection bar
         if inHistory[0] == "True":
             self.drawSelectionBar()
             drawSelectionBarRest()

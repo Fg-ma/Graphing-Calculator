@@ -13,17 +13,14 @@ def secondResets():
 
 def ansFunction():
     secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["Ans"]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        lastAnswerHistoryKey = list(answerHistory) [-1]
-        answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
-        answer = answerHistory[answerNumber]
-        expressionList.append(str(answer))
-        workingLine.append(str(answer))
-        for i in [*str(answer)]:
-            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
-        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+        expressionList[cursorInlinePosition[0]] = "Ans"
+        workingLine[cursorInlinePosition[0]] = "Ans"
     except:
-        pass
+        expressionList.append("Ans")
+        workingLine.append("Ans")
 
 
 def entryFunction():
@@ -177,7 +174,7 @@ def rightCurlyBracketFunction():
         workingLine.append("}")
 
     
-def functionTypeLeftBracket():
+def leftBracketFunction():
     secondResets()
     cursorPos[0] = cursorPos[0] + cursorPosDict["["]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
@@ -189,7 +186,7 @@ def functionTypeLeftBracket():
         workingLine.append("[")
 
 
-def functionTypeRightBracket():
+def rightBracketFunction():
     secondResets()
     cursorPos[0] = cursorPos[0] + cursorPosDict["]"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1

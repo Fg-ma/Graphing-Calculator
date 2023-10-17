@@ -579,13 +579,6 @@ def downArrowFunction():
             inHistory[0] = "False"
             cursor()
 
-    
-def drawSelectionBarRest():
-    selectionBarTranslation[0] = -0.5
-    for i in range(len(lines)):
-        selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
-    selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
-
 
 def inHistoryEvalFunction():
     if (selectionBarPos[0] % 2) == 1:

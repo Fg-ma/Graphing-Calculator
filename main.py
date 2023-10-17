@@ -6,18 +6,23 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtOpenGL import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
-from baseFunctions import *
+
+from variables import *
+
+from mainGlWidget import mainGlWidget
 from eval import *
 from evalFunctions import *
+from baseFunctions import *
 from alphaFunctions import *
 from secondFunctions import *
+from keyboardFunctions import *
+
+from writeEquationGlWidget import writeEquationGlWidget
 from eqBaseFunctions import *
 from eqAlphaFunctions import *
 from eqSecondFunctions import *
-from variables import *
-from keyBoardFunctions import *
-from mainglWidget import mainglWidget
-from writeEquationglWidget import writeEquationglWidget
+from eqKeyboardFunctions import *
+
 
 # Program mainwindow
 class MainWindowUI(QMainWindow): 
@@ -27,9 +32,9 @@ class MainWindowUI(QMainWindow):
         loadUi("calculator.ui", self)
 
         # opengl widget
-        self.mainopenglwidget = mainglWidget()
+        self.mainopenglwidget = mainGlWidget()
         self.stackedWidget.insertWidget(0, self.mainopenglwidget)
-        self.eqopenglwidget = writeEquationglWidget()
+        self.eqopenglwidget = writeEquationGlWidget()
         self.stackedWidget.insertWidget(1, self.eqopenglwidget)
         self.stackedWidget.setCurrentIndex(0)
 
@@ -236,9 +241,9 @@ class MainWindowUI(QMainWindow):
                 elif event.key() == Qt.Key_Period:
                     decimalFunction()
                 elif event.key() == Qt.Key_BracketLeft:
-                    functionTypeLeftBracket()
+                    leftBracketFunction()
                 elif event.key() == Qt.Key_BracketRight:
-                    functionTypeRightBracket()
+                    rightBracketFunction()
                 elif event.key() == Qt.Key_Comma:
                     commaFunction()
                 elif event.key() == Qt.Key_0:
@@ -333,6 +338,204 @@ class MainWindowUI(QMainWindow):
                     downArrowFunction()
                 elif event.key() == Qt.Key_Return:
                     inHistoryEvalFunction()
+        elif ui.stackedWidget.currentIndex() == 1:
+            if event.modifiers() & Qt.ControlModifier:
+                if event.key() == Qt.Key_C:
+                    eqFunctionTypeControlC()
+                elif event.key() == Qt.Key_V:
+                    eqFunctionTypeControlV()
+                elif event.key() == Qt.Key_Z:
+                    eqFunctionTypeControlZ()
+                elif event.key() == Qt.Key_Backspace:
+                    eqClearFunction()
+                elif event.key() == Qt.Key_Delete:
+                    eqClearFunction()
+            elif event.modifiers() & Qt.ShiftModifier:
+                if event.key() == Qt.Key_Plus:
+                    eqAdditionFunction()
+                elif event.key() == Qt.Key_ParenRight:
+                    eqRightParenthesesFunction()
+                elif event.key() == Qt.Key_BraceLeft:
+                    eqLeftCurlyBracketFunction()
+                elif event.key() == Qt.Key_BraceRight:
+                    eqRightCurlyBracketFunction()
+                elif event.key() == Qt.Key_Exclam:
+                    eqFunctionTypeExclamation()
+                elif event.key() == Qt.Key_Underscore:
+                    eqFunctionUnderscore()
+                elif event.key() == Qt.Key_Colon:
+                    eqFunctionColon()
+                elif event.key() == Qt.Key_Question:
+                    eqFunctionQuestionMark()
+                elif event.key() == Qt.Key_QuoteDbl:
+                    eqFunctionDoubleQuotationMark()
+                elif event.key() == Qt.Key_At:
+                    eqFunctionTypeAt()
+                elif event.key() == Qt.Key_NumberSign:
+                    eqFunctionTypeNumberSign()
+                elif event.key() == Qt.Key_Dollar:
+                    eqFunctionTypeDollarSign()
+                elif event.key() == Qt.Key_Percent:
+                    eqFunctionTypePercent()
+                elif event.key() == Qt.Key_AsciiCircum:
+                    eqPowerFunction()
+                elif event.key() == Qt.Key_Ampersand:
+                    eqFunctionTypeAmpersand()
+                elif event.key() == Qt.Key_Asterisk:
+                    eqMultiplicationFunction()
+                elif event.key() == Qt.Key_ParenLeft:
+                    eqLeftParenthesesFunction()
+                elif event.key() == Qt.Key_A:
+                    eqFunctionA()
+                elif event.key() == Qt.Key_B:
+                    eqFunctionB()
+                elif event.key() == Qt.Key_C:
+                    eqFunctionC()
+                elif event.key() == Qt.Key_D:
+                    eqFunctionD()
+                elif event.key() == Qt.Key_E:
+                    eqFunctionE()
+                elif event.key() == Qt.Key_F:
+                    eqFunctionF()
+                elif event.key() == Qt.Key_G:
+                    eqFunctionG()
+                elif event.key() == Qt.Key_H:
+                    eqFunctionH()
+                elif event.key() == Qt.Key_I:
+                    eqFunctionI()
+                elif event.key() == Qt.Key_J:
+                    eqFunctionJ()
+                elif event.key() == Qt.Key_K:
+                    eqFunctionK()
+                elif event.key() == Qt.Key_L:
+                    eqFunctionL()
+                elif event.key() == Qt.Key_M:
+                    eqFunctionM()
+                elif event.key() == Qt.Key_N:
+                    eqFunctionN()
+                elif event.key() == Qt.Key_O:
+                    eqFunctionO()
+                elif event.key() == Qt.Key_P:
+                    eqFunctionP()
+                elif event.key() == Qt.Key_Q:
+                    eqFunctionQ()
+                elif event.key() == Qt.Key_R:
+                    eqFunctionR()
+                elif event.key() == Qt.Key_S:
+                    eqFunctionS()
+                elif event.key() == Qt.Key_T:
+                    eqFunctionT()
+                elif event.key() == Qt.Key_U:
+                    eqFunctionU()
+                elif event.key() == Qt.Key_V:
+                    eqFunctionV()
+                elif event.key() == Qt.Key_W:
+                    eqFunctionW()
+                elif event.key() == Qt.Key_X:
+                    eqFunctionX() 
+                elif event.key() == Qt.Key_Y:
+                    eqFunctionY()
+                elif event.key() == Qt.Key_Z:
+                    eqFunctionZ()
+            else:
+                if event.key() == Qt.Key_Return:
+                    eqEvaluate()
+                elif event.key() == Qt.Key_Backspace:
+                    eqFunctionTypeBackspace()
+                elif event.key() == Qt.Key_Delete:
+                    eqFunctionTypeDelete()
+                elif event.key() == Qt.Key_Minus:
+                    eqNegativeFunction()
+                elif event.key() == Qt.Key_Slash:
+                    eqDivisionFunction()
+                elif event.key() == Qt.Key_Period:
+                    eqDecimalFunction()
+                elif event.key() == Qt.Key_BracketLeft:
+                    eqLeftBracketFunction()
+                elif event.key() == Qt.Key_BracketRight:
+                    eqRightBracketFunction()
+                elif event.key() == Qt.Key_Comma:
+                    eqCommaFunction()
+                elif event.key() == Qt.Key_0:
+                    eqFunction0()
+                elif event.key() == Qt.Key_1:
+                    eqFunction1()
+                elif event.key() == Qt.Key_2:
+                    eqFunction2()
+                elif event.key() == Qt.Key_3:
+                    eqFunction3()
+                elif event.key() == Qt.Key_4:
+                    eqFunction4()
+                elif event.key() == Qt.Key_5:
+                    eqFunction5()
+                elif event.key() == Qt.Key_6:
+                    eqFunction6()
+                elif event.key() == Qt.Key_7:
+                    eqFunction7()
+                elif event.key() == Qt.Key_8:
+                    eqFunction8()
+                elif event.key() == Qt.Key_9:
+                    eqFunction9()
+                elif event.key() == Qt.Key_A:
+                    eqFunctionTypea()
+                elif event.key() == Qt.Key_B:
+                    eqFunctionTypeb()
+                elif event.key() == Qt.Key_C:
+                    eqFunctionTypec()
+                elif event.key() == Qt.Key_D:
+                    eqFunctionTyped()
+                elif event.key() == Qt.Key_E:
+                    eqFunctionTypee()
+                elif event.key() == Qt.Key_F:
+                    eqFunctionTypef()
+                elif event.key() == Qt.Key_G:
+                    eqFunctionTypeg()
+                elif event.key() == Qt.Key_H:
+                    eqFunctionTypeh()
+                elif event.key() == Qt.Key_I:
+                    eqFunctionTypei()
+                elif event.key() == Qt.Key_J:
+                    eqFunctionTypej()
+                elif event.key() == Qt.Key_K:
+                    eqFunctionTypek()
+                elif event.key() == Qt.Key_L:
+                    eqFunctionTypel()
+                elif event.key() == Qt.Key_M:
+                    eqFunctionTypem()
+                elif event.key() == Qt.Key_N:
+                    eqFunctionTypen()
+                elif event.key() == Qt.Key_O:
+                    eqFunctionTypeo()
+                elif event.key() == Qt.Key_P:
+                    eqFunctionTypep()
+                elif event.key() == Qt.Key_Q:
+                    eqFunctionTypeq()
+                elif event.key() == Qt.Key_R:
+                    eqFunctionTyper()
+                elif event.key() == Qt.Key_S:
+                    eqFunctionTypes()
+                elif event.key() == Qt.Key_T:
+                    eqFunctionTypet()
+                elif event.key() == Qt.Key_U:
+                    eqFunctionTypeu()
+                elif event.key() == Qt.Key_V:
+                    eqFunctionTypev()
+                elif event.key() == Qt.Key_W:
+                    eqFunctionTypew()
+                elif event.key() == Qt.Key_X:
+                    eqFunctionTypex() 
+                elif event.key() == Qt.Key_Y:
+                    eqFunctionTypey()
+                elif event.key() == Qt.Key_Z:
+                    eqFunctionTypez()
+                elif event.key() == Qt.Key_Left:
+                    eqLeftArrowFunction()
+                elif event.key() == Qt.Key_Right:
+                    eqRightArrowFunction()
+                elif event.key() == Qt.Key_Up:
+                    eqUpArrowFunction()
+                elif event.key() == Qt.Key_Down:
+                    eqDownArrowFunction()
         # Handles when the working line goes off screen
         offScreen()
 
@@ -392,7 +595,10 @@ def functions():
             reconnectReset(ui.logButton.clicked, tentotheFunction)
             reconnectReset(ui.leftParenthesesButton.clicked, leftCurlyBracketFunction)
             reconnectReset(ui.rightParenthesesButton.clicked, rightCurlyBracketFunction)
+            reconnectReset(ui.multiplicationButton.clicked, leftBracketFunction)
+            reconnectReset(ui.subtractionButton.clicked, rightBracketFunction)
         elif subcommands == ["alpha"]:
+            reconnectReset(ui.enterButton.clicked)
             reconnectReset(ui.mathButton.clicked, functionA)
             reconnectReset(ui.appsButton.clicked, functionB)
             reconnectReset(ui.programButton.clicked, functionC)
@@ -424,7 +630,7 @@ def functions():
             reconnectReset(ui.decimalButton.clicked, functionColon)
             reconnectReset(ui.negativeButton.clicked, functionQuestionMark)
             reconnectReset(ui.additionButton.clicked, functionDoubleQuotationMark)
-    if inHistory[0] == "True" and ui.stackedWidget.currentIndex() == 0:
+    elif inHistory[0] == "True" and ui.stackedWidget.currentIndex() == 0:
         reconnectReset(ui.Number0.clicked)
         reconnectReset(ui.Number1.clicked)
         reconnectReset(ui.Number2.clicked)
@@ -460,7 +666,7 @@ def functions():
         reconnectReset(ui.variableButton.clicked)
         reconnectReset(ui.leftArrowButton.clicked)
         reconnectReset(ui.rightArrowButton.clicked)
-    if ui.stackedWidget.currentIndex() == 1:
+    elif ui.stackedWidget.currentIndex() == 1:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, eqFunction0)
             reconnectReset(ui.Number1.clicked, eqFunction1)
@@ -476,7 +682,7 @@ def functions():
             reconnectReset(ui.subtractionButton.clicked, eqSubtractionFunction)
             reconnectReset(ui.multiplicationButton.clicked, eqMultiplicationFunction)
             reconnectReset(ui.divisionButton.clicked, eqDivisionFunction)
-            reconnectReset(ui.enterButton.clicked, evaluate)
+            reconnectReset(ui.enterButton.clicked, eqEvaluate)
             reconnectReset(ui.rightParenthesesButton.clicked, eqRightParenthesesFunction)
             reconnectReset(ui.leftParenthesesButton.clicked, eqLeftParenthesesFunction)
             reconnectReset(ui.commaButton.clicked, eqCommaFunction)
@@ -489,8 +695,8 @@ def functions():
             reconnectReset(ui.sinButton.clicked, eqSinFunction)
             reconnectReset(ui.inverseButton.clicked, eqInverseFunction)
             reconnectReset(ui.clearButton.clicked, eqClearFunction)
-            reconnectReset(ui.secondButton.clicked, secondFunction)
-            reconnectReset(ui.alphaButton.clicked, alphaFunction)
+            reconnectReset(ui.secondButton.clicked, eqSecondFunction)
+            reconnectReset(ui.alphaButton.clicked, eqAlphaFunction)
             reconnectReset(ui.decimalButton.clicked, eqDecimalFunction)
             reconnectReset(ui.negativeButton.clicked, eqNegativeFunction)
             reconnectReset(ui.equationButton.clicked, ui.equationFunction)
@@ -500,50 +706,53 @@ def functions():
             reconnectReset(ui.upArrowButton.clicked, eqUpArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, eqDownArrowFunction)
         elif subcommands == ["2nd"]:
-            reconnectReset(ui.negativeButton.clicked, ansFunction)
-            reconnectReset(ui.enterButton.clicked, entryFunction)
-            reconnectReset(ui.sinButton.clicked, arcsinFunction)
-            reconnectReset(ui.cosButton.clicked, arccosFunction)
-            reconnectReset(ui.tanButton.clicked, arctanFunction)
-            reconnectReset(ui.powerButton.clicked, piFunction)
+            reconnectReset(ui.negativeButton.clicked)
+            reconnectReset(ui.enterButton.clicked)
+            reconnectReset(ui.sinButton.clicked, eqArcsinFunction)
+            reconnectReset(ui.cosButton.clicked, eqArccosFunction)
+            reconnectReset(ui.tanButton.clicked, eqArctanFunction)
+            reconnectReset(ui.powerButton.clicked, eqPiFunction)
             reconnectReset(ui.modeButton.clicked, ui.quitFunction)
-            reconnectReset(ui.squareButton.clicked, squareRootFunction)
-            reconnectReset(ui.commaButton.clicked, scientificNotationFunction)
-            reconnectReset(ui.logButton.clicked, tentotheFunction)
-            reconnectReset(ui.leftParenthesesButton.clicked, leftCurlyBracketFunction)
-            reconnectReset(ui.rightParenthesesButton.clicked, rightCurlyBracketFunction)
+            reconnectReset(ui.squareButton.clicked, eqSquareRootFunction)
+            reconnectReset(ui.commaButton.clicked, eqScientificNotationFunction)
+            reconnectReset(ui.logButton.clicked, eqTentotheFunction)
+            reconnectReset(ui.leftParenthesesButton.clicked, eqLeftCurlyBracketFunction)
+            reconnectReset(ui.rightParenthesesButton.clicked, eqRightCurlyBracketFunction)
+            reconnectReset(ui.multiplicationButton.clicked, eqLeftBracketFunction)
+            reconnectReset(ui.subtractionButton.clicked, eqRightBracketFunction)
         elif subcommands == ["alpha"]:
-            reconnectReset(ui.mathButton.clicked, functionA)
-            reconnectReset(ui.appsButton.clicked, functionB)
-            reconnectReset(ui.programButton.clicked, functionC)
-            reconnectReset(ui.inverseButton.clicked, functionD)
-            reconnectReset(ui.sinButton.clicked, functionE)
-            reconnectReset(ui.cosButton.clicked, functionF)
-            reconnectReset(ui.tanButton.clicked, functionG)
-            reconnectReset(ui.powerButton.clicked, functionH)
-            reconnectReset(ui.squareButton.clicked, functionI)
-            reconnectReset(ui.commaButton.clicked, functionJ)
-            reconnectReset(ui.leftParenthesesButton.clicked, functionK)
-            reconnectReset(ui.rightParenthesesButton.clicked, functionL)
-            reconnectReset(ui.divisionButton.clicked, functionM)
-            reconnectReset(ui.logButton.clicked, functionN)
-            reconnectReset(ui.Number7.clicked, functionO)
-            reconnectReset(ui.Number8.clicked, functionP)
-            reconnectReset(ui.Number9.clicked, functionQ)
-            reconnectReset(ui.multiplicationButton.clicked, functionR)
-            reconnectReset(ui.lnButton.clicked, functionS)
-            reconnectReset(ui.Number4.clicked, functionT)
-            reconnectReset(ui.Number5.clicked, functionU)
-            reconnectReset(ui.Number6.clicked, functionV)
-            reconnectReset(ui.subtractionButton.clicked, functionW)
-            reconnectReset(ui.Number1.clicked, functionY)
-            reconnectReset(ui.stoButton.clicked, functionX)
-            reconnectReset(ui.Number2.clicked, functionZ)
-            reconnectReset(ui.Number3.clicked, functionTheta)
-            reconnectReset(ui.Number0.clicked, functionUnderscore)
-            reconnectReset(ui.decimalButton.clicked, functionColon)
-            reconnectReset(ui.negativeButton.clicked, functionQuestionMark)
-            reconnectReset(ui.additionButton.clicked, functionDoubleQuotationMark)
+            reconnectReset(ui.enterButton.clicked)
+            reconnectReset(ui.mathButton.clicked, eqFunctionA)
+            reconnectReset(ui.appsButton.clicked, eqFunctionB)
+            reconnectReset(ui.programButton.clicked, eqFunctionC)
+            reconnectReset(ui.inverseButton.clicked, eqFunctionD)
+            reconnectReset(ui.sinButton.clicked, eqFunctionE)
+            reconnectReset(ui.cosButton.clicked, eqFunctionF)
+            reconnectReset(ui.tanButton.clicked, eqFunctionG)
+            reconnectReset(ui.powerButton.clicked, eqFunctionH)
+            reconnectReset(ui.squareButton.clicked, eqFunctionI)
+            reconnectReset(ui.commaButton.clicked, eqFunctionJ)
+            reconnectReset(ui.leftParenthesesButton.clicked, eqFunctionK)
+            reconnectReset(ui.rightParenthesesButton.clicked, eqFunctionL)
+            reconnectReset(ui.divisionButton.clicked, eqFunctionM)
+            reconnectReset(ui.logButton.clicked, eqFunctionN)
+            reconnectReset(ui.Number7.clicked, eqFunctionO)
+            reconnectReset(ui.Number8.clicked, eqFunctionP)
+            reconnectReset(ui.Number9.clicked, eqFunctionQ)
+            reconnectReset(ui.multiplicationButton.clicked, eqFunctionR)
+            reconnectReset(ui.lnButton.clicked, eqFunctionS)
+            reconnectReset(ui.Number4.clicked, eqFunctionT)
+            reconnectReset(ui.Number5.clicked, eqFunctionU)
+            reconnectReset(ui.Number6.clicked, eqFunctionV)
+            reconnectReset(ui.subtractionButton.clicked, eqFunctionW)
+            reconnectReset(ui.Number1.clicked, eqFunctionY)
+            reconnectReset(ui.stoButton.clicked, eqFunctionX)
+            reconnectReset(ui.Number2.clicked, eqFunctionZ)
+            reconnectReset(ui.Number3.clicked, eqFunctionTheta)
+            reconnectReset(ui.Number0.clicked, eqFunctionUnderscore)
+            reconnectReset(ui.decimalButton.clicked, eqFunctionColon)
+            reconnectReset(ui.negativeButton.clicked, eqFunctionQuestionMark)
+            reconnectReset(ui.additionButton.clicked, eqFunctionDoubleQuotationMark)
     # Handles when the working line goes off screen
     offScreen()
 

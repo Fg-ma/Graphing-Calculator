@@ -388,8 +388,11 @@ def functionTypeControlC():
 
 def functionTypeControlV():
     paste = pyperclip.paste()
-    workingLine.append(paste)
-    expressionList.append(paste)
+    for i in [*paste]:
+        cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+        cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+        workingLine.append(i)
+        expressionList.append(i)
     
 
 def functionTypeControlZ():
@@ -399,19 +402,24 @@ def functionTypeControlZ():
                 answerHistory.popitem()
                 lines.pop()
                 newOldLine = problemHistory.popitem()
-                expressionList.append(newOldLine[1])
-                workingLine.append(newOldLine[1])
                 workingLinePos[0] = workingLinePos[0] - sizeOfShift
                 answerHistoryCount[0] = answerHistoryCount[0] - 1
                 numLines[0] = numLines[0] - 1
-                for i in [*workingLine[0]]:
+                for i in [*newOldLine[1]]:
                     cursorPos[0] = cursorPos[0] + cursorPosDict[i]
-                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+                    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+                    expressionList.append(i)
+                    workingLine.append(i)
         except:
             pass
     else:
-        workingLine.pop()
-        expressionList.pop()
+        expressionList.pop(cursorInlinePosition[0])
+        removed = workingLine.pop(cursorInlinePosition[0])
+        if workingLineShifter[0] >= 0:
+            cursorPos[0] = cursorPos[0] - cursorPosDict[removed]
+        cursorInlinePosition[0] = cursorInlinePosition[0] - 1
+        if not workingLineShifter[0] >= 0:
+            workingLineShifter[0] = workingLineShifter[0] + cursorPosDict[removed]
 
 
 def cursorGetLength(str):
