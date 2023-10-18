@@ -3,9 +3,11 @@ from OpenGL.GLU import *
 from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
 from variables import *
+import numpy as np
+import math
 
 
-class writeEquationGlWidget(QGLWidget):
+class displayEquationGlWidget(QGLWidget):
     # Intial parameters
     def __init__(self, parent=None):
         QGLWidget.__init__(self, parent)
@@ -22,7 +24,6 @@ class writeEquationGlWidget(QGLWidget):
     def paintGL(self):
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glLoadIdentity()
-        self.draw_ui()
 
         # Draws status bar
         self.drawStatusBar()
@@ -31,48 +32,27 @@ class writeEquationGlWidget(QGLWidget):
     # More parameters on intialization
     def initializeGL(self):
         glClearColor(0.945, 0.945, 0.945, 0.0)
-        glClearDepth(1.0)              
-        glDepthFunc(GL_LESS)
-        glEnable(GL_DEPTH_TEST)
-        glShadeModel(GL_SMOOTH)
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()                    
         gluPerspective(45.0,1.33,0.1, 100.0) 
         glMatrixMode(GL_MODELVIEW)
+        gluOrtho2D(-2.0,2.0,-2.0,2.0)
 
 
-    # Handles what is drawn
-    def draw_ui(self):
-        glUseProgram(0)
+    def plotfunc():
+        glClear(GL_COLOR_BUFFER_BIT)
+        glColor3f(0.0,0.0,0.0) 
+        glPointSize(1.0)
 
-        # Font color
-        glColor3f(0.2, 0.2, 0.2)
+        for a in np.arange(1.0,3.0,0.1):
+            for t in np.arange(-200.0,200.0,0.005):
+                x = math.sin(0.99*t) - 0.7*math.cos(3.01*t)
+                y = math.cos(1.01*t) + 0.1*math.sin(15.03*t)
 
-        # Draws cursor
-        self.setFont(QFont("Cambria Math", 10))
-        self.renderText(7 + cursorPos[0], (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0], cursorHolder[0])
-
-        # Font style
-        self.setFont(QFont("Cambria Math", 14))
-
-        # Handles lines displaying the equations
-        for equation in list(equations.keys()):
-            equationsPos[0] = int(equation) * 32
-            self.renderText(8 + equationsPosHorizontalShift[equation], equationsPos[0] + 18 - equationsPosVerticalShift[0], equations[equation][0] + "=" + "".join(equations[equation][1]))
-
-
-    # Handles changing the position of the workingLine when there is a change
-    def eqChangingWorkingLines(self):
-        global workingLinePos
-        global maxWorkingLinePos
-        maxWorkingLinePos = self.height() - 12
-
-        if (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0] >= maxWorkingLinePos:
-            equationsPosVerticalShift[0] = equationsPosVerticalShift[0] + 32
-        elif (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0] <= 24:
-            equationsPosVerticalShift[0] = equationsPosVerticalShift[0] - 32
-
-        shouldLinesMove.clear()
+                glBegin(GL_POINTS)
+                glVertex2f(x,y)
+                glEnd()
+                glFlush()
 
 
     # Get rightStatusBarText length
@@ -88,6 +68,9 @@ class writeEquationGlWidget(QGLWidget):
     def drawStatusBar(self):
         global leftStatusBarText
         global rightStatusBarText
+
+        # Font style
+        self.setFont(QFont("Cambria Math", 14))
 
         # Handles status bar
         glTranslatef(-5.0, statusBarTranslation[0], -5.1)

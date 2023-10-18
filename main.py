@@ -23,6 +23,7 @@ from eqAlphaFunctions import *
 from eqSecondFunctions import *
 from eqKeyboardFunctions import *
 
+from displayEquationGlWidget import displayEquationGlWidget
 
 # Program mainwindow
 class MainWindowUI(QMainWindow): 
@@ -36,21 +37,18 @@ class MainWindowUI(QMainWindow):
         self.stackedWidget.insertWidget(0, self.mainopenglwidget)
         self.eqopenglwidget = writeEquationGlWidget()
         self.stackedWidget.insertWidget(1, self.eqopenglwidget)
+        self.disopenglwidget = displayEquationGlWidget()
+        self.stackedWidget.insertWidget(2, self.disopenglwidget)
         self.stackedWidget.setCurrentIndex(0)
 
         # Main window timer
         mainTimer = QtCore.QTimer(self)
         mainTimer.setInterval(20)
         mainTimer.timeout.connect(self.mainopenglwidget.updateGL)
+        mainTimer.timeout.connect(self.eqopenglwidget.updateGL)
+        mainTimer.timeout.connect(self.disopenglwidget.updateGL)
         mainTimer.timeout.connect(checkScreenUpdate)
         mainTimer.start()
-        
-        # Main window timer
-        eqTimer = QtCore.QTimer(self)
-        eqTimer.setInterval(20)
-        eqTimer.timeout.connect(self.eqopenglwidget.updateGL)
-        eqTimer.timeout.connect(checkScreenUpdate)
-        eqTimer.start()
 
         # Cursor blink timer
         Ctimer = QtCore.QTimer(self)
@@ -75,7 +73,7 @@ class MainWindowUI(QMainWindow):
     # Handles switching to equations page
     def equationFunction(self):
         if self.stackedWidget.currentIndex() != 1:
-            self.stackedWidget.setCurrentIndex(1)
+            self.stackedWidget.setCurrentIndex(2)
 
             restFunction()
 
@@ -328,7 +326,16 @@ class MainWindowUI(QMainWindow):
                     downArrowFunction()
         elif inHistory[0] == "True" and ui.stackedWidget.currentIndex() == 0:
             if event.modifiers() & Qt.ControlModifier:
-                pass
+                if event.key() == Qt.Key_C:
+                    functionTypeControlC()
+                elif event.key() == Qt.Key_Z:
+                    functionTypeControlZ()
+                elif event.key() == Qt.Key_Backspace:
+                    clearFunction()
+                    restFunction()
+                elif event.key() == Qt.Key_Delete:
+                    clearFunction()
+                    restFunction()
             elif event.modifiers() & Qt.ShiftModifier:
                 pass
             else:
@@ -657,7 +664,7 @@ def functions():
         reconnectReset(ui.cosButton.clicked)
         reconnectReset(ui.sinButton.clicked)
         reconnectReset(ui.inverseButton.clicked)
-        reconnectReset(ui.clearButton.clicked)
+        reconnectReset(ui.clearButton.clicked, clearFunction)
         reconnectReset(ui.secondButton.clicked)
         reconnectReset(ui.alphaButton.clicked)
         reconnectReset(ui.decimalButton.clicked)

@@ -297,20 +297,43 @@ def divisionFunction():
 
 
 def clearFunction():
-    if workingLine == []:
+    if inHistory[0] == "False":
+        if workingLine == []:
+            lines.clear()
+            workingLinePos[0] = 44
+            numLines[0] = 0
+        expressionList.clear()
+        workingLine.clear()
+        subcommands.clear()
+        rightStatusBarText.clear()
+        cursorObj.clear()
+        cursorObj.append("—")
+        cursorPos[0] = 0
+        workingLineShifter[0] = 0
+        cursorInlinePosition[0] = -1
+        cursor()
+    else:
+        linePos = math.ceil(selectionBarPos[0]/2)
+
+        resetHistories()
+
+        answerHistory.pop(str(len(answerHistory) - linePos + 1))
+        problemHistory.pop(str(len(problemHistory) - linePos + 1))
+
+        resetHistories()
+
         lines.clear()
-        workingLinePos[0] = 44
-        numLines[0] = 0
-    expressionList.clear()
-    workingLine.clear()
-    subcommands.clear()
-    rightStatusBarText.clear()
-    cursorObj.clear()
-    cursorObj.append("—")
-    cursorPos[0] = 0
-    workingLineShifter[0] = 0
-    cursorInlinePosition[0] = -1
-    cursor()
+        numLines[0] = numLines[0] - 1
+        for i in range(numLines[0]):
+            lines.append(i + 1)
+
+        workingLinePos[0] = workingLinePos[0] - 42
+        selectionBarPos[0] = selectionBarPos[0] - 2
+
+        if selectionBarPos[0] <= 0:
+            inHistory[0] = "False"
+            selectionBarPos[0] = 0
+
 
 
 def commaFunction():

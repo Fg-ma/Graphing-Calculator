@@ -58,6 +58,8 @@ def entryFunction():
     if remainingTriggers:
         isFourFunction[0] = "False"
 
+    cursorPos[0] = 0
+    cursorInlinePosition[0] = 0
     problem = [*str(problem)]
     for i in problem:
         expressionList.append(i)

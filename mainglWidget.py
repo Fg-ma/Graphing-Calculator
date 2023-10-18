@@ -73,18 +73,18 @@ class mainGlWidget(QGLWidget):
 
         # Handles lines display answer history by referencing where the workingLine is
         for line in lines:
-            lastProblemHistoryKey = list(problemHistory) [-1]
+            lastProblemHistoryKey = len(problemHistory)
             problemNumber = list(problemHistory) [int(lastProblemHistoryKey) - line]
             problem = problemHistory[problemNumber]
             self.renderText(8, workingLinePos[0]-(line*42), problem)
-
-            lastAnswerHistoryKey = list(answerHistory) [-1]
+            
+            lastAnswerHistoryKey = len(answerHistory)
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - line]
             answer = answerHistory[answerNumber]
             rightAnsPosition = self.rightAnsLength(answer)
             self.renderText(rightAnsPosition, 20+(workingLinePos[0]-(line*42)), answer)
 
-            self.renderText(0, 26+(workingLinePos[0]-((len(lines)-line+1)*42)), dots)
+            self.renderText(0, 26+(workingLinePos[0]-(line*42)), dots)
 
 
     # Handles calculating length of the dotted lines seperating answers

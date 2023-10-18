@@ -151,3 +151,16 @@ def drawSelectionBarRest():
     for i in range(len(lines)):
         selectionBarTranslation[0] = selectionBarTranslation[0] + 0.5
     selectionBarTranslation[0] = selectionBarTranslation[0] - (selectionBarPos[0] * 0.25)
+
+
+# Resets answer and problem histories
+def resetHistories():
+    answers = list(answerHistory.values())
+    problems = list(problemHistory.values())
+
+    answerHistory.clear()
+    problemHistory.clear()
+    
+    for i in range(len(answers)):
+        answerHistory[str(i + 1)] = answers[i]
+        problemHistory[str(i + 1)] = problems[i]
