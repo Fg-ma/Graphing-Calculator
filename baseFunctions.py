@@ -182,12 +182,13 @@ def additionFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["+"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("+")
             workingLine.append("+")
         except:
@@ -212,12 +213,13 @@ def subtractionFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["-"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("-")
             workingLine.append("-")
         except:
@@ -242,12 +244,13 @@ def multiplicationFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["*"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("*")
             workingLine.append("*")
         except:
@@ -272,12 +275,13 @@ def divisionFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["/"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("/")
             workingLine.append("/")
         except:
@@ -353,12 +357,13 @@ def squareFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["**2"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("**2")
             workingLine.append("**2")
         except:
@@ -405,12 +410,13 @@ def inverseFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["**-1"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("**-1")
             workingLine.append("**-1")
         except:
@@ -435,12 +441,13 @@ def powerFunction():
             lastAnswerHistoryKey = list(answerHistory) [-1]
             answerNumber = list(answerHistory) [int(lastAnswerHistoryKey) - 1]
             answer = answerHistory[answerNumber]
-            expressionList.append(str(answer))
-            workingLine.append(str(answer))
-            for i in [*workingLine[0]]:
+            for i in [*str(answer)]:
+                expressionList.append(i)
+                workingLine.append(i)
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             cursorPos[0] = cursorPos[0] + cursorPosDict["**"]
-            cursorInlinePosition[0] = cursorInlinePosition[0] + 2
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
             expressionList.append("**")
             workingLine.append("**")
         except:
