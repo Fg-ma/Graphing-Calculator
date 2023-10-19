@@ -73,7 +73,7 @@ class MainWindowUI(QMainWindow):
     # Handles switching to equations page
     def equationFunction(self):
         if self.stackedWidget.currentIndex() != 1:
-            self.stackedWidget.setCurrentIndex(2)
+            self.stackedWidget.setCurrentIndex(1)
 
             restFunction()
 
@@ -94,10 +94,10 @@ class MainWindowUI(QMainWindow):
 
     # Handles quiting but and returning to main page
     def quitFunction(self):
+        secondResets()
         if self.stackedWidget.currentIndex() != 0:
             self.stackedWidget.setCurrentIndex(0)
 
-            secondResets()
             restFunction()
 
             if needSave[0] == "False":
@@ -119,6 +119,12 @@ class MainWindowUI(QMainWindow):
             for i in expressionList:
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
                 cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+
+
+    # Handles switching to graphs page
+    def graphFunction(self):
+        if self.stackedWidget.currentIndex() != 2:
+            self.stackedWidget.setCurrentIndex(2)
 
 
     # Handles keyboard events
@@ -222,6 +228,15 @@ class MainWindowUI(QMainWindow):
                     functionY()
                 elif event.key() == Qt.Key_Z:
                     functionZ()
+            elif event.modifiers() & Qt.AltModifier:
+                if event.key() == Qt.Key_Y:
+                    self.equationFunction()
+                elif event.key() == Qt.Key_Backspace:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_Delete:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_G:
+                    self.graphFunction()
             else:
                 if event.key() == Qt.Key_Return:
                     evaluate()
@@ -328,8 +343,6 @@ class MainWindowUI(QMainWindow):
             if event.modifiers() & Qt.ControlModifier:
                 if event.key() == Qt.Key_C:
                     functionTypeControlC()
-                elif event.key() == Qt.Key_Z:
-                    functionTypeControlZ()
                 elif event.key() == Qt.Key_Backspace:
                     clearFunction()
                     restFunction()
@@ -338,6 +351,15 @@ class MainWindowUI(QMainWindow):
                     restFunction()
             elif event.modifiers() & Qt.ShiftModifier:
                 pass
+            elif event.modifiers() & Qt.AltModifier:
+                if event.key() == Qt.Key_Y:
+                    self.equationFunction()
+                elif event.key() == Qt.Key_Backspace:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_Delete:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_G:
+                    self.graphFunction()
             else:
                 if event.key() == Qt.Key_Up:
                     upArrowFunction()
@@ -444,6 +466,15 @@ class MainWindowUI(QMainWindow):
                     eqFunctionY()
                 elif event.key() == Qt.Key_Z:
                     eqFunctionZ()
+            elif event.modifiers() & Qt.AltModifier:
+                if event.key() == Qt.Key_Y:
+                    self.equationFunction()
+                elif event.key() == Qt.Key_Backspace:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_Delete:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_G:
+                    self.graphFunction()
             else:
                 if event.key() == Qt.Key_Return:
                     eqEvaluate()
@@ -543,6 +574,23 @@ class MainWindowUI(QMainWindow):
                     eqUpArrowFunction()
                 elif event.key() == Qt.Key_Down:
                     eqDownArrowFunction()
+        elif ui.stackedWidget.currentIndex() == 2:
+            if event.modifiers() & Qt.ControlModifier:
+                pass
+            elif event.modifiers() & Qt.ShiftModifier:
+                pass
+            elif event.modifiers() & Qt.AltModifier:
+                if event.key() == Qt.Key_Y:
+                    self.equationFunction()
+                elif event.key() == Qt.Key_Backspace:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_Delete:
+                    self.quitFunction()
+                elif event.key() == Qt.Key_G:
+                    self.graphFunction()
+            else:
+                pass
+
         # Handles when the working line goes off screen
         offScreen()
 
@@ -589,6 +637,7 @@ def functions():
             reconnectReset(ui.rightArrowButton.clicked, rightArrowFunction)
             reconnectReset(ui.upArrowButton.clicked, upArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, downArrowFunction)
+            reconnectReset(ui.graphButton.clicked, ui.graphFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -673,6 +722,7 @@ def functions():
         reconnectReset(ui.variableButton.clicked)
         reconnectReset(ui.leftArrowButton.clicked)
         reconnectReset(ui.rightArrowButton.clicked)
+        reconnectReset(ui.graphButton.clicked, ui.graphFunction)
     elif ui.stackedWidget.currentIndex() == 1:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, eqFunction0)
@@ -702,8 +752,8 @@ def functions():
             reconnectReset(ui.sinButton.clicked, eqSinFunction)
             reconnectReset(ui.inverseButton.clicked, eqInverseFunction)
             reconnectReset(ui.clearButton.clicked, eqClearFunction)
-            reconnectReset(ui.secondButton.clicked, eqSecondFunction)
-            reconnectReset(ui.alphaButton.clicked, eqAlphaFunction)
+            reconnectReset(ui.secondButton.clicked, secondFunction)
+            reconnectReset(ui.alphaButton.clicked, alphaFunction)
             reconnectReset(ui.decimalButton.clicked, eqDecimalFunction)
             reconnectReset(ui.negativeButton.clicked, eqNegativeFunction)
             reconnectReset(ui.equationButton.clicked, ui.equationFunction)
@@ -712,6 +762,7 @@ def functions():
             reconnectReset(ui.rightArrowButton.clicked, eqRightArrowFunction)
             reconnectReset(ui.upArrowButton.clicked, eqUpArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, eqDownArrowFunction)
+            reconnectReset(ui.graphButton.clicked, ui.graphFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
@@ -760,6 +811,95 @@ def functions():
             reconnectReset(ui.decimalButton.clicked, eqFunctionColon)
             reconnectReset(ui.negativeButton.clicked, eqFunctionQuestionMark)
             reconnectReset(ui.additionButton.clicked, eqFunctionDoubleQuotationMark)
+    elif ui.stackedWidget.currentIndex() == 2:
+        if subcommands == []:
+            reconnectReset(ui.Number0.clicked)
+            reconnectReset(ui.Number1.clicked)
+            reconnectReset(ui.Number2.clicked)
+            reconnectReset(ui.Number3.clicked)
+            reconnectReset(ui.Number4.clicked)
+            reconnectReset(ui.Number5.clicked)
+            reconnectReset(ui.Number6.clicked)
+            reconnectReset(ui.Number7.clicked)
+            reconnectReset(ui.Number8.clicked)
+            reconnectReset(ui.Number9.clicked)
+            reconnectReset(ui.additionButton.clicked)
+            reconnectReset(ui.subtractionButton.clicked)
+            reconnectReset(ui.multiplicationButton.clicked)
+            reconnectReset(ui.divisionButton.clicked)
+            reconnectReset(ui.enterButton.clicked)
+            reconnectReset(ui.rightParenthesesButton.clicked)
+            reconnectReset(ui.leftParenthesesButton.clicked)
+            reconnectReset(ui.commaButton.clicked)
+            reconnectReset(ui.squareButton.clicked)
+            reconnectReset(ui.logButton.clicked)
+            reconnectReset(ui.lnButton.clicked)
+            reconnectReset(ui.powerButton.clicked)
+            reconnectReset(ui.tanButton.clicked)
+            reconnectReset(ui.cosButton.clicked)
+            reconnectReset(ui.sinButton.clicked)
+            reconnectReset(ui.inverseButton.clicked)
+            reconnectReset(ui.clearButton.clicked)
+            reconnectReset(ui.secondButton.clicked, secondFunction)
+            reconnectReset(ui.alphaButton.clicked, alphaFunction)
+            reconnectReset(ui.decimalButton.clicked)
+            reconnectReset(ui.negativeButton.clicked)
+            reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+            reconnectReset(ui.variableButton.clicked)
+            reconnectReset(ui.leftArrowButton.clicked)
+            reconnectReset(ui.rightArrowButton.clicked)
+            reconnectReset(ui.upArrowButton.clicked)
+            reconnectReset(ui.downArrowButton.clicked)
+            reconnectReset(ui.graphButton.clicked, ui.graphFunction)
+        elif subcommands == ["2nd"]:
+            reconnectReset(ui.negativeButton.clicked)
+            reconnectReset(ui.enterButton.clicked)
+            reconnectReset(ui.sinButton.clicked)
+            reconnectReset(ui.cosButton.clicked)
+            reconnectReset(ui.tanButton.clicked)
+            reconnectReset(ui.powerButton.clicked)
+            reconnectReset(ui.modeButton.clicked, ui.quitFunction)
+            reconnectReset(ui.squareButton.clicked)
+            reconnectReset(ui.commaButton.clicked)
+            reconnectReset(ui.logButton.clicked)
+            reconnectReset(ui.leftParenthesesButton.clicked)
+            reconnectReset(ui.rightParenthesesButton.clicked)
+            reconnectReset(ui.multiplicationButton.clicked)
+            reconnectReset(ui.subtractionButton.clicked)
+        elif subcommands == ["alpha"]:
+            reconnectReset(ui.enterButton.clicked)
+            reconnectReset(ui.mathButton.clicked)
+            reconnectReset(ui.appsButton.clicked)
+            reconnectReset(ui.programButton.clicked)
+            reconnectReset(ui.inverseButton.clicked)
+            reconnectReset(ui.sinButton.clicked)
+            reconnectReset(ui.cosButton.clicked)
+            reconnectReset(ui.tanButton.clicked)
+            reconnectReset(ui.powerButton.clicked)
+            reconnectReset(ui.squareButton.clicked)
+            reconnectReset(ui.commaButton.clicked)
+            reconnectReset(ui.leftParenthesesButton.clicked)
+            reconnectReset(ui.rightParenthesesButton.clicked)
+            reconnectReset(ui.divisionButton.clicked)
+            reconnectReset(ui.logButton.clicked)
+            reconnectReset(ui.Number7.clicked)
+            reconnectReset(ui.Number8.clicked)
+            reconnectReset(ui.Number9.clicked)
+            reconnectReset(ui.multiplicationButton.clicked)
+            reconnectReset(ui.lnButton.clicked)
+            reconnectReset(ui.Number4.clicked)
+            reconnectReset(ui.Number5.clicked)
+            reconnectReset(ui.Number6.clicked)
+            reconnectReset(ui.subtractionButton.clicked)
+            reconnectReset(ui.Number1.clicked)
+            reconnectReset(ui.stoButton.clicked)
+            reconnectReset(ui.Number2.clicked)
+            reconnectReset(ui.Number3.clicked)
+            reconnectReset(ui.Number0.clicked)
+            reconnectReset(ui.decimalButton.clicked)
+            reconnectReset(ui.negativeButton.clicked)
+            reconnectReset(ui.additionButton.clicked)
+
     # Handles when the working line goes off screen
     offScreen()
 
@@ -808,6 +948,14 @@ def offScreen():
         if workingDistanceToEdge > ui.mainopenglwidget.width():
             workingLineShifter[0] = workingLineShifter[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
             cursorPos[0] = cursorPos[0] - (ui.mainopenglwidget.width() - workingDistanceToEdge)
+        workingLineLen = 0
+        for i in workingLine:
+            workingLineLen += cursorPosDict[i]
+        if workingLineLen < ui.mainopenglwidget.width() - 24 and cursorInlinePosition[0] == len(workingLine) - 1:
+            workingLineShifter[0] = 0
+            cursorPos[0] = 0
+            for i in workingLine:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
     if ui.stackedWidget.currentIndex() == 1:
         workingDistanceToEdge = ui.eqopenglwidget.width() - cursorPos[0]
         if workingDistanceToEdge < 24:
@@ -816,11 +964,18 @@ def offScreen():
         if workingDistanceToEdge > ui.eqopenglwidget.width():
             equationsPosHorizontalShift[str(activeFunction[0])] = equationsPosHorizontalShift[str(activeFunction[0])] - (ui.eqopenglwidget.width() - workingDistanceToEdge)
             cursorPos[0] = cursorPos[0] - (ui.eqopenglwidget.width() - workingDistanceToEdge)
-        if cursorInlinePosition[0] == -1:
+        workingLineLen = 14
+        for i in equations[str(activeFunction[0])][1]:
+            workingLineLen += cursorPosDict[i]
+        for i in equations[str(activeFunction[0])][0]:
+            workingLineLen += cursorPosDict[i]
+        if workingLineLen < ui.mainopenglwidget.width() - 24 and cursorInlinePosition[0] == len(equations[str(activeFunction[0])][1]) - 1:
+            equationsPosHorizontalShift[str(activeFunction[0])] = 0
             cursorPos[0] = 14
+            for i in equations[str(activeFunction[0])][1]:
+                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
             for i in equations[str(activeFunction[0])][0]:
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
-            equationsPosHorizontalShift[str(activeFunction[0])] = 0
 
 
 # Updates values on OpenGl screen

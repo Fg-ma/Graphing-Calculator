@@ -1,5 +1,6 @@
 from variables import * 
 import pyperclip
+import math
 
 
 def functionTypea():
@@ -375,15 +376,37 @@ def functionTypeDelete():
         
 
 def functionTypeControlC():
-    if workingLine == []:
-        try:
-            copy = list(answerHistory.items())[-1][1]
+    if inHistory[0] == "False":
+        if workingLine == []:
+            try:
+                copy = list(answerHistory.items())[-1][1]
+                pyperclip.copy(copy)
+            except:
+                pass
+        else:
+            copy = "".join(workingLine)
             pyperclip.copy(copy)
-        except:
-            pass
     else:
-        copy = "".join(workingLine)
-        pyperclip.copy(copy)
+        if (selectionBarPos[0] % 2) == 1:
+            answerPos = -math.ceil(selectionBarPos[0]/2)
+            answer = list(answerHistory.values())[answerPos]
+            pyperclip.copy(answer)
+        else:
+            problemPos = -math.ceil(selectionBarPos[0]/2)
+            problem = list(problemHistory.values())[problemPos]
+            pyperclip.copy(problem)
+
+        # Variable cleanup
+        if needSave[0] == "False":
+            needSave[0] = "True"
+            lines.clear()
+            for i in save[0]:
+                lines.append(i)
+            workingLinePos[0] = save[1]
+            numLines[0] = save[2]
+        firstHistoryUpdate[0] = "True"
+        inHistory[0] = "False"
+        selectionBarPos[0] = 0
 
 
 def functionTypeControlV():

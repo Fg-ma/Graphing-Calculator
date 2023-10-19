@@ -5,71 +5,6 @@ def eqEvaluate():
     print("evaluate")
 
 
-def eqSecondFunction():
-    global rightStatusBarText
-    global cursorObj
-    try:
-        if subcommands[0] == "2nd":
-            subcommands.clear()
-            rightStatusBarText.clear()
-            cursorObj.clear()
-            cursorObj.append("—")
-        else:
-            subcommands.clear()
-            rightStatusBarText.clear()
-            subcommands.append("2nd")
-            rightStatusBarText.append("2")
-            rightStatusBarText.append("n")
-            rightStatusBarText.append("d")
-            cursorObj.clear()
-            cursorObj.append("^")
-    except:
-        subcommands.clear()
-        rightStatusBarText.clear()
-        subcommands.append("2nd")
-        rightStatusBarText.append("2")
-        rightStatusBarText.append("n")
-        rightStatusBarText.append("d")
-        cursorObj.clear()
-        cursorObj.append("^")
-    cursor()
-
-
-def eqAlphaFunction():
-    global rightStatusBarText
-    global cursorObj
-    try:
-        if subcommands[0] == "alpha":
-            subcommands.clear()
-            rightStatusBarText.clear()
-            cursorObj.clear()
-            cursorObj.append("—")
-        else:
-            subcommands.clear()
-            rightStatusBarText.clear()
-            subcommands.append("alpha")
-            rightStatusBarText.append("A")
-            rightStatusBarText.append("l")
-            rightStatusBarText.append("p")
-            rightStatusBarText.append("h")
-            rightStatusBarText.append("a")
-            cursorObj.clear()
-            cursorObj.append("α")
-    except:
-        subcommands.clear()
-        rightStatusBarText.clear()
-        subcommands.append("alpha")
-        rightStatusBarText.append("A")
-        rightStatusBarText.append("l")
-        rightStatusBarText.append("p")
-        rightStatusBarText.append("h")
-        rightStatusBarText.append("a")
-        cursorObj.clear()
-        cursorObj.append("α")
-    cursor()
-
-
-
 def eqFunction0():
     cursorPos[0] = cursorPos[0] + cursorPosDict["0"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
@@ -326,6 +261,12 @@ def eqLeftArrowFunction():
     if cursorInlinePosition[0] >= 0:
         cursorPos[0] = cursorPos[0] - cursorPosDict[equations[str(activeFunction[0])][1][cursorInlinePosition[0]]]
         cursorInlinePosition[0] = cursorInlinePosition[0] - 1
+    elif cursorInlinePosition[0] == -1:
+        print("wokred")
+        equationsPosHorizontalShift[str(activeFunction[0])] = 0
+        cursorPos[0] = 14
+        for i in equations[str(activeFunction[0])][0]:
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
 
 def eqRightArrowFunction():
     if cursorInlinePosition[0] < len(equations[str(activeFunction[0])][1]) - 1:
