@@ -75,7 +75,7 @@ def simplifyExpression(expression):
                 simplified = evalArcCos(simpleAns)
             elif firstTrigger[1] == "arctan(" or firstTrigger[1] == "tan⁻¹(":
                 simplified = evalArcTan(simpleAns)
-            elif firstTrigger[1] == "√(":
+            elif firstTrigger[1] == "√(" or firstTrigger[1] == "sqrt(":
                 simplified = evalSquareRoot(simpleAns)
 
             # Splicing into the string

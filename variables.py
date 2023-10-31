@@ -10,7 +10,7 @@ firstTriggerPosShifter = 0
 domainError = ["False"]
 
 # Key word search
-regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\(|Ans)"
+regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\(|Ans|sqrt\()"
 
 # History variables
 answerHistory = {}
