@@ -1,3 +1,17 @@
+"""
+This program is a work in progress intented to be a graphing calculator
+that improves as I learn new math topics and implement them in code.
+Currently it is facing the challenge of being slow to boot and very resource expensive because of the many openGL screens.
+A major goal is to make the typing on the screen prettier especially by the raised to functions.
+"""
+
+"""
+Current List of screens:
+-Main window screen(0)
+-Equation screen(1)
+-Graph screen(2)
+"""
+
 import sys
 from PyQt5.uic import loadUi
 from OpenGL.GL import *
@@ -25,8 +39,18 @@ from eqKeyboardFunctions import *
 
 from displayEquationGlWidget import displayEquationGlWidget
 
-# Program mainwindow
+
 class MainWindowUI(QMainWindow): 
+    
+    """
+    Creates the main window(referneced as ui).
+    Creates multiple openGL screens that are used in a stacked widget to switch between different pages of function
+    (such as the main page, the equation writing page, and graphing page).
+    A timer is created that handles calling the update screen functions in the openGL screens.
+    A resize function is needed to control the height of the status bar.
+    A key press event function is used to connect key strokes to their approiate functions given the conditions of the screen.
+    """
+
     def __init__(self):
         super(MainWindowUI, self).__init__()
 
@@ -59,8 +83,12 @@ class MainWindowUI(QMainWindow):
         self.resizeEvent = self.onResize
     
 
-    # Handles resize events
     def onResize(self, event):
+
+        """
+        Resizes the status bar and updates the the max number of lines before the screen starts wrapping
+        """
+
         global statusBarTranslation
         resizedHeight = self.height()
         windowHeightChange = 870 - resizedHeight
@@ -70,65 +98,13 @@ class MainWindowUI(QMainWindow):
         maxLines[0] = (self.mainopenglwidget.height() / 50)
 
 
-    # Handles switching to equations page
-    def equationFunction(self):
-        if self.stackedWidget.currentIndex() != 1:
-            self.stackedWidget.setCurrentIndex(1)
-
-            restFunction()
-
-            mainPageSave[0] = lines[:]
-            mainPageSave[1] = workingLinePos[0]
-            mainPageSave[2] = numLines[0]
-
-            workingLinePos[0] = 52
-            workingLineShifter[0] = 34
-            cursorInlinePosition[0] = -1
-            cursorPos[0] = 14
-            for i in equations[str(activeFunction[0])][0]:
-                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
-            firstHistoryUpdate[0] = "True"
-            inHistory[0] = "False"
-            selectionBarPos[0] = 0
-
-
-    # Handles quiting but and returning to main page
-    def quitFunction(self):
-        secondResets()
-        if self.stackedWidget.currentIndex() != 0:
-            self.stackedWidget.setCurrentIndex(0)
-
-            restFunction()
-
-            if needSave[0] == "False":
-                needSave[0] = "True"
-                lines.clear()
-                for i in save[0]:
-                    lines.append(i)
-                workingLinePos[0] = save[1]
-                numLines[0] = save[2]
-            else:
-                lines.clear()
-                for i in mainPageSave[0]:
-                    lines.append(i)
-                workingLinePos[0] = mainPageSave[1]
-                numLines[0] = mainPageSave[2]
-            workingLineShifter[0] = 0
-            cursorInlinePosition[0] = -1
-            cursorPos[0] = 0
-            for i in expressionList:
-                cursorPos[0] = cursorPos[0] + cursorPosDict[i]
-                cursorInlinePosition[0] = cursorInlinePosition[0] + 1
-
-
-    # Handles switching to graphs page
-    def graphFunction(self):
-        if self.stackedWidget.currentIndex() != 2:
-            self.stackedWidget.setCurrentIndex(2)
-
-
-    # Handles keyboard events
     def keyPressEvent(self, event):
+
+        """
+        Connects the appropriate functions to the appropriate places when certain key/combinations of keys
+        are pressed given the current screen conditions.
+        """
+
         if inHistory[0] == "False" and ui.stackedWidget.currentIndex() == 0:          
             if event.modifiers() & Qt.ControlModifier:
                 if event.key() == Qt.Key_C:
@@ -230,13 +206,13 @@ class MainWindowUI(QMainWindow):
                     functionZ()
             elif event.modifiers() & Qt.AltModifier:
                 if event.key() == Qt.Key_Y:
-                    self.equationFunction()
+                    equationFunction()
                 elif event.key() == Qt.Key_Backspace:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_Delete:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_G:
-                    self.graphFunction()
+                    graphFunction()
             else:
                 if event.key() == Qt.Key_Return:
                     evaluate()
@@ -345,21 +321,21 @@ class MainWindowUI(QMainWindow):
                     functionTypeControlC()
                 elif event.key() == Qt.Key_Backspace:
                     clearFunction()
-                    restFunction()
+                    functions()
                 elif event.key() == Qt.Key_Delete:
                     clearFunction()
-                    restFunction()
+                    functions()
             elif event.modifiers() & Qt.ShiftModifier:
                 pass
             elif event.modifiers() & Qt.AltModifier:
                 if event.key() == Qt.Key_Y:
-                    self.equationFunction()
+                    equationFunction()
                 elif event.key() == Qt.Key_Backspace:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_Delete:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_G:
-                    self.graphFunction()
+                    graphFunction()
             else:
                 if event.key() == Qt.Key_Up:
                     upArrowFunction()
@@ -468,13 +444,13 @@ class MainWindowUI(QMainWindow):
                     eqFunctionZ()
             elif event.modifiers() & Qt.AltModifier:
                 if event.key() == Qt.Key_Y:
-                    self.equationFunction()
+                    equationFunction()
                 elif event.key() == Qt.Key_Backspace:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_Delete:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_G:
-                    self.graphFunction()
+                    graphFunction()
             else:
                 if event.key() == Qt.Key_Return:
                     eqEvaluate()
@@ -581,13 +557,13 @@ class MainWindowUI(QMainWindow):
                 pass
             elif event.modifiers() & Qt.AltModifier:
                 if event.key() == Qt.Key_Y:
-                    self.equationFunction()
+                    equationFunction()
                 elif event.key() == Qt.Key_Backspace:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_Delete:
-                    self.quitFunction()
+                    quitFunction()
                 elif event.key() == Qt.Key_G:
-                    self.graphFunction()
+                    graphFunction()
             else:
                 pass
 
@@ -595,9 +571,81 @@ class MainWindowUI(QMainWindow):
         offScreen()
 
 
-# Connects the buttons to the appropriate functions given the under the present condition
+def quitFunction():
+
+    """
+    Returns to the main screen and updates the appropriate variables to restore the exact conditions that the main screen was left in
+    """
+
+    secondResets()
+    if ui.stackedWidget.currentIndex() != 0:
+        ui.stackedWidget.setCurrentIndex(0)
+
+        functions()
+
+        if needSave[0] == "False":
+            needSave[0] = "True"
+            lines.clear()
+            for i in save[0]:
+                lines.append(i)
+            workingLinePos[0] = save[1]
+            numLines[0] = save[2]
+        else:
+            lines.clear()
+            for i in mainPageSave[0]:
+                lines.append(i)
+            workingLinePos[0] = mainPageSave[1]
+            numLines[0] = mainPageSave[2]
+        workingLineShifter[0] = 0
+        cursorInlinePosition[0] = -1
+        cursorPos[0] = 0
+        for i in expressionList:
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+            cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+
+
+def equationFunction():
+
+    """
+    Switches to the equations page and updates the appropriate variables to restore the exact conditions that the equations screen was left in.
+    """
+
+    if ui.stackedWidget.currentIndex() != 1:
+        ui.stackedWidget.setCurrentIndex(1)
+
+        functions()
+
+        mainPageSave[0] = lines[:]
+        mainPageSave[1] = workingLinePos[0]
+        mainPageSave[2] = numLines[0]
+
+        workingLinePos[0] = 52
+        workingLineShifter[0] = 34
+        cursorInlinePosition[0] = -1
+        cursorPos[0] = 14
+        for i in equations[str(activeFunction[0])][0]:
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+        firstHistoryUpdate[0] = "True"
+        inHistory[0] = "False"
+        selectionBarPos[0] = 0
+
+
+def graphFunction():
+
+    """
+    Switches to the graphing screen
+    """
+
+    if ui.stackedWidget.currentIndex() != 2:
+        ui.stackedWidget.setCurrentIndex(2)
+
+
 def functions():
-    # baseFunctions, secondFunctions, and alphaFunctions
+
+    """
+    Connects the appropriate function to the button presed under given conditions(such as screen state or inhistory state)
+    """
+
     if inHistory[0] == "False" and ui.stackedWidget.currentIndex() == 0:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, function0)
@@ -631,21 +679,22 @@ def functions():
             reconnectReset(ui.alphaButton.clicked, alphaFunction)
             reconnectReset(ui.decimalButton.clicked, decimalFunction)
             reconnectReset(ui.negativeButton.clicked, negativeFunction)
-            reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+            reconnectReset(ui.equationButton.clicked, equationFunction)
             reconnectReset(ui.variableButton.clicked, variableFunction)
             reconnectReset(ui.leftArrowButton.clicked, leftArrowFunction)
             reconnectReset(ui.rightArrowButton.clicked, rightArrowFunction)
             reconnectReset(ui.upArrowButton.clicked, upArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, downArrowFunction)
-            reconnectReset(ui.graphButton.clicked, ui.graphFunction)
+            reconnectReset(ui.graphButton.clicked, graphFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
             reconnectReset(ui.sinButton.clicked, arcsinFunction)
             reconnectReset(ui.cosButton.clicked, arccosFunction)
             reconnectReset(ui.tanButton.clicked, arctanFunction)
+            reconnectReset(ui.lnButton.clicked, exponentialFunction)
             reconnectReset(ui.powerButton.clicked, piFunction)
-            reconnectReset(ui.modeButton.clicked, ui.quitFunction)
+            reconnectReset(ui.modeButton.clicked, quitFunction)
             reconnectReset(ui.squareButton.clicked, squareRootFunction)
             reconnectReset(ui.commaButton.clicked, scientificNotationFunction)
             reconnectReset(ui.logButton.clicked, tentotheFunction)
@@ -718,11 +767,11 @@ def functions():
         reconnectReset(ui.alphaButton.clicked)
         reconnectReset(ui.decimalButton.clicked)
         reconnectReset(ui.negativeButton.clicked)
-        reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+        reconnectReset(ui.equationButton.clicked, equationFunction)
         reconnectReset(ui.variableButton.clicked)
         reconnectReset(ui.leftArrowButton.clicked)
         reconnectReset(ui.rightArrowButton.clicked)
-        reconnectReset(ui.graphButton.clicked, ui.graphFunction)
+        reconnectReset(ui.graphButton.clicked, graphFunction)
     elif ui.stackedWidget.currentIndex() == 1:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, eqFunction0)
@@ -756,21 +805,22 @@ def functions():
             reconnectReset(ui.alphaButton.clicked, alphaFunction)
             reconnectReset(ui.decimalButton.clicked, eqDecimalFunction)
             reconnectReset(ui.negativeButton.clicked, eqNegativeFunction)
-            reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+            reconnectReset(ui.equationButton.clicked, equationFunction)
             reconnectReset(ui.variableButton.clicked, eqVariableFunction)
             reconnectReset(ui.leftArrowButton.clicked, eqLeftArrowFunction)
             reconnectReset(ui.rightArrowButton.clicked, eqRightArrowFunction)
             reconnectReset(ui.upArrowButton.clicked, eqUpArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, eqDownArrowFunction)
-            reconnectReset(ui.graphButton.clicked, ui.graphFunction)
+            reconnectReset(ui.graphButton.clicked, graphFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
             reconnectReset(ui.sinButton.clicked, eqArcsinFunction)
             reconnectReset(ui.cosButton.clicked, eqArccosFunction)
             reconnectReset(ui.tanButton.clicked, eqArctanFunction)
+            reconnectReset(ui.lnButton.clicked, eqExponentialFunction)
             reconnectReset(ui.powerButton.clicked, eqPiFunction)
-            reconnectReset(ui.modeButton.clicked, ui.quitFunction)
+            reconnectReset(ui.modeButton.clicked, quitFunction)
             reconnectReset(ui.squareButton.clicked, eqSquareRootFunction)
             reconnectReset(ui.commaButton.clicked, eqScientificNotationFunction)
             reconnectReset(ui.logButton.clicked, eqTentotheFunction)
@@ -844,13 +894,13 @@ def functions():
             reconnectReset(ui.alphaButton.clicked, alphaFunction)
             reconnectReset(ui.decimalButton.clicked)
             reconnectReset(ui.negativeButton.clicked)
-            reconnectReset(ui.equationButton.clicked, ui.equationFunction)
+            reconnectReset(ui.equationButton.clicked, equationFunction)
             reconnectReset(ui.variableButton.clicked)
             reconnectReset(ui.leftArrowButton.clicked)
             reconnectReset(ui.rightArrowButton.clicked)
             reconnectReset(ui.upArrowButton.clicked)
             reconnectReset(ui.downArrowButton.clicked)
-            reconnectReset(ui.graphButton.clicked, ui.graphFunction)
+            reconnectReset(ui.graphButton.clicked, graphFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
@@ -858,7 +908,7 @@ def functions():
             reconnectReset(ui.cosButton.clicked)
             reconnectReset(ui.tanButton.clicked)
             reconnectReset(ui.powerButton.clicked)
-            reconnectReset(ui.modeButton.clicked, ui.quitFunction)
+            reconnectReset(ui.modeButton.clicked, quitFunction)
             reconnectReset(ui.squareButton.clicked)
             reconnectReset(ui.commaButton.clicked)
             reconnectReset(ui.logButton.clicked)
@@ -904,8 +954,13 @@ def functions():
     offScreen()
 
 
-# Swaps function reference for buttons and connects a reference to resetFunction
-def reconnectReset(signal, newhandler=None, oldhandler=None):        
+def reconnectReset(signal, newhandler=None, oldhandler=None):    
+
+    """
+    Swaps the what function the inputed signal(button press) is connected to
+    by disconnecting the signal then connecting it if a newhandler is inputted
+    """
+
     try:
         if oldhandler is not None:
             while True:
@@ -916,30 +971,16 @@ def reconnectReset(signal, newhandler=None, oldhandler=None):
         pass
     if newhandler is not None:
         signal.connect(newhandler)
-        signal.connect(restFunction)
+        signal.connect(functions)
 
 
-# Swaps function reference for buttons
-def reconnect(signal, newhandler=None, oldhandler=None):        
-    try:
-        if oldhandler is not None:
-            while True:
-                signal.disconnect(oldhandler)
-        else:
-            signal.disconnect()
-    except TypeError:
-        pass
-    if newhandler is not None:
-        signal.connect(newhandler)
-
-
-# Updates what functions are called when swapping from base functions to alpha to 2nd
-def restFunction():
-    functions()
-
-
-# Handles when the working line goes beyond the edge of the opengl screen horizontally
 def offScreen():
+
+    """
+    Differentiates between screens then handles the event where the text on the screen goes beyond the bounds of the screen,
+    then shifts the position of the workingline and cursor accordingly in order to make the text fit on the screen bytext going off the left edge
+    """
+
     if ui.stackedWidget.currentIndex() == 0:
         workingDistanceToEdge = ui.mainopenglwidget.width() - cursorPos[0]
         if workingDistanceToEdge < 24:
@@ -978,8 +1019,12 @@ def offScreen():
                 cursorPos[0] = cursorPos[0] + cursorPosDict[i]
 
 
-# Updates values on OpenGl screen
 def checkScreenUpdate():
+
+    """
+    Updates screen when it is necessary to forcibly update it.
+    """
+
     # Handles screen updates
     if screenUpdate != []:
         screenUpdate.clear()

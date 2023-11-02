@@ -10,7 +10,7 @@ firstTriggerPosShifter = 0
 domainError = ["False"]
 
 # Key word search
-regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\(|Ans|sqrt\()"
+regex = r"(\(|\)|log\(|ln\(|sin\(|cos\(|tan\(|arcsin\(|arccos\(|arctan\(|√\(|sin⁻¹\(|cos⁻¹\(|tan⁻¹\(|Ans|sqrt\(|exp\()"
 
 # History variables
 answerHistory = {}
@@ -96,7 +96,8 @@ cursorPosDict = {"general": 11, "1": 11, "2": 11,
                  "₁": 8, "₂": 8, "₃": 8,
                  "₄": 8, "₅": 8, "₆": 8,
                  "₇": 8, "₈": 8, "₉": 8,
-                 "₀": 8, "=": 14, "Ans": 31}
+                 "₀": 8, "=": 14, "Ans": 31,
+                 "exp(": 37}
 cursorPos = [0]
 cursorInlinePosition = [-1]
 workingLineShifter = [0]

@@ -58,6 +58,16 @@ def eqSquareRootFunction():
     except:
         equations[str(activeFunction[0])][1].append("√(")
 
+    
+def eqExponentialFunction():
+    secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["exp("]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        equations[str(activeFunction[0])][1][cursorInlinePosition[0]] = "exp("
+    except:
+        equations[str(activeFunction[0])][1].append("exp(")
+
 
 def eqScientificNotationFunction():
     secondResets()

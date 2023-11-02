@@ -77,6 +77,8 @@ def simplifyExpression(expression):
                 simplified = evalArcTan(simpleAns)
             elif firstTrigger[1] == "√(" or firstTrigger[1] == "sqrt(":
                 simplified = evalSquareRoot(simpleAns)
+            elif firstTrigger[1] == "exp(":
+                simplified = evalExponential(simpleAns)
 
             # Splicing into the string
             expression = expression[:firstTriggerPos[0]+firstTriggerPosShifter] + str(simplified) + expression[firstTriggerPos[0]+firstTriggerPosShifter+abs(firstTriggerEndingPos[0]-firstTriggerPos[0])+1:]
@@ -231,8 +233,8 @@ def evalSquareRoot(simpleExpression):
     return ans
 
 
-def evalE(simpleExpression):
-    pass
+def evalExponential(simpleExpression):
+    return math.exp(simpleExpression)
 
 
 def evalAns():

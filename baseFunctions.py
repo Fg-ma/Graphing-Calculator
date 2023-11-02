@@ -3,6 +3,12 @@ import math
 
 
 def secondFunction():
+
+    """
+    Switches the mode to the second mode by setting the subcommand to '2nd',
+    also adds indicators(switching the cursor and appending a label to the right side of the status bar)
+    """
+
     global rightStatusBarText
     global cursorObj
     try:
@@ -33,6 +39,12 @@ def secondFunction():
 
 
 def alphaFunction():
+
+    """
+    Switches the mode to the alpha mode by setting the subcommand to 'alpha',
+    also adds indicators(switching the cursor and appending a label to the right side of the status bar)
+    """
+
     global rightStatusBarText
     global cursorObj
     try:
@@ -177,6 +189,13 @@ def function9():
 
 
 def additionFunction():
+
+    """
+    Adds an addition sign to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending the addition sign
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]

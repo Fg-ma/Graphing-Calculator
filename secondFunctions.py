@@ -128,6 +128,18 @@ def squareRootFunction():
         workingLine.append("√(")
 
 
+def exponentialFunction():
+    secondResets()
+    cursorPos[0] = cursorPos[0] + cursorPosDict["exp("]
+    cursorInlinePosition[0] = cursorInlinePosition[0] + 1
+    try:
+        expressionList[cursorInlinePosition[0]] = "exp("
+        workingLine[cursorInlinePosition[0]] = "exp("
+    except:
+        expressionList.append("exp(")
+        workingLine.append("exp(")
+
+
 def scientificNotationFunction():
     secondResets()
     cursorPos[0] = cursorPos[0] + cursorPosDict["e"]
