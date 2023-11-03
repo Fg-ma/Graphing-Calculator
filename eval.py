@@ -67,7 +67,23 @@ def evaluate():
 
 def solver(expression):
     try:
-        ans = eval(expression)
+        return eval(expression)
     except:
-        ans = "Error"
+        return "Error"
+
+
+def functionEvaluator(expression):
+    # Closes any open parentheses
+    expression = closeParentheses(expression)
+
+    # Gets simplified expression
+    expression = simplifyExpression(expression)
+
+    # Checks for domain errors
+    if domainError[0] == "False":
+        ans = solver(expression)
+    else:
+        ans = "Domain Error"
+        domainError[0] = "False"
+
     return ans

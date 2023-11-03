@@ -37,8 +37,15 @@ from eqAlphaFunctions import *
 from eqSecondFunctions import *
 from eqKeyboardFunctions import *
 
-from displayEquationGlWidget import displayEquationGlWidget
+import sys
+import matplotlib
+matplotlib.use('Qt5Agg')
 
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
+from matplotlib.figure import Figure
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
+from mpl_toolkits.axisartist.axislines import AxesZero
+import numpy as np
 
 class MainWindowUI(QMainWindow): 
     
@@ -61,7 +68,7 @@ class MainWindowUI(QMainWindow):
         self.stackedWidget.insertWidget(0, self.mainopenglwidget)
         self.eqopenglwidget = writeEquationGlWidget()
         self.stackedWidget.insertWidget(1, self.eqopenglwidget)
-        self.disopenglwidget = displayEquationGlWidget()
+        self.disopenglwidget = self.graph()
         self.stackedWidget.insertWidget(2, self.disopenglwidget)
         self.stackedWidget.setCurrentIndex(0)
 
@@ -70,7 +77,6 @@ class MainWindowUI(QMainWindow):
         mainTimer.setInterval(20)
         mainTimer.timeout.connect(self.mainopenglwidget.updateGL)
         mainTimer.timeout.connect(self.eqopenglwidget.updateGL)
-        mainTimer.timeout.connect(self.disopenglwidget.updateGL)
         mainTimer.timeout.connect(checkScreenUpdate)
         mainTimer.start()
 
@@ -569,6 +575,50 @@ class MainWindowUI(QMainWindow):
 
         # Handles when the working line goes off screen
         offScreen()
+
+
+    def graph(self):
+        sc = MplCanvas(self, width=5, height=4, dpi=100)
+        function = "(sin(x))**2+(cos(x))**2"
+        getpts(function)
+        sc.axes.plot(xpts, ypts, color="darkorange")
+        sc.axes.set_xlim([-10,10])
+        sc.axes.set_ylim([-10,10])
+        sc.axes.xaxis.set_major_locator(MultipleLocator(1))
+        sc.axes.yaxis.set_major_locator(MultipleLocator(1))
+
+        for direction in ["xzero", "yzero"]:
+            # adds arrows at the ends of each axis
+            sc.axes.axis[direction].set_axisline_style("-|>")
+
+            # adds X and Y-axis from the origin
+            sc.axes.axis[direction].set_visible(True)
+
+        for direction in ["left", "right", "bottom", "top"]:
+            # hides borders
+            sc.axes.axis[direction].set_visible(False)
+        
+        return sc
+    
+
+class MplCanvas(FigureCanvasQTAgg):
+
+    def __init__(self, parent=None, width=5, height=4, dpi=100):
+        fig = Figure(figsize=(width, height), dpi=dpi)
+        self.axes = fig.add_subplot(axes_class=AxesZero)
+        super(MplCanvas, self).__init__(fig)
+
+
+def getpts(function):
+    xpts.clear()
+    ypts.clear()
+    xrange = np.linspace(-1000, 1000, 1000)
+    for i in xrange:
+        x = i/100
+        expression = function.replace('x', str(x))
+        y = functionEvaluator(expression)
+        xpts.append(x)
+        ypts.append(y)
 
 
 def quitFunction():

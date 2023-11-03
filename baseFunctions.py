@@ -193,7 +193,7 @@ def additionFunction():
     """
     Adds an addition sign to the working line and other appropriate variables,
     but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
-    if there is a history it appends the previous answer before appending the addition sign
+    if there is a history it appends the previous answer before appending the addition sign.
     """
 
     if not expressionList:

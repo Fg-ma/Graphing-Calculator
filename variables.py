@@ -127,6 +127,11 @@ equationsPosHorizontalShift = {"1": 0, "2": 0, "3": 0,
                                "19": 0, "20": 0}
 
 
+# Display Equations Variables
+xpts = []
+ypts = []
+
+
 # Joins the list into a displayable value
 def getRightStatusBarText():
     return "".join(rightStatusBarText)
