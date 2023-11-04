@@ -45,6 +45,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
 from mpl_toolkits.axisartist.axislines import AxesZero
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import numpy as np
 
 class MainWindowUI(QMainWindow): 
@@ -68,8 +69,9 @@ class MainWindowUI(QMainWindow):
         self.stackedWidget.insertWidget(0, self.mainopenglwidget)
         self.eqopenglwidget = writeEquationGlWidget()
         self.stackedWidget.insertWidget(1, self.eqopenglwidget)
-        self.disopenglwidget = self.graph()
-        self.stackedWidget.insertWidget(2, self.disopenglwidget)
+        self.figure = Figure(figsize=(20, 20), dpi=75)
+        self.canvas = FigureCanvas(self.figure)
+        self.stackedWidget.insertWidget(2, self.canvas)
         self.stackedWidget.setCurrentIndex(0)
 
         # Main window timer
@@ -578,37 +580,39 @@ class MainWindowUI(QMainWindow):
 
 
     def graph(self):
-        # Initialize canvas
-        sc = MplCanvas(self, width=5, height=4, dpi=75)
+        # Create an axis
+        ax = self.figure.add_subplot(111, axes_class=AxesZero)
+
+        # Discards the old graph
+        ax.clear()
 
         # Plot limits
-        sc.axes.xaxis.set_major_locator(MultipleLocator(1))
-        sc.axes.yaxis.set_major_locator(MultipleLocator(1))
-        sc.axes.autoscale(enable=False, axis='both')
+        ax.xaxis.set_major_locator(MultipleLocator(1))
+        ax.yaxis.set_major_locator(MultipleLocator(1))
+        ax.autoscale(enable=False, axis='both')
 
+        # x axis ticks
         xlimits = [-10, 10]
         xNumTicks = xlimits[1] - xlimits[0] + 1
         xAxisRange = np.linspace(xlimits[0], xlimits[1], xNumTicks)
-        sc.axes.set_xticks(xAxisRange, [])
+        ax.set_xticks(xAxisRange, [])
 
+        # y axis ticks
         ylimits = [-10, 10]
         yNumTicks = ylimits[1] - ylimits[0] + 1
         yAxisRange = np.linspace(ylimits[0], ylimits[1], yNumTicks)
-        sc.axes.set_yticks(yAxisRange, [])
+        ax.set_yticks(yAxisRange, [])
 
         # Adds arrows
         for direction in ["xzero", "yzero"]:
-            sc.axes.axis[direction].set_axisline_style("-|>")
-            sc.axes.axis[direction].set_visible(True)
+            ax.axis[direction].set_axisline_style("-|>")
+            ax.axis[direction].set_visible(True)
 
         # Hides borders
         for direction in ["left", "right", "bottom", "top"]:
-            sc.axes.axis[direction].set_visible(False)
+            ax.axis[direction].set_visible(False)
 
-        return sc
-
-        
-    def grapher(self):
+        # Gets data to be plotted
         graphableFunctions = []
         for key in equations.keys():
             if equations[key][1] != ['']:
@@ -619,21 +623,17 @@ class MainWindowUI(QMainWindow):
         if graphableFunctions:
             for function in graphableFunctions:
                 getpts(function[0])
-                self.disopenglwidget.axes.plot(xpts, ypts, color=colorLookUp[function[1]])
+                ax.plot(xpts, ypts, color=colorLookUp[function[1]])
+
+
+        # Refresh canvas
+        self.canvas.draw()
     
 
 def eqEvaluate():
-    ui.grapher()
     if ui.stackedWidget.currentIndex() != 2:
+        ui.graph()
         ui.stackedWidget.setCurrentIndex(2)
-
-
-class MplCanvas(FigureCanvasQTAgg):
-
-    def __init__(self, parent=None, width=10, height=10, dpi=75):
-        fig = Figure(figsize=(width, height), dpi=dpi)
-        self.axes = fig.add_subplot(axes_class=AxesZero)
-        super(MplCanvas, self).__init__(fig)
 
 
 def getpts(function):
@@ -642,8 +642,9 @@ def getpts(function):
     xrange = np.linspace(-1000, 1000, 1000)
     for i in xrange:
         x = i/100
-        expression = function.replace('x', str(x))
+        expression = function.replace('X', str(x))
         y = functionEvaluator(expression)
+        print(y)
         if y != "Domain Error":
             xpts.append(x)
             ypts.append(y)
@@ -715,6 +716,7 @@ def graphFunction():
     """
 
     if ui.stackedWidget.currentIndex() != 2:
+        ui.graph()
         ui.stackedWidget.setCurrentIndex(2)
 
 

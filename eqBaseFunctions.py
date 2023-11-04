@@ -245,12 +245,12 @@ def eqNegativeFunction():
 
 
 def eqVariableFunction():
-    cursorPos[0] = cursorPos[0] + cursorPosDict["x"]
+    cursorPos[0] = cursorPos[0] + cursorPosDict["X"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        equations[str(activeFunction[0])][1][cursorInlinePosition[0]] = "x"
+        equations[str(activeFunction[0])][1][cursorInlinePosition[0]] = "X"
     except:
-        equations[str(activeFunction[0])][1].append("x")
+        equations[str(activeFunction[0])][1].append("X")
 
 
 def eqLeftArrowFunction():
@@ -268,6 +268,7 @@ def eqLeftArrowFunction():
         cursorPos[0] = 14
         for i in equations[str(activeFunction[0])][0]:
             cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+
 
 def eqRightArrowFunction():
 

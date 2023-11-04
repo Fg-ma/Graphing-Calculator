@@ -61,6 +61,7 @@ def simplifyExpression(expression):
         if not remainingTriggers:
             # Evaluates the simple subexpression
             simpleAns = eval(subexpression)
+            
             #Specific trigger functions
             if firstTrigger[1] == "(":
                 simplified = eval(str(simpleAns))
@@ -241,6 +242,7 @@ def evalLn(simpleExpression):
         domainError[0] = "True"
         ans = "Domain Error"
     return ans
+
 
 def evalSquareRoot(simpleExpression):
     try:

@@ -617,14 +617,14 @@ def negativeFunction():
 
 
 def variableFunction():
-    cursorPos[0] = cursorPos[0] + cursorPosDict["x"]
+    cursorPos[0] = cursorPos[0] + cursorPosDict["X"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
-        expressionList[cursorInlinePosition[0]] = "x"
-        workingLine[cursorInlinePosition[0]] = "x"
+        expressionList[cursorInlinePosition[0]] = "X"
+        workingLine[cursorInlinePosition[0]] = "X"
     except:
-        expressionList.append("x")
-        workingLine.append("x")
+        expressionList.append("X")
+        workingLine.append("X")
 
 
 def leftArrowFunction():
