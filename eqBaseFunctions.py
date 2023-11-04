@@ -1,10 +1,6 @@
 from variables import *
 
 
-def eqEvaluate():
-    print("evaluate")
-
-
 def eqFunction0():
     cursorPos[0] = cursorPos[0] + cursorPosDict["0"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1

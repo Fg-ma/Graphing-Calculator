@@ -130,6 +130,10 @@ equationsPosHorizontalShift = {"1": 0, "2": 0, "3": 0,
 # Display Equations Variables
 xpts = []
 ypts = []
+colorLookUp = {"1": "orange", "2": "royalblue", "3": "red", "4": "purple", "5": "pink", 
+               "6": "crimson", "7": "dimgray", "8": "darkslategray", "9": "turquoise", "10": "lawngreen",
+               "11": "indianred", "12": "gold", "13": "seagreen", "14": "deeppink", "15": "darkseagreen",
+               "16": "lightpink", "17": "steelblue", "18": "darkviolet", "19": "dodgerblue", "20": "tomato",}
 
 
 # Joins the list into a displayable value

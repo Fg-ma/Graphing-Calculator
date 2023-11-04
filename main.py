@@ -579,30 +579,22 @@ class MainWindowUI(QMainWindow):
 
     def graph(self):
         # Initialize canvas
-        sc = MplCanvas(self, width=5, height=4, dpi=100)
-
-        # Plot functions
-        #function = "(sin(x))**2+(cos(x))**2"
-        #getpts(function)
-        #sc.axes.plot(xpts, ypts, color="darkorange")
-
-        graphableFunctions = []
-        for key in equations.keys():
-            if equations[key][1] != ['']:
-                graphableFunctions.append([equations[key][1], key])
-
-        colorLookUp = {"1": "orange", "2": "blue", "3": "red", "4": "purple", "5": "pink"}
-        
-        if graphableFunctions:
-            for function in graphableFunctions:
-                getpts(function[0][0])
-                sc.axes.plot(xpts, ypts, color=colorLookUp[function[1]])
+        sc = MplCanvas(self, width=5, height=4, dpi=75)
 
         # Plot limits
-        sc.axes.set_xlim([-10,10])
-        sc.axes.set_ylim([-10,10])
         sc.axes.xaxis.set_major_locator(MultipleLocator(1))
         sc.axes.yaxis.set_major_locator(MultipleLocator(1))
+        sc.axes.autoscale(enable=False, axis='both')
+
+        xlimits = [-10, 10]
+        xNumTicks = xlimits[1] - xlimits[0] + 1
+        xAxisRange = np.linspace(xlimits[0], xlimits[1], xNumTicks)
+        sc.axes.set_xticks(xAxisRange, [])
+
+        ylimits = [-10, 10]
+        yNumTicks = ylimits[1] - ylimits[0] + 1
+        yAxisRange = np.linspace(ylimits[0], ylimits[1], yNumTicks)
+        sc.axes.set_yticks(yAxisRange, [])
 
         # Adds arrows
         for direction in ["xzero", "yzero"]:
@@ -612,13 +604,33 @@ class MainWindowUI(QMainWindow):
         # Hides borders
         for direction in ["left", "right", "bottom", "top"]:
             sc.axes.axis[direction].set_visible(False)
-        
+
         return sc
+
+        
+    def grapher(self):
+        graphableFunctions = []
+        for key in equations.keys():
+            if equations[key][1] != ['']:
+                eq = "".join(equations[key][1])
+                graphableFunctions.append([eq, key])
+        
+
+        if graphableFunctions:
+            for function in graphableFunctions:
+                getpts(function[0])
+                self.disopenglwidget.axes.plot(xpts, ypts, color=colorLookUp[function[1]])
     
+
+def eqEvaluate():
+    ui.grapher()
+    if ui.stackedWidget.currentIndex() != 2:
+        ui.stackedWidget.setCurrentIndex(2)
+
 
 class MplCanvas(FigureCanvasQTAgg):
 
-    def __init__(self, parent=None, width=5, height=4, dpi=100):
+    def __init__(self, parent=None, width=10, height=10, dpi=75):
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(axes_class=AxesZero)
         super(MplCanvas, self).__init__(fig)
@@ -632,8 +644,9 @@ def getpts(function):
         x = i/100
         expression = function.replace('x', str(x))
         y = functionEvaluator(expression)
-        xpts.append(x)
-        ypts.append(y)
+        if y != "Domain Error":
+            xpts.append(x)
+            ypts.append(y)
 
 
 def quitFunction():
