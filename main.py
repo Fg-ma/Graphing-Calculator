@@ -582,9 +582,21 @@ class MainWindowUI(QMainWindow):
         sc = MplCanvas(self, width=5, height=4, dpi=100)
 
         # Plot functions
-        function = "(sin(x))**2+(cos(x))**2"
-        getpts(function)
-        sc.axes.plot(xpts, ypts, color="darkorange")
+        #function = "(sin(x))**2+(cos(x))**2"
+        #getpts(function)
+        #sc.axes.plot(xpts, ypts, color="darkorange")
+
+        graphableFunctions = []
+        for key in equations.keys():
+            if equations[key][1] != ['']:
+                graphableFunctions.append([equations[key][1], key])
+
+        colorLookUp = {"1": "orange", "2": "blue", "3": "red", "4": "purple", "5": "pink"}
+        
+        if graphableFunctions:
+            for function in graphableFunctions:
+                getpts(function[0][0])
+                sc.axes.plot(xpts, ypts, color=colorLookUp[function[1]])
 
         # Plot limits
         sc.axes.set_xlim([-10,10])
