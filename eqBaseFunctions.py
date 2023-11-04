@@ -258,23 +258,40 @@ def eqVariableFunction():
 
 
 def eqLeftArrowFunction():
+
+    """
+    Same function as the leftArrowFunction in baseFuntions.py, 
+    but with the added functionality of checking which equation is currently being worked on.
+    """
+
     if cursorInlinePosition[0] >= 0:
         cursorPos[0] = cursorPos[0] - cursorPosDict[equations[str(activeFunction[0])][1][cursorInlinePosition[0]]]
         cursorInlinePosition[0] = cursorInlinePosition[0] - 1
     elif cursorInlinePosition[0] == -1:
-        print("wokred")
         equationsPosHorizontalShift[str(activeFunction[0])] = 0
         cursorPos[0] = 14
         for i in equations[str(activeFunction[0])][0]:
             cursorPos[0] = cursorPos[0] + cursorPosDict[i]
 
 def eqRightArrowFunction():
+
+    """
+    Same function as the rightArrowFunction in baseFuntions.py, 
+    but with the added functionality of checking which equation is currently being worked on.
+    """
+
     if cursorInlinePosition[0] < len(equations[str(activeFunction[0])][1]) - 1:
         cursorPos[0] = cursorPos[0] + cursorPosDict[equations[str(activeFunction[0])][1][cursorInlinePosition[0]]]
         cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def eqUpArrowFunction():
+
+    """
+    Moves the cursor up to the function above the current position if the current position isn't the first function.
+    Note that the curssor will always be sent to the first position in the line regards of whether or not there is values in the line or not.
+    """
+
     if activeFunction[0] > 1:
         activeFunction[0] = activeFunction[0] - 1
         cursorPos[0] = 14
@@ -289,6 +306,12 @@ def eqUpArrowFunction():
 
 
 def eqDownArrowFunction():
+
+    """
+    Moves the cursor down to the function below the current position if the current position isn't the last function.
+    Note that the curssor will always be sent to the first position in the line regards of whether or not there is values in the line or not.
+    """
+
     if activeFunction[0] < 20:
         activeFunction[0] = activeFunction[0] + 1
         cursorPos[0] = 14
@@ -303,6 +326,11 @@ def eqDownArrowFunction():
 
 
 def eqClearFunction():
+
+    """
+    Clears necessary variables to clear whatever equation is currently being worked on.
+    """
+    
     equations[str(activeFunction[0])][1] = [""]
     subcommands.clear()
     rightStatusBarText.clear()

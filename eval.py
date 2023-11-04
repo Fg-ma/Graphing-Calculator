@@ -3,6 +3,17 @@ from evalFunctions import *
 from secondFunctions import entryFunction
 
 def evaluate():
+
+    """
+    Gets expression from expression list,
+    adds to the answer and problem history,
+    closes any excess parentheses,
+    simplies the expression to simple number(ex. sin(0)=>0),
+    checks for any errors while simplifying(such as domain errors),
+    solves simplified expression and returns a single numeric answer,
+    expresses answers that are too long in scientific notation.
+    """
+
     expression = "".join(expressionList)
     # Handles empty evaluate events
     if not expression:
@@ -66,6 +77,11 @@ def evaluate():
 
 
 def solver(expression):
+
+    """
+    Can only handle simple four function calculations and returns a single number. 
+    """
+
     try:
         return eval(expression)
     except:
@@ -73,13 +89,16 @@ def solver(expression):
 
 
 def functionEvaluator(expression):
-    # Closes any open parentheses
+    
+    """
+    Closes parentheses then simplifies equation and finally returns a single answer if there are no errors.
+    Only used to send a range of values into when getting points to plot functions on the equation page.
+    """
+
     expression = closeParentheses(expression)
 
-    # Gets simplified expression
     expression = simplifyExpression(expression)
 
-    # Checks for domain errors
     if domainError[0] == "False":
         ans = solver(expression)
     else:

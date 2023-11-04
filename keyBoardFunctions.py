@@ -356,6 +356,12 @@ def functionTypeAmpersand():
 
 
 def functionTypeBackspace():
+
+    """
+    If the cursor is in the last position of the line then the last value is removed and the cursor moves accordingly,
+    if the cursor is in any position but the last then whatever value that is above the cursor is removed.
+    """
+
     if cursorInlinePosition[0] == len(expressionList) - 1 and not cursorInlinePosition[0] == -1:
         expressionList.pop(cursorInlinePosition[0])
         removed = workingLine.pop(cursorInlinePosition[0])
@@ -370,12 +376,26 @@ def functionTypeBackspace():
 
 
 def functionTypeDelete():
+
+    """
+    Unlike backspace function, it only removes the value above the cursor,
+    so if the cursor is in the last position in the line nothing happens.
+    """
+
     if cursorInlinePosition[0] < len(expressionList) - 1:
         expressionList.pop(cursorInlinePosition[0] + 1)
         workingLine.pop(cursorInlinePosition[0] + 1)
         
 
 def functionTypeControlC():
+
+    """
+    If not in history and there is a value in the workingline then it copies the workingline to the clipboard,
+    if not in history and there is a no value in the workingline then it copies the previous answer(if there is one) to the clipboard,
+    if not in history and there is a no value in the workingline and there is no answer history then nothing is copied to the clipboard,
+    if in history then it copies whatever is selected(whether it is an answer or equation) to the clipboard
+    """
+
     if inHistory[0] == "False":
         if workingLine == []:
             try:
@@ -410,6 +430,11 @@ def functionTypeControlC():
 
 
 def functionTypeControlV():
+
+    """
+    Pastes whatever is in the clipboard to the working line.
+    """
+
     paste = pyperclip.paste()
     for i in [*paste]:
         cursorPos[0] = cursorPos[0] + cursorPosDict[i]
@@ -419,6 +444,13 @@ def functionTypeControlV():
     
 
 def functionTypeControlZ():
+
+    """
+    If the working line isn't empty then it removes the last value from the working line,
+    if the working line is empty it undoes the previous answer history if there is one
+    (when this happens the previous equation history(now the current working line) is split into individual characters).
+    """
+
     if workingLine == []:
         try:
             if answerHistory and not numLines[0] == 0:
@@ -446,6 +478,11 @@ def functionTypeControlZ():
 
 
 def cursorGetLength(str):
+
+    """
+    Gets where the cursor should land given the current expression
+    """
+
     brokenList = [*str]
     for i in brokenList:
         cursorPos[0] = cursorPos[0] + cursorPosDict[i]

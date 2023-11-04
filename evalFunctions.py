@@ -3,8 +3,13 @@ import re
 import math
 
 
-# Simplifies complex expressions into expressions with numbers and basic functions
 def simplifyExpression(expression):
+
+    """
+    Searches for triggers(sin,cos, tan, exp, ...) in the inputted expression,
+    then sends them to be evaluated and tranformed into simple numbers working from the inside out. 
+    """
+
     global firstTrigger
     global occ
     global regex
@@ -103,8 +108,13 @@ def simplifyExpression(expression):
     return expression
     
 
-# Finds the outermost complex function and returns information about it
 def expressionSearch(expression):
+
+    """
+    Searched for triggers in an inputted expression then returns the first trigger it comes across.
+    Returns the first trigger in the firstTrigger array which contains vital information like the position of the parenthesis that closes the function.
+    """
+
     # Variable rest
     firstTrigger[0] = "True"
     firstTriggerPos.clear()
@@ -137,8 +147,12 @@ def expressionSearch(expression):
     return
 
 
-# Closes any open Parentheses so it doesn't break program
 def closeParentheses(expression):
+
+    """
+    Adds parentheses to the beginning or the end of an expression based on the inequality of parenthesis balance.
+    """
+
     fetchParenthesesLists(expression)
     while not len(leftParentheses) == len(rightParentheses):
         if len(leftParentheses) < len(rightParentheses):
@@ -149,8 +163,12 @@ def closeParentheses(expression):
     return expression
 
 
-# Gets a list of Parentheses to be used in checking that they are closed
 def fetchParenthesesLists(expression):
+
+    """
+    Gets the positions of all the parentheses in a given expression and stores them in two arrays.
+    """
+
     global position
     global leftParentheses
     global rightParentheses

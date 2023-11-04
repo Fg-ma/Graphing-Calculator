@@ -578,24 +578,27 @@ class MainWindowUI(QMainWindow):
 
 
     def graph(self):
+        # Initialize canvas
         sc = MplCanvas(self, width=5, height=4, dpi=100)
+
+        # Plot functions
         function = "(sin(x))**2+(cos(x))**2"
         getpts(function)
         sc.axes.plot(xpts, ypts, color="darkorange")
+
+        # Plot limits
         sc.axes.set_xlim([-10,10])
         sc.axes.set_ylim([-10,10])
         sc.axes.xaxis.set_major_locator(MultipleLocator(1))
         sc.axes.yaxis.set_major_locator(MultipleLocator(1))
 
+        # Adds arrows
         for direction in ["xzero", "yzero"]:
-            # adds arrows at the ends of each axis
             sc.axes.axis[direction].set_axisline_style("-|>")
-
-            # adds X and Y-axis from the origin
             sc.axes.axis[direction].set_visible(True)
 
+        # Hides borders
         for direction in ["left", "right", "bottom", "top"]:
-            # hides borders
             sc.axes.axis[direction].set_visible(False)
         
         return sc

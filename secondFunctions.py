@@ -24,6 +24,13 @@ def ansFunction():
 
 
 def entryFunction():
+
+    """
+    Gets the last entry(expression) from the history and appends it to the working line, 
+    if pressed more then once it goes deeper into the history to get the entry,
+    does nothing if there is no deeper history or no history at all.
+    """
+
     secondResets()
 
     if resetEntry != []:

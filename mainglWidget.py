@@ -7,6 +7,12 @@ import math
 
 
 class mainGlWidget(QGLWidget):
+
+    """
+    Creates the openGL widget in which the main screen page is displayed,
+    contains functions for updating the screen with the appropriate information given the appropriate inputs.
+    """
+
     # Intial parameters
     def __init__(self, parent=None):
         QGLWidget.__init__(self, parent)

@@ -227,6 +227,13 @@ def additionFunction():
 
 
 def subtractionFunction():
+
+    """
+    Adds a subtraction sign to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending the subtraction sign.
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]
@@ -258,6 +265,13 @@ def subtractionFunction():
 
 
 def multiplicationFunction():
+
+    """
+    Adds a multiplication sign to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending the multiplication sign.
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]
@@ -289,6 +303,13 @@ def multiplicationFunction():
 
 
 def divisionFunction():
+
+    """
+    Adds an division sign to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending the division sign.
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]
@@ -320,6 +341,13 @@ def divisionFunction():
 
 
 def clearFunction():
+
+    """
+    Celars the appropriate variables, specifcally the ones that are storing the lines displayed on screen,
+    the histroy is not deleted and can be scrolled up to by using the arrows,
+    if inhistory then the line that is hovered over in deleted.
+    """
+
     if inHistory[0] == "False":
         if workingLine == []:
             lines.clear()
@@ -371,6 +399,13 @@ def commaFunction():
 
 
 def squareFunction():
+
+    """
+    Adds '**2' to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending '**2'.
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]
@@ -424,6 +459,13 @@ def leftParenthesesFunction():
 
 
 def inverseFunction():
+
+    """
+    Adds '**-1' to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending '**-1'.
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]
@@ -455,6 +497,13 @@ def inverseFunction():
 
 
 def powerFunction():
+
+    """
+    Adds '**' to the working line and other appropriate variables,
+    but also checks to see if it is the first symbol in the working line in which case it checks if there is a history,
+    if there is a history it appends the previous answer before appending '**'.
+    """
+
     if not expressionList:
         try:
             lastAnswerHistoryKey = list(answerHistory) [-1]
@@ -552,6 +601,11 @@ def tanFunction():
 
 
 def negativeFunction():
+
+    """
+    Differs from subtraction function because it doesn't check for previous answer history if it's the first value in the working line.
+    """
+
     cursorPos[0] = cursorPos[0] + cursorPosDict["-"]
     cursorInlinePosition[0] = cursorInlinePosition[0] + 1
     try:
@@ -574,6 +628,12 @@ def variableFunction():
 
 
 def leftArrowFunction():
+
+    """
+    If the cursor is in the very first position nothing happens,
+    but if it isn't in the first position the cursors moves left by a distance that is looked up in the cursorPosDict
+    """
+
     if cursorInlinePosition[0] < 0:
         cursorPos[0] = 0
     else:
@@ -582,12 +642,24 @@ def leftArrowFunction():
 
 
 def rightArrowFunction():
+
+    """
+    If the cursor is in the very last position nothing happens,
+    but if it isn't in the last position the cursor moves right by a distance that is looked up in the cursorPosDict
+    """
+
     if cursorInlinePosition[0] < len(expressionList) - 1:
         cursorPos[0] = cursorPos[0] + cursorPosDict[workingLine[cursorInlinePosition[0]]]
         cursorInlinePosition[0] = cursorInlinePosition[0] + 1
 
 
 def upArrowFunction():
+
+    """
+    Moves the selection bar up if there is a history value to move onto, if there is no history above then nothing happens,
+    if there is no history above on the screen but there has been a previous history that was cleared it will still move up into history
+    """
+
     if (numLines[0] * 2) > selectionBarPos[0]:
         inHistory[0] = "True"
         selectionBarTranslation[0] = -0.5
@@ -614,6 +686,12 @@ def upArrowFunction():
 
 
 def downArrowFunction():
+
+    """
+    Moves the selection bar down if there is a history value to move onto, if there is no history below then nothing happens,
+    if there is no history below on the screen but there is history below it will still move down into history
+    """
+
     if selectionBarPos[0] != 0:
         inHistory[0] = "True"
         selectionBarTranslation[0] = -0.5
@@ -630,6 +708,12 @@ def downArrowFunction():
 
 
 def inHistoryEvalFunction():
+
+    """
+    When the eval function is called from in history it will append whatever value or equation that is currently selected 
+    to the working line and exit from inhistory.
+    """
+
     if (selectionBarPos[0] % 2) == 1:
         answerPos = -math.ceil(selectionBarPos[0]/2)
         answer = list(answerHistory.values())[answerPos]

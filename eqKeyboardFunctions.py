@@ -291,6 +291,12 @@ def eqFunctionTypeAmpersand():
 
 
 def eqFunctionTypeBackspace():
+
+    """
+    If the cursor is in the last position of the line then the last value is removed and the cursor moves accordingly,
+    if the cursor is in any position but the last then whatever value that is above the cursor is removed.
+    """
+
     if cursorInlinePosition[0] == len(equations[str(activeFunction[0])][1]) - 1 and not cursorInlinePosition[0] == -1:
         removed = equations[str(activeFunction[0])][1].pop(cursorInlinePosition[0])
         if equationsPosHorizontalShift[str(activeFunction[0])] >= 0:
@@ -303,16 +309,32 @@ def eqFunctionTypeBackspace():
 
 
 def eqFunctionTypeDelete():
-     if cursorInlinePosition[0] < len(equations[str(activeFunction[0])][1]) - 1:
+    
+    """
+    Unlike backspace function, it only removes the value above the cursor,
+    so if the cursor is in the last position in the line nothing happens.
+    """
+
+    if cursorInlinePosition[0] < len(equations[str(activeFunction[0])][1]) - 1:
         equations[str(activeFunction[0])][1].pop(cursorInlinePosition[0] + 1)
         
 
 def eqFunctionTypeControlC():
+
+    """
+    Copies whatever value is in the current equation to the clipboard.
+    """
+
     copy = "".join(equations[str(activeFunction[0])][1])
     pyperclip.copy(copy)
 
 
 def eqFunctionTypeControlV():
+
+    """
+    Pastes whatever value is in the clipboard to the current equation.
+    """
+
     paste = pyperclip.paste()
     for i in [*paste]:
         cursorPos[0] = cursorPos[0] + cursorPosDict[i]
@@ -321,6 +343,11 @@ def eqFunctionTypeControlV():
     
 
 def eqFunctionTypeControlZ():
+
+    """
+    Removes the last value in the current equation line.
+    """
+
     if cursorInlinePosition[0] != -1:
         removed = equations[str(activeFunction[0])][1].pop(cursorInlinePosition[0])
         if equationsPosHorizontalShift[str(activeFunction[0])] >= 0:
