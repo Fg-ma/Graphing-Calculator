@@ -13,13 +13,22 @@ Current List of screens:
 """
 
 import sys
-from PyQt5.uic import loadUi
+import numpy as np
+import matplotlib
+
 from OpenGL.GL import *
 from OpenGL.GLU import *
+
+from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.QtOpenGL import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt
+
+from matplotlib.figure import Figure
+from matplotlib.ticker import MultipleLocator
+from mpl_toolkits.axisartist.axislines import AxesZero
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 from variables import *
 
@@ -37,16 +46,8 @@ from eqAlphaFunctions import *
 from eqSecondFunctions import *
 from eqKeyboardFunctions import *
 
-import sys
-import matplotlib
-matplotlib.use('Qt5Agg')
+from windowDialogFunctions import *
 
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
-from matplotlib.figure import Figure
-from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
-from mpl_toolkits.axisartist.axislines import AxesZero
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-import numpy as np
 
 class MainWindowUI(QMainWindow): 
     
@@ -584,6 +585,11 @@ class MainWindowUI(QMainWindow):
 
 
     def graph(self):
+
+        """
+        Sets up graph before getting points and plotting them on the graph.
+        """
+
         # Create an axis
         ax = self.figure.add_subplot(111, axes_class=AxesZero)
 
@@ -596,14 +602,14 @@ class MainWindowUI(QMainWindow):
         ax.autoscale(enable=False, axis='both')
 
         # x axis ticks
-        xlimits = [-10, 10]
-        xNumTicks = xlimits[1] - xlimits[0] + 1
+        xlimits = [lowerXLimit[0], upperXLimit[0]]
+        xNumTicks = round((xlimits[1] - xlimits[0] + 1) / xScale[0])
         xAxisRange = np.linspace(xlimits[0], xlimits[1], xNumTicks)
         ax.set_xticks(xAxisRange, [])
 
         # y axis ticks
-        ylimits = [-10, 10]
-        yNumTicks = ylimits[1] - ylimits[0] + 1
+        ylimits = [lowerYLimit[0], upperYLimit[0]]
+        yNumTicks = round((ylimits[1] - ylimits[0] + 1) / yScale[0])
         yAxisRange = np.linspace(ylimits[0], ylimits[1], yNumTicks)
         ax.set_yticks(yAxisRange, [])
 
@@ -643,7 +649,7 @@ def eqEvaluate():
 def getpts(function):
     xpts.clear()
     ypts.clear()
-    xrange = np.linspace(-1000, 1000, 1000)
+    xrange = np.linspace(lowerXLimit[0]*100, upperXLimit[0]*100, 1000)
     for i in xrange:
         x = i/100
         expression = function.replace('X', str(x))
@@ -724,6 +730,11 @@ def graphFunction():
 
 
 def windowDialogFunction():
+
+    """
+    If the window dialog is open it closes it, and if it is closed then it opens it.
+    """
+
     if windowDialogStatus[0] == "Hidden":
         windowDialogStatus[0] = "Visible"
         ui.windowWidget.show()
@@ -733,6 +744,11 @@ def windowDialogFunction():
 
 
 def modeDialogFunction():
+
+    """
+    If the mode dialog is open it closes it, and if it is closed then it opens it.
+    """
+
     if modeDialogStatus[0] == "Hidden":
         modeDialogStatus[0] = "Visible"
         ui.modeWidget.show()
@@ -789,6 +805,12 @@ def functions():
             reconnectReset(ui.graphButton.clicked, graphFunction)
             reconnectReset(ui.windowButton.clicked, windowDialogFunction)
             reconnectReset(ui.modeButton.clicked, modeDialogFunction)
+            reconnectReset(ui.Xmin.textChanged, XminFunction)
+            reconnectReset(ui.Xmax.textChanged, XmaxFunction)
+            reconnectReset(ui.Xscale.textChanged, XscaleFunction)
+            reconnectReset(ui.Ymin.textChanged, YminFunction)
+            reconnectReset(ui.Ymax.textChanged, YmaxFunction)
+            reconnectReset(ui.Yscale.textChanged, YscaleFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -875,6 +897,12 @@ def functions():
         reconnectReset(ui.leftArrowButton.clicked)
         reconnectReset(ui.rightArrowButton.clicked)
         reconnectReset(ui.graphButton.clicked, graphFunction)
+        reconnectReset(ui.Xmin.textChanged, XminFunction)
+        reconnectReset(ui.Xmax.textChanged, XmaxFunction)
+        reconnectReset(ui.Xscale.textChanged, XscaleFunction)
+        reconnectReset(ui.Ymin.textChanged, YminFunction)
+        reconnectReset(ui.Ymax.textChanged, YmaxFunction)
+        reconnectReset(ui.Yscale.textChanged, YscaleFunction)
     elif ui.stackedWidget.currentIndex() == 1:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, eqFunction0)
@@ -915,6 +943,12 @@ def functions():
             reconnectReset(ui.upArrowButton.clicked, eqUpArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, eqDownArrowFunction)
             reconnectReset(ui.graphButton.clicked, graphFunction)
+            reconnectReset(ui.Xmin.textChanged, XminFunction)
+            reconnectReset(ui.Xmax.textChanged, XmaxFunction)
+            reconnectReset(ui.Xscale.textChanged, XscaleFunction)
+            reconnectReset(ui.Ymin.textChanged, YminFunction)
+            reconnectReset(ui.Ymax.textChanged, YmaxFunction)
+            reconnectReset(ui.Yscale.textChanged, YscaleFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
@@ -1004,6 +1038,12 @@ def functions():
             reconnectReset(ui.upArrowButton.clicked)
             reconnectReset(ui.downArrowButton.clicked)
             reconnectReset(ui.graphButton.clicked, graphFunction)
+            reconnectReset(ui.Xmin.textChanged, XminFunction)
+            reconnectReset(ui.Xmax.textChanged, XmaxFunction)
+            reconnectReset(ui.Xscale.textChanged, XscaleFunction)
+            reconnectReset(ui.Ymin.textChanged, YminFunction)
+            reconnectReset(ui.Ymax.textChanged, YmaxFunction)
+            reconnectReset(ui.Yscale.textChanged, YscaleFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
@@ -1138,7 +1178,49 @@ def checkScreenUpdate():
     if inHistory[0] == "True" and firstHistoryUpdate[0] == "True":
         firstHistoryUpdate[0] = "False"
         functions()
-    
+
+
+def XminFunction():
+    try:
+        lowerXLimit[0] = int(ui.Xmin.text())
+    except:
+        pass
+
+
+def XmaxFunction():
+    try:
+        upperXLimit[0] = int(ui.Xmax.text())
+    except:
+        pass
+
+
+def XscaleFunction():
+    try:
+        xScale[0] = int(ui.Xscale.text())
+    except:
+        pass
+
+
+def YminFunction():
+    try:
+        lowerYLimit[0] = int(ui.Ymin.text())
+    except:
+        pass
+
+
+def YmaxFunction():
+    try:
+        upperYLimit[0] = int(ui.Ymax.text())
+    except:
+        pass
+
+
+def YscaleFunction():
+    try:
+        yScale[0] = int(ui.Yscale.text())
+    except:
+        pass
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

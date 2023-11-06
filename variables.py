@@ -136,8 +136,19 @@ colorLookUp = {"1": "orange", "2": "royalblue", "3": "red", "4": "purple", "5": 
                "16": "lightpink", "17": "steelblue", "18": "darkviolet", "19": "dodgerblue", "20": "tomato",}
 
 
+# Dialog Variables
 windowDialogStatus = ["Hidden"]
 modeDialogStatus = ["Hidden"]
+
+
+# Window Dialog Varibles
+lowerXLimit = [-10]
+upperXLimit = [10]
+xScale = [1]
+lowerYLimit = [-10]
+upperYLimit = [10]
+yScale = [1]
+
 
 # Joins the list into a displayable value
 def getRightStatusBarText():
