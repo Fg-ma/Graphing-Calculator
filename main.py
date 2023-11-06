@@ -64,6 +64,10 @@ class MainWindowUI(QMainWindow):
 
         loadUi("calculator.ui", self)
 
+
+        self.windowWidget.hide()
+        self.modeWidget.hide()
+
         # opengl widget
         self.mainopenglwidget = mainGlWidget()
         self.stackedWidget.insertWidget(0, self.mainopenglwidget)
@@ -644,7 +648,6 @@ def getpts(function):
         x = i/100
         expression = function.replace('X', str(x))
         y = functionEvaluator(expression)
-        print(y)
         if y != "Domain Error":
             xpts.append(x)
             ypts.append(y)
@@ -720,6 +723,24 @@ def graphFunction():
         ui.stackedWidget.setCurrentIndex(2)
 
 
+def windowDialogFunction():
+    if windowDialogStatus[0] == "Hidden":
+        windowDialogStatus[0] = "Visible"
+        ui.windowWidget.show()
+    elif windowDialogStatus[0] == "Visible":
+        windowDialogStatus[0] = "Hidden"
+        ui.windowWidget.hide()
+
+
+def modeDialogFunction():
+    if modeDialogStatus[0] == "Hidden":
+        modeDialogStatus[0] = "Visible"
+        ui.modeWidget.show()
+    elif modeDialogStatus[0] == "Visible":
+        modeDialogStatus[0] = "Hidden"
+        ui.modeWidget.hide()
+
+
 def functions():
 
     """
@@ -766,6 +787,8 @@ def functions():
             reconnectReset(ui.upArrowButton.clicked, upArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, downArrowFunction)
             reconnectReset(ui.graphButton.clicked, graphFunction)
+            reconnectReset(ui.windowButton.clicked, windowDialogFunction)
+            reconnectReset(ui.modeButton.clicked, modeDialogFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
