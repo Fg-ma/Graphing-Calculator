@@ -108,6 +108,7 @@ inHistory = ["False"]
 firstHistoryUpdate = ["True"]
 
 # Equation Page Variables
+inGraph = ["False"]
 equations = {"1": ["Y₁", [""]], "2": ["Y₂", [""]], "3": ["Y₃", [""]],
              "4": ["Y₄", [""]], "5": ["Y₅", [""]], "6": ["Y₆", [""]],
              "7": ["Y₇", [""]], "8": ["Y₈", [""]], "9": ["Y₉", [""]],
@@ -148,6 +149,12 @@ xScale = [1]
 lowerYLimit = [-10]
 upperYLimit = [10]
 yScale = [1]
+
+
+# Mode Dialog Variables
+modeStates = {
+    "degradState": "rad"
+}
 
 
 # Joins the list into a displayable value

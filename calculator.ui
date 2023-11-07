@@ -3907,7 +3907,7 @@ background-color: rgb(241, 241, 241);
 color: rgb(25, 25, 25);</string>
          </property>
          <property name="currentText">
-          <string>English</string>
+          <string/>
          </property>
          <property name="minimumContentsLength">
           <number>0</number>

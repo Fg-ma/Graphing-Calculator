@@ -647,6 +647,12 @@ def eqEvaluate():
 
 
 def getpts(function):
+
+    """
+    Gets the points that are plotted by creating a line space and evaluating on the linespace.
+    The limits of the points on the linespace are determined by the values entered in the window dialog box.
+    """
+    inGraph[0] = "True"
     xpts.clear()
     ypts.clear()
     xrange = np.linspace(lowerXLimit[0]*100, upperXLimit[0]*100, 1000)
@@ -657,6 +663,7 @@ def getpts(function):
         if y != "Domain Error":
             xpts.append(x)
             ypts.append(y)
+    inGraph[0] = "False"
 
 
 def quitFunction():
@@ -811,6 +818,8 @@ def functions():
             reconnectReset(ui.Ymin.textChanged, YminFunction)
             reconnectReset(ui.Ymax.textChanged, YmaxFunction)
             reconnectReset(ui.Yscale.textChanged, YscaleFunction)
+            reconnectReset(ui.mdRadianButton.clicked, mdRadianFunction)
+            reconnectReset(ui.mdDegreeButton.clicked, mdDegreeFunction)
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -1220,6 +1229,16 @@ def YscaleFunction():
         yScale[0] = int(ui.Yscale.text())
     except:
         pass
+
+
+def mdRadianFunction():
+    ui.mdDegreeButton.setChecked(False)
+    modeStates["degradState"] = "rad"
+
+
+def mdDegreeFunction():
+    ui.mdRadianButton.setChecked(False)
+    modeStates["degradState"] = "deg"
 
 
 if __name__ == "__main__":

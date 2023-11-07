@@ -188,42 +188,75 @@ def fetchParenthesesLists(expression):
 
 
 def evalSin(simpleExpression):
-    return math.sin(simpleExpression)
+    if inGraph[0] == "False":
+        if modeStates["degradState"] == "deg":
+            return math.sin(math.radians(simpleExpression))
+        elif modeStates["degradState"] == "rad":
+            return math.sin(simpleExpression)
+    elif inGraph[0] == "True":
+        return math.sin(simpleExpression)
 
 
 def evalCos(simpleExpression):
-    return math.cos(simpleExpression)
+    if inGraph[0] == "False":
+        if modeStates["degradState"] == "deg":
+            return math.cos(math.radians(simpleExpression))
+        elif modeStates["degradState"] == "rad":
+            return math.cos(simpleExpression)
+    elif inGraph[0] == "True":
+        return math.cos(simpleExpression)
 
 
 def evalTan(simpleExpression):
-    return math.tan(simpleExpression) 
+    if inGraph[0] == "False":
+        if modeStates["degradState"] == "deg":
+            return math.tan(math.radians(simpleExpression))
+        elif modeStates["degradState"] == "rad":
+            return math.tan(simpleExpression)
+    elif inGraph[0] == "True":
+        return math.tan(simpleExpression)
 
 
 def evalArcSin(simpleExpression):
     try:
-        ans = math.asin(simpleExpression)
+        if inGraph[0] == "False":
+            if modeStates["degradState"] == "deg":
+                return math.asin(math.radians(simpleExpression))
+            elif modeStates["degradState"] == "rad":
+                return math.asin(simpleExpression)
+        elif inGraph[0] == "True":
+            return math.asin(simpleExpression)
     except:
         domainError[0] = "True"
-        ans = "Domain Error"
-    return ans 
+        return "Domain Error"
 
 
 def evalArcCos(simpleExpression):
     try:
-        ans = math.acos(simpleExpression)
+        if inGraph[0] == "False":
+            if modeStates["degradState"] == "deg":
+                return math.acos(math.radians(simpleExpression))
+            elif modeStates["degradState"] == "rad":
+                return math.acos(simpleExpression)
+        elif inGraph[0] == "True":
+            return math.acos(simpleExpression)
     except:
         domainError[0] = "True"
-        ans = "Domain Error"
-    return ans 
+        return "Domain Error"
 
 
 def evalArcTan(simpleExpression):
     try:
-        ans = math.atan(simpleExpression)
+        if inGraph[0] == "False":
+            if modeStates["degradState"] == "deg":
+                return math.atan(math.radians(simpleExpression))
+            elif modeStates["degradState"] == "rad":
+                return math.atan(simpleExpression)
+        elif inGraph[0] == "True":
+            return math.atan(simpleExpression)
     except:
         domainError[0] = "True"
-        ans = "Domain Error"
-    return ans
+        return "Domain Error"
 
 
 def evalLog(simpleExpression):
