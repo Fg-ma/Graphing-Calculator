@@ -47,6 +47,7 @@ from eqSecondFunctions import *
 from eqKeyboardFunctions import *
 
 from windowDialogFunctions import *
+from modeDialogFunctions import *
 
 
 class MainWindowUI(QMainWindow): 
@@ -812,14 +813,14 @@ def functions():
             reconnectReset(ui.graphButton.clicked, graphFunction)
             reconnectReset(ui.windowButton.clicked, windowDialogFunction)
             reconnectReset(ui.modeButton.clicked, modeDialogFunction)
-            reconnectReset(ui.Xmin.textChanged, XminFunction)
-            reconnectReset(ui.Xmax.textChanged, XmaxFunction)
-            reconnectReset(ui.Xscale.textChanged, XscaleFunction)
-            reconnectReset(ui.Ymin.textChanged, YminFunction)
-            reconnectReset(ui.Ymax.textChanged, YmaxFunction)
-            reconnectReset(ui.Yscale.textChanged, YscaleFunction)
-            reconnectReset(ui.mdRadianButton.clicked, mdRadianFunction)
-            reconnectReset(ui.mdDegreeButton.clicked, mdDegreeFunction)
+            reconnectReset(ui.Xmin.textChanged, XminFunction(ui))
+            reconnectReset(ui.Xmax.textChanged, XmaxFunction(ui))
+            reconnectReset(ui.Xscale.textChanged, XscaleFunction(ui))
+            reconnectReset(ui.Ymin.textChanged, YminFunction(ui))
+            reconnectReset(ui.Ymax.textChanged, YmaxFunction(ui))
+            reconnectReset(ui.Yscale.textChanged, YscaleFunction(ui))
+            reconnectReset(ui.mdRadianButton.clicked, mdRadianFunction(ui))
+            reconnectReset(ui.mdDegreeButton.clicked, mdDegreeFunction(ui))
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked, ansFunction)
             reconnectReset(ui.enterButton.clicked, entryFunction)
@@ -906,12 +907,14 @@ def functions():
         reconnectReset(ui.leftArrowButton.clicked)
         reconnectReset(ui.rightArrowButton.clicked)
         reconnectReset(ui.graphButton.clicked, graphFunction)
-        reconnectReset(ui.Xmin.textChanged, XminFunction)
-        reconnectReset(ui.Xmax.textChanged, XmaxFunction)
-        reconnectReset(ui.Xscale.textChanged, XscaleFunction)
-        reconnectReset(ui.Ymin.textChanged, YminFunction)
-        reconnectReset(ui.Ymax.textChanged, YmaxFunction)
-        reconnectReset(ui.Yscale.textChanged, YscaleFunction)
+        reconnectReset(ui.Xmin.textChanged, XminFunction(ui))
+        reconnectReset(ui.Xmax.textChanged, XmaxFunction(ui))
+        reconnectReset(ui.Xscale.textChanged, XscaleFunction(ui))
+        reconnectReset(ui.Ymin.textChanged, YminFunction(ui))
+        reconnectReset(ui.Ymax.textChanged, YmaxFunction(ui))
+        reconnectReset(ui.Yscale.textChanged, YscaleFunction(ui))
+        reconnectReset(ui.mdRadianButton.clicked, mdRadianFunction(ui))
+        reconnectReset(ui.mdDegreeButton.clicked, mdDegreeFunction(ui))
     elif ui.stackedWidget.currentIndex() == 1:
         if subcommands == []:
             reconnectReset(ui.Number0.clicked, eqFunction0)
@@ -952,12 +955,14 @@ def functions():
             reconnectReset(ui.upArrowButton.clicked, eqUpArrowFunction)
             reconnectReset(ui.downArrowButton.clicked, eqDownArrowFunction)
             reconnectReset(ui.graphButton.clicked, graphFunction)
-            reconnectReset(ui.Xmin.textChanged, XminFunction)
-            reconnectReset(ui.Xmax.textChanged, XmaxFunction)
-            reconnectReset(ui.Xscale.textChanged, XscaleFunction)
-            reconnectReset(ui.Ymin.textChanged, YminFunction)
-            reconnectReset(ui.Ymax.textChanged, YmaxFunction)
-            reconnectReset(ui.Yscale.textChanged, YscaleFunction)
+            reconnectReset(ui.Xmin.textChanged, XminFunction(ui))
+            reconnectReset(ui.Xmax.textChanged, XmaxFunction(ui))
+            reconnectReset(ui.Xscale.textChanged, XscaleFunction(ui))
+            reconnectReset(ui.Ymin.textChanged, YminFunction(ui))
+            reconnectReset(ui.Ymax.textChanged, YmaxFunction(ui))
+            reconnectReset(ui.Yscale.textChanged, YscaleFunction(ui))
+            reconnectReset(ui.mdRadianButton.clicked, mdRadianFunction(ui))
+            reconnectReset(ui.mdDegreeButton.clicked, mdDegreeFunction(ui))
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
@@ -1047,12 +1052,14 @@ def functions():
             reconnectReset(ui.upArrowButton.clicked)
             reconnectReset(ui.downArrowButton.clicked)
             reconnectReset(ui.graphButton.clicked, graphFunction)
-            reconnectReset(ui.Xmin.textChanged, XminFunction)
-            reconnectReset(ui.Xmax.textChanged, XmaxFunction)
-            reconnectReset(ui.Xscale.textChanged, XscaleFunction)
-            reconnectReset(ui.Ymin.textChanged, YminFunction)
-            reconnectReset(ui.Ymax.textChanged, YmaxFunction)
-            reconnectReset(ui.Yscale.textChanged, YscaleFunction)
+            reconnectReset(ui.Xmin.textChanged, XminFunction(ui))
+            reconnectReset(ui.Xmax.textChanged, XmaxFunction(ui))
+            reconnectReset(ui.Xscale.textChanged, XscaleFunction(ui))
+            reconnectReset(ui.Ymin.textChanged, YminFunction(ui))
+            reconnectReset(ui.Ymax.textChanged, YmaxFunction(ui))
+            reconnectReset(ui.Yscale.textChanged, YscaleFunction(ui))
+            reconnectReset(ui.mdRadianButton.clicked, mdRadianFunction(ui))
+            reconnectReset(ui.mdDegreeButton.clicked, mdDegreeFunction(ui))
         elif subcommands == ["2nd"]:
             reconnectReset(ui.negativeButton.clicked)
             reconnectReset(ui.enterButton.clicked)
@@ -1187,58 +1194,6 @@ def checkScreenUpdate():
     if inHistory[0] == "True" and firstHistoryUpdate[0] == "True":
         firstHistoryUpdate[0] = "False"
         functions()
-
-
-def XminFunction():
-    try:
-        lowerXLimit[0] = int(ui.Xmin.text())
-    except:
-        pass
-
-
-def XmaxFunction():
-    try:
-        upperXLimit[0] = int(ui.Xmax.text())
-    except:
-        pass
-
-
-def XscaleFunction():
-    try:
-        xScale[0] = int(ui.Xscale.text())
-    except:
-        pass
-
-
-def YminFunction():
-    try:
-        lowerYLimit[0] = int(ui.Ymin.text())
-    except:
-        pass
-
-
-def YmaxFunction():
-    try:
-        upperYLimit[0] = int(ui.Ymax.text())
-    except:
-        pass
-
-
-def YscaleFunction():
-    try:
-        yScale[0] = int(ui.Yscale.text())
-    except:
-        pass
-
-
-def mdRadianFunction():
-    ui.mdDegreeButton.setChecked(False)
-    modeStates["degradState"] = "rad"
-
-
-def mdDegreeFunction():
-    ui.mdRadianButton.setChecked(False)
-    modeStates["degradState"] = "deg"
 
 
 if __name__ == "__main__":
