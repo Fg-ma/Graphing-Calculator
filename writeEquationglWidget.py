@@ -61,7 +61,6 @@ class writeEquationGlWidget(QGLWidget):
         # Handles lines displaying the equations
         self.setFont(QFont("Cambria Math", 14))
         for equation in list(equations.keys()):
-            print("=" + "".join(equations[equation][1]))
             equationsPos[0] = int(equation) * 32
             self.renderText(8 + equationsPosHorizontalShift[equation], equationsPos[0] + 18 - equationsPosVerticalShift[0], equations[equation][0] + "=" + "".join(equations[equation][1]))
 
