@@ -66,7 +66,6 @@ class MainWindowUI(QMainWindow):
 
         loadUi("calculator.ui", self)
 
-
         self.windowWidget.hide()
         self.modeWidget.hide()
 
@@ -80,13 +79,13 @@ class MainWindowUI(QMainWindow):
         self.stackedWidget.insertWidget(2, self.canvas)
         self.stackedWidget.setCurrentIndex(0)
 
-        # Main window timer
-        mainTimer = QtCore.QTimer(self)
-        mainTimer.setInterval(20)
-        mainTimer.timeout.connect(self.mainopenglwidget.updateGL)
-        mainTimer.timeout.connect(self.eqopenglwidget.updateGL)
-        mainTimer.timeout.connect(checkScreenUpdate)
-        mainTimer.start()
+        # Main window and eq window timer
+        self.mainTimer = QtCore.QTimer(self)
+        self.mainTimer.setInterval(100)
+        self.mainTimer.timeout.connect(self.mainopenglwidget.updateGL)
+        self.mainTimer.timeout.connect(self.eqopenglwidget.updateGL)
+        self.mainTimer.timeout.connect(checkScreenUpdate)
+        self.mainTimer.start()
 
         # Cursor blink timer
         Ctimer = QtCore.QTimer(self)
@@ -95,7 +94,7 @@ class MainWindowUI(QMainWindow):
         Ctimer.start()
         
         self.resizeEvent = self.onResize
-    
+
 
     def onResize(self, event):
 
@@ -706,7 +705,7 @@ def equationFunction():
     Switches to the equations page and updates the appropriate variables to restore the exact conditions that the equations screen was left in.
     """
 
-    if ui.stackedWidget.currentIndex() != 1:
+    if ui.stackedWidget.currentIndex() == 0:
         ui.stackedWidget.setCurrentIndex(1)
 
         functions()
@@ -714,6 +713,20 @@ def equationFunction():
         mainPageSave[0] = lines[:]
         mainPageSave[1] = workingLinePos[0]
         mainPageSave[2] = numLines[0]
+
+        workingLinePos[0] = 52
+        workingLineShifter[0] = 34
+        cursorInlinePosition[0] = -1
+        cursorPos[0] = 14
+        for i in equations[str(activeFunction[0])][0]:
+            cursorPos[0] = cursorPos[0] + cursorPosDict[i]
+        firstHistoryUpdate[0] = "True"
+        inHistory[0] = "False"
+        selectionBarPos[0] = 0
+    elif ui.stackedWidget.currentIndex() != 0 and ui.stackedWidget.currentIndex() != 1:
+        ui.stackedWidget.setCurrentIndex(1)
+
+        functions()
 
         workingLinePos[0] = 52
         workingLineShifter[0] = 34

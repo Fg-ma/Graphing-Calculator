@@ -3,7 +3,7 @@ from OpenGL.GLU import *
 from PyQt5.QtGui import QFont
 from PyQt5.QtOpenGL import *
 from variables import *
-
+import time
 
 class writeEquationGlWidget(QGLWidget):
 
@@ -58,11 +58,10 @@ class writeEquationGlWidget(QGLWidget):
         self.setFont(QFont("Cambria Math", 10))
         self.renderText(7 + cursorPos[0], (activeFunction[0] * 32) + 24 - equationsPosVerticalShift[0], cursorHolder[0])
 
-        # Font style
-        self.setFont(QFont("Cambria Math", 14))
-
         # Handles lines displaying the equations
+        self.setFont(QFont("Cambria Math", 14))
         for equation in list(equations.keys()):
+            print("=" + "".join(equations[equation][1]))
             equationsPos[0] = int(equation) * 32
             self.renderText(8 + equationsPosHorizontalShift[equation], equationsPos[0] + 18 - equationsPosVerticalShift[0], equations[equation][0] + "=" + "".join(equations[equation][1]))
 

@@ -1,3 +1,5 @@
+import time
+
 isFourFunction = ["True"]
 onlyParentheses = ["True"]
 
